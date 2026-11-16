@@ -1492,6 +1492,8 @@
   .brand{color:var(--black);font-size:1.18rem}
   .brand b{color:var(--red)}
   .brand .mark svg{border-radius:9px;box-shadow:0 0 0 1px rgba(15,82,87,.35)}
+  .brand-lockup{height:48px;width:auto;display:block}
+  @media (max-width:860px){.brand-lockup{height:40px}}
   nav.main a{color:var(--charcoal);font-size:.74rem}
   nav.main a:hover{background:rgba(15,82,87,.07);color:var(--black)}
   nav.main a[aria-current="page"]{background:var(--red);color:#fff !important}
@@ -1682,8 +1684,7 @@
 <header class="site">
   <div class="wrap site-bar">
     <a class="brand" href="#top" aria-label="Prism 5 Labs — home">
-      <span class="mark" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 48 48"><rect x="1" y="1" width="46" height="46" rx="9" fill="#FFF3DC"/><path d="M24 9 L40 38 H8 Z" fill="#D62828"/><path d="M26.2 11.5 L33.5 38" stroke="#0F5257" stroke-width="1.8"/></svg></span>
-      Prism <b>5</b>&nbsp;Labs
+      <img class="brand-lockup" src="assets/prism5labs-logo-lockup.png" alt="Prism 5 Labs" width="2307" height="780">
     </a>
     <nav class="main" aria-label="Pages">
       <a href="#launches">Launches</a>
