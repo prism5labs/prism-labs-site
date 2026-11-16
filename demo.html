@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<title>Try the demo — Prism 5 Labs</title>
+<meta name="description" content="A simulation of one Prism 5 Labs assistant job, start to finish, on sample data only. Nothing connects to a real account, nothing is sent. Pick one job, watch it run, hear the pitch." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Try the demo — Prism 5 Labs" />
+<meta property="og:description" content="One sample job, start to finish. Simulation only, sample data only, nothing is sent." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --red:#D62828;
+    --red-dark:#A81E1E;
+    --black:#0F5257;
+    --charcoal:#2E2620;
+    --warm-white:#FFF3DC;
+    --paper:#FFFBF0;
+    --warm-tint:#F7E8C8;
+    --warm-line:#E9D9B4;
+    --glow:#2E7D74;
+    --butter:#F4C95D;
+    --ink:var(--charcoal);
+    --line:rgba(46,38,32,.22);
+    --radius:14px;
+    --font-head:"Patua One","Rockwell","Zilla Slab",Georgia,serif;
+    --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+    --font-body:"Libre Franklin","Franklin Gothic Medium",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--warm-white);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--font-head);line-height:1.12;margin:0;font-weight:600}
+  a{color:var(--red-dark)}
+  button{font-family:inherit;cursor:pointer}
+  input{font-family:inherit;font-size:1rem;color:var(--ink)}
+  :focus-visible{outline:3px solid var(--red);outline-offset:2px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+  .script{font-family:var(--font-head);font-weight:600;font-size:1.5em;line-height:1}
+
+  header.site{position:sticky;top:0;z-index:40;background:var(--black);border-bottom:3px solid var(--red)}
+  .site-bar{display:flex;align-items:center;gap:18px;min-height:64px}
+  .brand{font-family:var(--font-head);font-weight:600;font-size:1.25rem;color:var(--warm-white);text-decoration:none;letter-spacing:.02em;white-space:nowrap;display:inline-flex;align-items:center;gap:10px}
+  .brand b{color:var(--red);font-weight:700}
+  .site nav{margin-left:auto;display:flex;gap:4px}
+  .site nav a{color:var(--warm-white);text-decoration:none;font-weight:600;padding:10px 12px;border-radius:8px}
+  .site nav a:hover{background:rgba(255,243,220,.14)}
+  .contact-strip{background:rgba(0,0,0,.18);color:var(--warm-white);font-size:.9rem}
+  .contact-strip .wrap{display:flex;gap:22px;flex-wrap:wrap;padding-top:7px;padding-bottom:7px}
+  .contact-strip a{color:var(--warm-white)}
+
+  main{padding:34px 0 60px}
+  .eyebrow{font-family:var(--font-head);letter-spacing:.14em;font-size:.85rem;color:var(--red-dark);text-transform:uppercase}
+  h1{font-size:2.4rem;margin:8px 0 6px}
+  .lede{font-size:1.1rem;max-width:60ch;margin:0 0 18px}
+
+  .sim-banner{background:var(--butter);border:3px solid var(--black);border-radius:var(--radius);padding:16px 20px;margin:0 0 22px}
+  .sim-banner strong{font-family:var(--font-head);font-size:1.15rem;display:block;margin-bottom:4px}
+  .sim-banner p{margin:0}
+
+  .demo-card{background:var(--paper);border:3px solid var(--black);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px rgba(46,38,32,.18)}
+  .demo-head{background:var(--black);color:var(--warm-white);padding:14px 20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .demo-head strong{font-family:var(--font-head);font-size:1.2rem}
+  .demo-head span{font-size:.9rem;opacity:.9}
+  .log{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:220px}
+  .msg{max-width:88%;padding:12px 16px;border-radius:14px;line-height:1.55}
+  .msg.prism{align-self:flex-start;background:#fff;border:2px solid var(--glow);border-bottom-left-radius:4px}
+  .msg.prism .who{font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:var(--glow);display:block;margin-bottom:4px;letter-spacing:.06em}
+  .msg.user{align-self:flex-end;background:var(--warm-tint);border:2px solid var(--warm-line);border-bottom-right-radius:4px}
+  .msg.user .who{font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:var(--red-dark);display:block;margin-bottom:4px;letter-spacing:.06em}
+  .msg.note{align-self:center;background:var(--warm-white);border:2px dashed var(--line);font-size:.92rem;color:#5b4f42;text-align:center}
+  .msg.pitch{align-self:stretch;background:var(--black);color:var(--warm-white);border:2px solid var(--black)}
+  .msg.pitch .who{font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:var(--butter);display:block;margin-bottom:4px;letter-spacing:.06em}
+  .msg.pitch a{color:var(--butter)}
+  .msg.typing{align-self:flex-start;background:#fff;border:2px solid var(--glow);border-bottom-left-radius:4px;padding:12px 18px}
+  .msg.typing i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--glow);margin-right:5px;animation:blink 1s infinite}
+  .msg.typing i:nth-child(2){animation-delay:.2s}
+  .msg.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+  .draft-tag{font-family:var(--font-mono);font-size:.72rem;font-weight:700;color:var(--red-dark);letter-spacing:.08em}
+
+  .picks{padding:0 20px 20px}
+  .picks h2{font-size:1.15rem;margin:4px 0 10px}
+  .picks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+  .pick{text-align:left;background:#fff;border:2px solid var(--black);border-radius:12px;padding:12px 14px;font-size:.98rem;line-height:1.4}
+  .pick b{display:block;font-family:var(--font-head);font-size:1.05rem;margin-bottom:2px}
+  .pick span{color:#5b4f42;font-size:.9rem}
+  .pick:hover:not(:disabled){border-color:var(--red);box-shadow:0 4px 0 var(--red)}
+  .pick:disabled{opacity:.45;cursor:default}
+  .pick.picked{background:var(--warm-tint);border-color:var(--red)}
+
+  .composer{display:flex;gap:10px;padding:14px 20px;border-top:2px solid var(--warm-line);background:var(--warm-white)}
+  .composer input{flex:1;border:2px solid var(--black);border-radius:999px;padding:12px 18px;background:#fff}
+  .composer input:disabled{opacity:.55}
+  .btn{border:2px solid var(--black);border-radius:999px;padding:12px 22px;font-weight:700;font-size:1rem;min-height:48px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  .btn-primary{background:var(--red);border-color:var(--red-dark);color:#fff}
+  .btn-primary:hover{background:var(--red-dark)}
+  .btn-dark{background:var(--black);color:var(--warm-white)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .composer-hint{padding:0 20px 16px;font-size:.9rem;color:#5b4f42;margin:0}
+
+  .ended{display:none;padding:18px 20px;border-top:3px solid var(--red);background:var(--warm-tint)}
+  .ended.show{display:block}
+  .ended h2{font-size:1.25rem;margin-bottom:6px}
+  .ended p{margin:0 0 14px}
+  .ended .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+  .honest{margin-top:26px}
+  .honest h2{font-size:1.4rem;margin-bottom:8px}
+  .honest p{max-width:64ch}
+  .contact-card{margin-top:22px;background:var(--black);color:var(--warm-white);border-radius:var(--radius);padding:22px}
+  .contact-card h2{color:var(--warm-white);margin-bottom:8px}
+  .contact-card a{color:var(--butter)}
+  .contact-card p{margin:6px 0}
+
+  footer.site-foot{border-top:3px solid var(--red);padding:22px 0 34px;font-size:.92rem;color:#5b4f42}
+  footer.site-foot a{color:var(--red-dark)}
+  @media (max-width:640px){
+    h1{font-size:1.9rem}
+    .site nav a{padding:10px 8px}
+    .msg{max-width:94%}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-bar">
+    <a class="brand" href="/" aria-label="Prism 5 Labs — home">
+      <span aria-hidden="true"><svg width="34" height="34" viewBox="0 0 48 48"><rect x="1" y="1" width="46" height="46" rx="9" fill="#FFF3DC"/><path d="M24 9 L40 38 H8 Z" fill="#D62828"/><path d="M26.2 11.5 L33.5 38" stroke="#0F5257" stroke-width="1.8"/></svg></span>
+      Prism <b>5</b>&nbsp;Labs
+    </a>
+    <nav aria-label="Pages">
+      <a href="/">Home</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#trial">Free trial</a>
+    </nav>
+  </div>
+  <div class="contact-strip"><div class="wrap">
+    <span>Prism 5 Labs · Green Bay, Wisconsin</span>
+    <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a>
+    <a href="tel:+19203937294">(920) 393-7294</a>
+  </div></div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Simulation · Sample data only</p>
+    <h1><span class="script" style="color:var(--red-dark);display:block">Howdy, neighbor</span>Try the demo.</h1>
+    <p class="lede">One job, start to finish, the way it would feel day to day — only this one runs on made-up data. Watch it work, hear the pitch, and then it stops. That is the whole demo.</p>
+
+    <div class="sim-banner" role="note">
+      <strong>This is a simulation.</strong>
+      <p>Every email, client, calendar item, call, and message in this demo is an example, made up for this demo. None of it is real, and none of it is yours. This demo never touches a real account. It never reads your real email, your real calendar, or your real messages. It never sends anything. It never stores anything. It never books, buys, calls, or texts anyone.</p>
+    </div>
+
+    <div class="demo-card" id="demoCard">
+      <div class="demo-head">
+        <strong>Prism 5 — demo</strong>
+        <span>Simulate-only · runs once · sample data</span>
+      </div>
+      <div class="log" id="log" aria-live="polite"></div>
+      <div class="picks" id="picks">
+        <h2>Pick one job</h2>
+        <div class="picks-grid" id="picksGrid"></div>
+      </div>
+      <form class="composer" id="composer">
+        <input id="composerInput" type="text" autocomplete="off" placeholder="Type a job number or name, or tap a job above…" aria-label="Reply to the demo" />
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+      <p class="composer-hint">One pick, one run, one pitch — then this demo ends. Run it again fresh any time.</p>
+      <div class="ended" id="ended">
+        <h2>This demo has ended.</h2>
+        <p>It ran once, gave the pitch, and uninstalled itself in this page. It does no more jobs and answers no more work questions. The page itself is fine — run it again fresh, or share it with the next guest.</p>
+        <div class="actions">
+          <button class="btn btn-primary" id="againBtn" type="button">Run it again fresh</button>
+          <button class="btn btn-dark" id="shareBtn" type="button">Share this demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="honest">
+      <h2>What this is, plain and honest</h2>
+      <p>This demo is a taste of how a Prism 5 Labs assistant works, nothing more. It is not a real Launch. It is not the full product. It does not promise any outcome, any result, or any turnaround time. It just shows you the shape of the work, clean and simple, like a good showroom model on the lot.</p>
+      <p>If anything running a demo ever asks for your real email password, your real inbox, your real calendar access, or permission to send anything, stop. That is not this demo. This demo needs none of that.</p>
+    </div>
+
+    <div class="contact-card">
+      <h2>Want to learn more, or call Neil?</h2>
+      <p>Email: <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a></p>
+      <p>Phone: <a href="tel:+19203937294">(920) 393-7294</a></p>
+      <p>Prism 5 Labs, Green Bay, Wisconsin. No street address is listed, on purpose. Email or call is the way in.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Prism 5 Labs · Green Bay, Wisconsin · <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> · <a href="tel:+19203937294">(920) 393-7294</a></p>
+    <p>Simulation only. Sample data only. Nothing is sent, nothing is stored.</p>
+  </div>
+</footer>
+
+<noscript><p style="padding:20px;text-align:center">This demo needs JavaScript to play. The demo script itself is a text file — email us and we will send it to you.</p></noscript>
+
+<script>
+(function(){
+  "use strict";
+  var SHUTDOWN_LINE = "This demo has ended and uninstalled itself. To learn more, email prism5labscontact@gmail.com.";
+  var log = document.getElementById("log");
+  var picksGrid = document.getElementById("picksGrid");
+  var picksBox = document.getElementById("picks");
+  var composer = document.getElementById("composer");
+  var input = document.getElementById("composerInput");
+  var endedBox = document.getElementById("ended");
+  var state = { picked: null, ended: false, playing: false };
+
+  var JOBS = [
+    { id: 1, name: "Morning Briefing Spark", desc: "One short check across messages and calendar, one line per item.",
+      script: [
+        "Morning briefing — sample data only. Here is what is new for Sam Carter, Carter Home Repair.",
+        "9:00 AM — job site visit at Dana Miller's home.",
+        "1:00 PM — supply run.",
+        "4:30 PM — call back Pat Johnson.",
+        "Pat Johnson asks if Tuesday still works.",
+        "Robin Lee sent a photo of a finished porch.",
+        "One invoice receipt, one quote request from Casey Brooks.",
+        "More on 1, More on 2, More on 3 — say the word and I will show detail from the sample data."
+      ] },
+    { id: 2, name: "Inbox Zero Sprint Spark", desc: "Triages up to 10 emails, drafts up to 3 replies in your voice.",
+      script: [
+        "Five sample emails, sorted. One line each:",
+        "Casey Brooks — Quote please — ACT NOW",
+        "Pat Johnson — Invoice question — REPLY",
+        "Dana Miller — Tuesday — FILE",
+        "Supply store — Weekend sale — IGNORE",
+        "Newsletter — Monthly tips — IGNORE",
+        "DRAFT — to Casey Brooks: \u201CHi Casey, happy to price the bathroom tile repair. I will send a written quote by tomorrow. — Sam\u201D",
+        "DRAFT — to Pat Johnson: \u201CHi Pat, the second line on the invoice is the disposal fee. Happy to walk through it on the call. — Sam\u201D",
+        "DRAFT — to Dana Miller: \u201CHi Dana, Tuesday at 9:00 AM is confirmed. See you then. — Sam\u201D",
+        "Three drafts waiting for your OK. Nothing sent."
+      ] },
+    { id: 3, name: "Who's This? Spark", desc: "Finds out who an unknown caller is, and handles that one caller.",
+      script: [
+        "Sample text, not a real caller: \u201CHello, is this Carter Home Repair? This is Alex from a sample supply company, calling about a delivery.\u201D Number shown: 555-0100.",
+        "DRAFT — Greeter reply: \u201CHi, this is Carter Home Repair. Who am I speaking with, and what is this about?\u201D",
+        "Alex replied: a delivery question. Status list — ASKED, WAITING, OPTED OUT. This caller: WAITING.",
+        "I stop here and wait for the owner's word."
+      ] },
+    { id: 4, name: "Find a Time Spark", desc: "Checks a calendar, proposes 3 times, drafts the invite.",
+      script: [
+        "Sample calendar only. Dana Miller, 30 minutes, kitchen repair.",
+        "Three open times: Monday 2:00 PM. Tuesday 10:00 AM. Thursday 11:00 AM.",
+        "DRAFT — invite: Kitchen repair walk-through, Dana Miller, pick a time above. 30 minutes. Agenda: look at the sink, agree the fix.",
+        "Booked nothing, sent nothing."
+      ] },
+    { id: 5, name: "Quote Writer Spark", desc: "Turns short job notes into a clean written quote.",
+      script: [
+        "DRAFT — quote for Dana Miller: fix kitchen sink leak, replace two shutoff valves. Parts $45. Labor 2 hours at $75 an hour. Total $195. Price holds 14 days.",
+        "DRAFT — quote for Pat Johnson: patch drywall in hallway, paint one coat. Total $240. Price holds 14 days.",
+        "QUOTED, SENT, WAITING — both WAITING.",
+        "Two quotes waiting for your OK."
+      ] },
+    { id: 6, name: "Invoice Helper Spark", desc: "Drafts invoices from job notes, keeps a paid and unpaid list.",
+      script: [
+        "DRAFT — invoice, Dana Miller: sink repair finished, $195, unpaid. Pay Sam Carter.",
+        "DRAFT — invoice, Robin Lee: porch step repair finished, $320, paid.",
+        "DRAFT — invoice, Pat Johnson: drywall patch finished, $240, unpaid. Pay Sam Carter.",
+        "PAID, UNPAID — Robin Lee $320 paid. Dana Miller $195 unpaid. Pat Johnson $240 unpaid.",
+        "DRAFT — follow-up to Dana Miller: \u201CHi Dana, just a friendly note — the sink repair invoice for $195 is still open. No rush, pay when it suits. — Sam\u201D",
+        "Three drafts waiting for your OK. Nothing sent."
+      ] },
+    { id: 7, name: "End of Day Wrap Spark", desc: "Sums up today in short lines, sets tomorrow's top 3.",
+      script: [
+        "Today, done: finished Dana Miller's sink repair. Sent Pat Johnson's quote. Picked up supplies. Robin Lee paid in full.",
+        "Tomorrow's top 3: 9:00 AM — Dana Miller follow-up. 11:00 AM — Casey Brooks quote visit. 2:00 PM — supply return.",
+        "DRAFT — thank you to Robin Lee: \u201CHi Robin, thanks for the quick payment — and for the porch photo. The steps look good. — Sam\u201D",
+        "Thirty seconds, start to finish."
+      ] },
+    { id: 8, name: "Job Done Post Spark", desc: "Drafts one post about a finished job, photo caption included.",
+      script: [
+        "DRAFT — post: \u201CKitchen sink repair for Dana Miller in Green Bay. Two old shutoff valves would not budge. Same-day fix, sink dry and working. — Carter Home Repair\u201D",
+        "Photo caption: sample before-and-after photo. No real photo is used in this demo.",
+        "Post nothing, send nothing. The draft is yours to keep or change."
+      ] },
+    { id: 9, name: "Stay in Touch Writer Spark", desc: "Drafts one warm check-in message, plus one alternate tone.",
+      script: [
+        "DRAFT — to Robin Lee: \u201CHi Robin, spring is a good time to check those porch steps before summer. All holding up well on your end? — Sam\u201D",
+        "DRAFT — warmer version: \u201CHi Robin, thinking of you as spring rolls in — how are the porch steps treating you? Give a shout if anything needs a look. — Sam\u201D",
+        "Send nothing. Both drafts are yours."
+      ] },
+    { id: 10, name: "Missed-Call Catcher Plug", desc: "Catches the calls you missed while on a job, drafts the replies.",
+      script: [
+        "Three sample missed calls, logged: Casey Brooks, 10:15 AM — wants a quote for a bathroom repair. Dana Miller, 11:40 AM — asks if the sink is still dry today. Unknown number 555-0101, 1:05 PM — no message left.",
+        "DRAFT — to Casey Brooks: \u201CHi Casey, saw your call — happy to quote the bathroom repair. When suits for a look? — Sam\u201D",
+        "DRAFT — to Dana Miller: \u201CHi Dana, sink is holding. Shout if anything changes. — Sam\u201D",
+        "DRAFT — to 555-0101: \u201CHi, this is Carter Home Repair. You called earlier — what can I do for you? — Sam\u201D",
+        "Three callers still waiting. The full Plug watches on its own — this demo only shows the work on sample data."
+      ] },
+    { id: 11, name: "On Watch Plug", desc: "Watches for unknown callers and marketing texts, handles each one.",
+      script: [
+        "Three sample items: unknown 555-0102 — marketing text about extended warranties. Unknown 555-0103 — \u201Cis this Sam,\u201D from a sample name, Alex. Pat Johnson — normal message, not unknown, so On Watch leaves it for the owner.",
+        "DRAFT — Greeter to 555-0102: \u201CHi, this is Carter Home Repair. Who am I speaking with, and what is this about?\u201D",
+        "DRAFT — Greeter to 555-0103: \u201CHi, this is Carter Home Repair. Who am I speaking with, and what is this about?\u201D",
+        "Handled in this simulation: two. Waiting on the owner's word: two. The full Plug watches all day on its own."
+      ] }
+  ];
+
+  var PITCH = [
+    "That is the demo, neighbor. One job, sample data, start to finish, just like it would feel day to day, only the real version works on your real work, with your word in charge.",
+    "Did you enjoy this? Would you like to learn more, or call Neil?",
+    "To learn more, or to get set up, reach out here: Email prism5labscontact@gmail.com — Phone (920) 393-7294 — Prism 5 Labs, Green Bay, Wisconsin. No street address is listed, on purpose. Email or call is the way in."
+  ];
+
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(text != null) n.textContent = text;
+    return n;
+  }
+  function scrollDown(){ log.scrollTop = log.scrollHeight; }
+  function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
+
+  function addMsg(who, text, kind){
+    var m = el("div", "msg " + (kind || who));
+    var w = el("span", "who", who === "prism" ? "PRISM 5 — DEMO" : who === "user" ? "YOU" : "");
+    if(who !== "note") m.appendChild(w);
+    // Keep DRAFT labels visible as a tag at the start of the line.
+    if(text.indexOf("DRAFT — ") === 0){
+      var tag = el("span", "draft-tag", "DRAFT  ");
+      m.appendChild(tag);
+      m.appendChild(document.createTextNode(text.slice(8)));
+    } else {
+      m.appendChild(document.createTextNode(text));
+    }
+    log.appendChild(m);
+    scrollDown();
+    return m;
+  }
+  function addPitch(text){
+    var m = el("div", "msg pitch");
+    var w = el("span", "who", "PRISM 5 — FINAL PITCH");
+    m.appendChild(w);
+    var email = "prism5labscontact@gmail.com";
+    if(text.indexOf(email) !== -1){
+      var parts = text.split(email);
+      m.appendChild(document.createTextNode(parts[0]));
+      var a = el("a", null, email);
+      a.href = "mailto:" + email;
+      m.appendChild(a);
+      m.appendChild(document.createTextNode(parts[1]));
+    } else {
+      m.appendChild(document.createTextNode(text));
+    }
+    log.appendChild(m);
+    scrollDown();
+    return m;
+  }
+  function typing(){
+    var t = el("div", "msg typing");
+    t.innerHTML = "<i></i><i></i><i></i>";
+    log.appendChild(t);
+    scrollDown();
+    return t;
+  }
+  async function say(who, text){
+    var t = typing();
+    await wait(650);
+    t.remove();
+    addMsg(who, text);
+    await wait(420);
+  }
+  async function sayPitch(text){
+    var t = typing();
+    await wait(650);
+    t.remove();
+    addPitch(text);
+    await wait(420);
+  }
+
+  function buildPicks(){
+    JOBS.forEach(function(job){
+      var b = el("button", "pick", null);
+      b.type = "button";
+      b.dataset.job = job.id;
+      var name = el("b", null, job.id + ". " + job.name);
+      var desc = el("span", null, job.desc);
+      b.appendChild(name);
+      b.appendChild(desc);
+      b.addEventListener("click", function(){ runJob(job, b); });
+      picksGrid.appendChild(b);
+    });
+  }
+
+  function disablePicks(pickedBtn){
+    var btns = picksGrid.querySelectorAll(".pick");
+    btns.forEach(function(b){ b.disabled = true; if(b === pickedBtn) b.classList.add("picked"); });
+  }
+
+  async function runJob(job, btn){
+    if(state.playing || state.ended) return;
+    state.playing = true;
+    state.picked = job;
+    disablePicks(btn);
+    addMsg("user", job.id + ". " + job.name);
+    await wait(300);
+    for(var i = 0; i < job.script.length; i++){
+      await say("prism", job.script[i]);
+    }
+    for(var j = 0; j < PITCH.length; j++){
+      await sayPitch(PITCH[j]);
+    }
+    shutdown();
+    state.playing = false;
+  }
+
+  function shutdown(){
+    state.ended = true;
+    addMsg("note", "This demo has ended and uninstalled itself in this page. It does no more jobs and answers no more work questions.");
+    endedBox.classList.add("show");
+    input.placeholder = "This demo has ended. Run it again fresh to play once more.";
+    input.focus();
+    scrollDown();
+  }
+
+  function matchJob(text){
+    var t = text.trim().toLowerCase();
+    if(!t) return null;
+    var n = parseInt(t, 10);
+    if(!isNaN(n)){
+      for(var i = 0; i < JOBS.length; i++) if(JOBS[i].id === n) return JOBS[i];
+    }
+    for(var j = 0; j < JOBS.length; j++){
+      var name = JOBS[j].name.toLowerCase().replace(" spark", "").replace(" plug", "");
+      if(t.indexOf(name) !== -1 || name.indexOf(t) !== -1) return JOBS[j];
+    }
+    return null;
+  }
+
+  composer.addEventListener("submit", function(e){
+    e.preventDefault();
+    var text = input.value.trim();
+    if(!text) return;
+    input.value = "";
+    if(state.ended){
+      addMsg("user", text);
+      addMsg("prism", SHUTDOWN_LINE);
+      return;
+    }
+    if(state.playing) return;
+    var job = matchJob(text);
+    if(job){
+      var btn = picksGrid.querySelector('[data-job="' + job.id + '"]');
+      runJob(job, btn);
+    } else {
+      addMsg("user", text);
+      addMsg("prism", "Pick one of the jobs above — tap a button, or type its number.");
+    }
+  });
+
+  document.getElementById("againBtn").addEventListener("click", function(){ location.reload(); });
+  document.getElementById("shareBtn").addEventListener("click", function(){
+    var btn = document.getElementById("shareBtn");
+    var url = location.href;
+    function done(){ btn.textContent = "Link copied"; setTimeout(function(){ btn.textContent = "Share this demo"; }, 2500); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done, function(){ fallbackCopy(url); done(); });
+    } else {
+      fallbackCopy(url); done();
+    }
+    function fallbackCopy(u){
+      var ta = document.createElement("textarea");
+      ta.value = u; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch(e) {}
+      document.body.removeChild(ta);
+    }
+  });
+
+  // Greeting on load.
+  buildPicks();
+  addMsg("prism", "Howdy, neighbor. This is a simulation, sample data only — nothing here is real, and nothing is sent. Pick one job, and I will run it start to finish.");
+})();
+</script>
+</body>
+</html>
