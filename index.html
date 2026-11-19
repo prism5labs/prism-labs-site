@@ -1941,6 +1941,53 @@ footer.site {
 }
 
 </style>
+<style id="novas-split">
+  /* Novas split (Nov 19, 2026, staged branch): two doors, one side per transaction. */
+  .doors-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:620px){.doors-grid{grid-template-columns:1fr}}
+  .door-card--business{border-top:5px solid var(--black)}
+  .door-card--personal{border-top:5px solid var(--red)}
+  .door-explainer{background:var(--paper);border:2px solid var(--warm-line);border-radius:var(--radius);padding:20px 22px;margin:0 0 22px}
+  .door-explainer h3{font-size:1.25rem;margin-bottom:6px}
+  .door-explainer p{margin:0 0 8px}
+  .door-explainer p:last-child{margin-bottom:0}
+  .cart-lock-note{background:#F4C95D;color:var(--ink);border:2px solid var(--black);border-radius:10px;padding:12px 14px;margin:14px 16px;font-weight:600}
+  .nova-ways{width:100%;border-collapse:collapse}
+  .nova-ways td{padding:8px 0;border-top:1px solid var(--warm-line);vertical-align:top}
+  .nova-ways td.amt{text-align:right;white-space:nowrap;font-weight:700}
+  .nova-ways .detail{display:block;font-weight:400;font-size:.88rem}
+  /* First-open chooser: the two doors, with real depth (wizard standard). */
+  .gate-doors{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+  @media (max-width:760px){.gate-doors{grid-template-columns:1fr}}
+  .gate-door{--door-accent:var(--black);display:flex;flex-direction:column;gap:6px;text-align:left;background:linear-gradient(180deg,#FFFBF0 0%,#FFF3DC 55%,#F7E8C8 100%);border:2px solid var(--door-accent);border-top:6px solid var(--door-accent);border-radius:14px;padding:20px 18px;cursor:pointer;font-family:var(--font-body);color:var(--ink);box-shadow:0 2px 0 rgba(46,38,32,.35),0 14px 28px rgba(15,82,87,.28),inset 0 1px 0 rgba(255,255,255,.7);transition:transform .18s ease,box-shadow .18s ease}
+  .gate-door:hover{transform:translateY(-3px);box-shadow:0 3px 0 rgba(46,38,32,.35),0 20px 36px rgba(15,82,87,.34),inset 0 1px 0 rgba(255,255,255,.7)}
+  .gate-door--personal{--door-accent:var(--red)}
+  .gate-door strong{font-family:var(--font-head);font-size:1.2rem}
+  .gate-door span{font-size:.95rem;line-height:1.45}
+  .gate-door .gate-go{margin-top:auto;padding-top:10px;font-family:var(--font-mono);font-size:.8rem;font-weight:700;letter-spacing:.08em;color:var(--red-dark)}
+  .gate-door.is-side{outline:3px solid #F4C95D;outline-offset:2px}
+  .gate-door.is-side::after{content:"✓ YOUR SIDE";display:block;margin-top:8px;font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--red-dark)}
+  .gate-side-note{margin:16px 0 0;font-size:.95rem;text-align:center}
+  /* Header side switcher. */
+  .side-switch{background:transparent;border:2px solid var(--black);color:var(--ink);border-radius:999px;padding:6px 13px;font-weight:700;font-size:.82rem;min-height:36px;cursor:pointer;white-space:nowrap;font-family:var(--font-body)}
+  .side-switch:hover{background:var(--black);color:var(--warm-white)}
+  /* Atom cards: the same depth language as the chooser. */
+  .atom-card{background:linear-gradient(180deg,#FFFBF0 0%,#FFF3DC 70%,#F7E8C8 100%);border:2px solid var(--warm-line);border-top:5px solid var(--red);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(46,38,32,.3),0 14px 30px rgba(15,82,87,.22),inset 0 1px 0 rgba(255,255,255,.65)}
+  .atom-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .atom-body .kind{font-family:var(--font-head);font-weight:600;color:var(--red-dark);letter-spacing:.05em;font-size:.88rem}
+  .atom-body h3{font-size:1.45rem;color:var(--ink)}
+  .atom-body .for-line{font-weight:600;font-size:.98rem}
+  .atom-body .voice{font-family:var(--font-head);font-size:1.02rem;border-left:4px solid var(--red);padding-left:12px}
+  .atom-body p{font-size:.95rem}
+  .atom-body .meta{margin-top:auto;padding-top:8px}
+  .atom-portrait{position:relative;width:100%;flex:none;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 50% 0%,#2E7D74 0%,#0F5257 55%,#0B3E42 100%);border-radius:12px 12px 0 0;overflow:hidden}
+  .atom-portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 108%,rgba(244,201,93,.5),transparent 60%);pointer-events:none}
+  .atom-portrait .atom-mark{width:84px;height:84px;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+  .atom-portrait .atom-mark svg{width:84px;height:84px}
+  .atom-portrait .atom-num{position:absolute;left:12px;bottom:10px;font-family:var(--font-mono);font-size:.78rem;font-weight:700;letter-spacing:.1em;color:#FFF3DC;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .atom-portrait .atom-coming{position:absolute;right:12px;top:10px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#0B3E42;background:#F4C95D;border-radius:999px;padding:4px 9px}
+  .fee-note{font-size:.92rem;color:var(--ink)}
+</style>
 </head>
 <body>
 
@@ -1955,6 +2002,19 @@ footer.site {
     <span class="gate-script">Howdy, neighbor!</span>
     <h1 id="gateTitle">Let us handle the noise.</h1>
     <p class="gate-msg">Prism 5 Labs builds a personal assistant that does the work — inbox, calendar, messages, paperwork — handled quiet in the background. Nothing goes out without your OK. Pick a door.</p>
+    <div class="gate-doors" role="group" aria-label="Business or Personal — pick your side">
+      <button class="gate-door gate-door--business" type="button" data-gate="business">
+        <strong>For my business</strong>
+        <span>Hours back. Bookings not lost. A front desk that never sleeps.</span>
+        <span class="gate-go">GO BUSINESS →</span>
+      </button>
+      <button class="gate-door gate-door--personal" type="button" data-gate="personal">
+        <strong>For me, personally</strong>
+        <span>Getting started is the hard part. Your inbox handled, gentle check-ins.</span>
+        <span class="gate-go">GO PERSONAL →</span>
+      </button>
+    </div>
+    <p class="gate-side-note" id="gateSideNote" hidden></p>
     <div class="gate-choices">
       <button class="gate-enter" type="button" data-gate="enter">Enter →<small>Start on the home page, then pick a page.</small></button>
       <button class="gate-path" type="button" data-gate="custom">
@@ -2022,9 +2082,13 @@ footer.site {
     <span>Prism 5 Labs · Green Bay, Wisconsin</span>
     <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a>
     <a href="tel:+19203937294">(920) 393-7294</a>
+    <button class="side-switch" id="sideSwitch" type="button" style="margin-left:auto">Side: Personal · Switch</button>
   </div></div>
   <nav class="mobile-nav wrap" id="mobileMenu" aria-label="Pages">
     <a href="#top">Home — pick a page</a>
+    <a href="#business">For my business</a>
+    <a href="#personal">For me, personally</a>
+    <a href="#atoms">Meet the Atoms</a>
     <a href="#launches">Launches</a>
     <a href="#meet">The Photons</a>
     <a href="#catalog">À la carte</a>
@@ -2088,6 +2152,21 @@ footer.site {
         <figcaption>Handled before your coffee cools. That’s the product: the work, done.</figcaption>
       </figure>
     </div>
+    </div>
+  </section>
+
+  <!-- ============ TWO DOORS (Novas split) ============ -->
+  <section class="block doors" id="doors" data-view="home">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="rule" aria-hidden="true"></div>
+        <h2>Two doors. Pick yours.</h2>
+        <p>Same workshop, two kinds of help. One door is for a business; the other is for you, personally. Prices live inside each door, after a short explainer — never up front.</p>
+      </div>
+      <div class="doors-grid">
+        <a class="hub-card door-card--business" href="#business"><span class="kind">DOOR ONE · FOR MY BUSINESS</span><h3>For my business</h3><p>Hours back. Bookings not lost. A front desk that never sleeps — calls, quotes, follow-ups and paperwork, handled quiet in the background.</p><span class="go">OPEN THE BUSINESS DOOR →</span></a>
+        <a class="hub-card door-card--personal" href="#personal"><span class="kind">DOOR TWO · FOR ME, PERSONALLY</span><h3>For me, personally</h3><p>Getting started is the hard part. Your inbox handled, gentle check-ins, and no subscription you forget about.</p><span class="go">OPEN THE PERSONAL DOOR →</span></a>
+      </div>
     </div>
   </section>
 
@@ -2180,6 +2259,9 @@ footer.site {
         <p>This is the whole site, on one shelf. Tap a card and you go to that page — each page sells just that one thing, nothing else stacked underneath it. No endless scroll.</p>
       </div>
       <div class="hub-grid">
+        <a class="hub-card door-card--business" href="#business"><span class="kind">DOOR · FOR MY BUSINESS</span><h3>For my business</h3><p>Hours back, bookings not lost, a front desk that never sleeps. The business Launches, Sparks &amp; Plugs, and Upkeep.</p><span class="price">Prices inside, after the explainer</span><span class="go">OPEN THE BUSINESS DOOR →</span></a>
+        <a class="hub-card door-card--personal" href="#personal"><span class="kind">DOOR · FOR ME, PERSONALLY</span><h3>For me, personally</h3><p>Nova and the personal Sparks. One inbox, one calendar, and help starting — no subscription you forget about.</p><span class="price">Prices inside, after the explainer</span><span class="go">OPEN THE PERSONAL DOOR →</span></a>
+        <a class="hub-card door-card--personal" href="#atoms"><span class="kind">PAGE · THE ATOMS</span><h3>Meet the Atoms</h3><p>Twelve personal Launches — the personal-side counterparts to the Photons. Inbox, calendar, check-ins, focus and getting-started help.</p><span class="price">Roster arriving from the app leg</span><span class="go">OPEN THE ATOMS PAGE →</span></a>
         <a class="hub-card" href="#launches"><span class="kind">PAGE · THE LAUNCHES</span><h3>Supernova &amp; Satellite</h3><p>The whole front office, or one job done well. Finished, ready, working in 5–10 minutes.</p><span class="price">Supernova $499 · Satellite $99</span><span class="go">OPEN THE LAUNCHES PAGE →</span></a>
         <a class="hub-card" href="#meet"><span class="kind">PAGE · THE PHOTONS</span><h3>Ready-made Supernovas</h3><p>Twelve ready-made Launches — Prism, Juniper, Encore and the rest. Pick by the job, not the picture.</p><span class="price">All $499 one-time</span><span class="go">OPEN THE PHOTONS PAGE →</span></a>
         <a class="hub-card" href="#catalog"><span class="kind">PAGE · À LA CARTE</span><h3>One job at a time</h3><p>Sparks you push and Plugs that run themselves. One button, one job, price right on the card.</p><span class="price">From $19, pay once</span><span class="go">OPEN À LA CARTE →</span></a>
@@ -2389,6 +2471,7 @@ footer.site {
         <button class="chip" data-filter="communication" aria-pressed="false">Communication</button>
         <button class="chip" data-filter="business" aria-pressed="false">Business Operations</button>
         <button class="chip" data-filter="data" aria-pressed="false">Data &amp; Documents</button>
+        <button class="chip" data-filter="atoms" aria-pressed="false">Atoms</button>
       </div>
       <div id="catalogRoot"></div>
 
@@ -2740,9 +2823,29 @@ footer.site {
 
       </div>
       <p style="text-align:center;margin-top:20px"><button class="btn btn-primary" id="togglePhotons" aria-expanded="false">Meet all the Photons</button></p>
+      <p style="text-align:center;margin-top:14px">Looking for the personal side? <a href="#atoms">Meet the Atoms →</a> — twelve personal Launches, the counterparts to the Photons.</p>
       <p class="collect-line" style="color:var(--warm-white)"><span class="script" style="color:#F4C95D">Pick the job. The name is yours.</span></p>
       <p style="text-align:center;margin-top:10px;font-size:.97rem">Each starts with a 14-day free trial. Or <a href="#build" style="color:#F7E8C8">build your own</a>.</p>
       <p class="ask-line" style="text-align:center;color:var(--warm-white)">Questions about any of this? Ask us — we would rather explain it than have you guess. Email <a href="mailto:prism5labscontact@gmail.com" style="color:#F7E8C8">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294" style="color:#F7E8C8">(920) 393-7294</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ ATOMS (Novas split — structural; canonical twelve pending from the app leg) ============ -->
+  <section class="block" id="atoms" data-view="atoms">
+    <div class="wrap">
+      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>THE ATOMS</b></span></div>
+      <div class="sec-head">
+        <div class="rule" aria-hidden="true"></div>
+        <h2>The Atoms — personal Launches</h2>
+        <p>Twelve personal-side counterparts to the Photons — inbox, calendar, check-ins, focus and getting-started help, morning briefing, and the like. One inbox, one calendar, and help starting.</p>
+      </div>
+      <div class="door-explainer">
+        <h3>About this roster</h3>
+        <p><strong>The twelve Atom names, roles and portraits come from the app leg</strong> — the app is the source of truth, and this page is built to take them as they arrive. The twelve cards below hold their places; nothing here is invented, and each card is marked until its canonical name, role and portrait land.</p>
+        <p>Atoms are personal-side only — they always check out as a personal transaction, never mixed with business.</p>
+      </div>
+      <div class="meet-grid" id="atomsGrid"></div>
+      <p class="ask-line">Questions about the Atoms? Ask us — email <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294">(920) 393-7294</a>. Nothing is charged on this page.</p>
     </div>
   </section>
 
@@ -2856,6 +2959,166 @@ footer.site {
         </ul>
       </div>
       <p class="ask-line">Questions about any of this? Ask us — we would rather explain it than have you guess. Email <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294">(920) 393-7294</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ BUSINESS DOOR (Novas split) ============ -->
+  <section class="block" id="business" data-view="business">
+    <div class="wrap">
+      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>FOR MY BUSINESS</b></span></div>
+      <div class="sec-head">
+        <div class="rule" aria-hidden="true"></div>
+        <h2>For my business</h2>
+        <p>Hours back. Bookings not lost. A front desk that never sleeps — calls answered, quotes written, follow-ups chased, and the paperwork handled quiet in the background.</p>
+      </div>
+      <div class="door-explainer">
+        <h3>Which one is for you</h3>
+        <p><strong>This door is for a business.</strong> Businesses need the front desk: calls coming in, quotes going out, bookings that must not slip, and more than one inbox, calendar and account kept straight at once.</p>
+        <p>If that sounds like your working day, you are in the right place. If it is just you, your own inbox and your own calendar, the <a href="#personal">personal door</a> is the one.</p>
+        <p>Pricing sits behind this explainer on purpose — read this first, then the prices.</p>
+      </div>
+      <details class="pricing-explainer" id="business-pricing">
+        <summary>See business pricing — tap to open</summary>
+        <div class="price-groups">
+          <div class="price-panel">
+            <div class="panel-head"><div>
+            <h3>Supernova — Full Launch</h3>
+            <p class="panel-note">The whole front office.</p>
+            </div></div>
+            <table class="price-table">
+              <thead><tr><th scope="col">Way to pay</th><th scope="col" style="text-align:right">Price</th></tr></thead>
+              <tbody>
+                <tr><td>One-time</td><td class="amt">$499</td></tr>
+                <tr><td>Monthly<span class="detail">Upkeep included</span></td><td class="amt">$49/mo</td></tr>
+                <tr><td>2-year<span class="detail">$240 saved · $936 total</span></td><td class="amt">$39/mo</td></tr>
+                <tr><td>Annual prepay<span class="detail">12 months for 11</span></td><td class="amt">$539/yr</td></tr>
+              </tbody>
+            </table>
+            <button class="add-btn" data-add="supernova">Add Supernova — $499 to request summary</button>
+          </div>
+          <div class="price-panel">
+            <div class="panel-head"><div>
+            <h3>Satellite — One Job</h3>
+            <p class="panel-note">One assistant, one job.</p>
+            </div></div>
+            <table class="price-table">
+              <thead><tr><th scope="col">Way to pay</th><th scope="col" style="text-align:right">Price</th></tr></thead>
+              <tbody>
+                <tr><td>One-time</td><td class="amt">$99</td></tr>
+                <tr><td>Monthly<span class="detail">Upkeep included</span></td><td class="amt">$33/mo</td></tr>
+                <tr><td>2-year<span class="detail">$168 saved · $624 total</span></td><td class="amt">$26/mo</td></tr>
+                <tr><td>Annual prepay<span class="detail">12 months for 11</span></td><td class="amt">$363/yr</td></tr>
+              </tbody>
+            </table>
+            <button class="add-btn" data-add="satellite">Add Satellite — $99 to request summary</button>
+          </div>
+        </div>
+        <div class="price-groups" style="margin-top:22px">
+          <div class="price-panel">
+            <div class="panel-head"><div>
+            <h3>Boosters — Business Sparks &amp; Plugs</h3>
+            <p class="panel-note">Pay once for each. Solo or added to a Launch.</p>
+            </div></div>
+            <table class="price-table">
+              <thead><tr><th scope="col">Item</th><th scope="col" style="text-align:right">Your price</th></tr></thead>
+              <tbody>
+                <tr><td>Spark<span class="detail">One button, one job — push it again and again</span></td><td class="amt">$25 Business</td></tr>
+                <tr><td>Plug<span class="detail">No button to push — it runs on its own</span></td><td class="amt">$59 Business</td></tr>
+              </tbody>
+            </table>
+            <button class="add-btn" data-add="boosters">Add Boosters to request summary</button>
+          </div>
+          <div class="price-panel">
+            <h3>Upkeep — $29/mo</h3>
+            <p class="panel-note"><strong>Monthly plan?</strong> Included.</p>
+            <p class="panel-note"><strong>Bought outright?</strong> $29/mo for updates and fixes. Skip it and it runs as installed. A 3% card fee applies at checkout, so $29/mo comes to $29.87/mo in total.</p>
+            <div class="buy-group"><a class="buy-btn" href="https://buy.stripe.com/6oU3cueJieuQ6MS7AafQI0d?client_reference_id=upkeep" target="_blank" rel="noopener">Buy Upkeep — $29/mo</a></div>
+          </div>
+        </div>
+        <p class="ask-line">One transaction holds one side only — business or personal, never both mixed. If your request summary already holds personal items, these business items start a separate transaction. Nothing is charged on this page.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ PERSONAL DOOR (Novas split) ============ -->
+  <section class="block" id="personal" data-view="personal">
+    <div class="wrap">
+      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>FOR ME, PERSONALLY</b></span></div>
+      <div class="sec-head">
+        <div class="rule" aria-hidden="true"></div>
+        <h2>For me, personally</h2>
+        <p>Getting started is the hard part. Your inbox handled, gentle check-ins, and no subscription you forget about.</p>
+      </div>
+      <div class="door-explainer">
+        <h3>Which one is for you</h3>
+        <p><strong>This door is for you, personally.</strong> People need one inbox, one calendar, and help starting. If the hard part is getting going — the email you have been putting off, the day that needs a gentle nudge — and you want the everyday stuff handled without a fuss, you are in the right place.</p>
+        <p>If you are running a business with calls, quotes and bookings to keep straight, the <a href="#business">business door</a> is the one. Pricing sits behind this explainer on purpose — read this first, then the prices.</p>
+      </div>
+      <details class="pricing-explainer" id="personal-pricing">
+        <summary>See personal pricing — tap to open</summary>
+        <div class="price-groups">
+          <div class="price-panel">
+            <div class="panel-head"><div>
+            <h3>Nova — your own personal Launch</h3>
+            <p class="panel-note">One inbox, one calendar, and help starting. Two ways to pay — your pick.</p>
+            </div></div>
+            <table class="nova-ways">
+              <tbody>
+                <tr><td>Pay once<span class="detail">Yours outright, for good. Never paused.</span></td><td class="amt">$79 one-time</td></tr>
+                <tr><td>Pay monthly<span class="detail">Upkeep included. Stop paying and Nova pauses until you start again — your installed copy stays as it stands.</span></td><td class="amt">$12/mo</td></tr>
+              </tbody>
+            </table>
+            <p class="fee-note">A 3% card fee is added at checkout: $79 one-time comes to $81.37 in total, and $12/mo comes to $12.36/mo in total.</p>
+            <div class="meta">
+              <button class="add-btn" data-add="nova">Add Nova — $79 one-time to request summary</button>
+              <div class="buy-group"><a class="buy-btn" href="https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g?client_reference_id=nova-personal" target="_blank" rel="noopener">Buy Nova — $79 one-time ($81.37 total)</a></div>
+              <button class="add-btn" data-add="nova-monthly">Add Nova — $12/mo to request summary</button>
+              <div class="buy-group"><a class="buy-btn" href="https://buy.stripe.com/14A9AS6cM2M8fjo4nYfQI1e?client_reference_id=nova-monthly" target="_blank" rel="noopener">Buy Nova — $12/mo ($12.36/mo total)</a></div>
+            </div>
+          </div>
+          <div class="price-panel">
+            <h3>Personal Upkeep — $9/mo</h3>
+            <p class="panel-note">Fixes, upgrades and priority help for Nova. Never required — skip it and Nova keeps running as installed. A 3% card fee applies at checkout, so $9/mo comes to $9.27/mo in total.</p>
+            <div class="meta">
+              <button class="add-btn" data-add="personal-upkeep">Add Personal Upkeep — $9/mo to request summary</button>
+              <div class="buy-group"><a class="buy-btn" href="https://buy.stripe.com/bJeaEW8kU9aw8V04nYfQI1f?client_reference_id=personal-upkeep" target="_blank" rel="noopener">Buy Personal Upkeep — $9/mo ($9.27/mo total)</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="price-groups" style="margin-top:22px">
+          <div class="price-panel">
+            <div class="panel-head"><div>
+            <h3>Boosters — Personal Sparks &amp; Plugs</h3>
+            <p class="panel-note">Pay once for each. One button, one job — push it again and again.</p>
+            </div></div>
+            <table class="price-table">
+              <thead><tr><th scope="col">Item</th><th scope="col" style="text-align:right">Your price</th></tr></thead>
+              <tbody>
+                <tr><td>Spark<span class="detail">One button, one job — push it again and again</span></td><td class="amt">$19 Personal</td></tr>
+                <tr><td>Plug<span class="detail">No button to push — it runs on its own</span></td><td class="amt">$39 Personal</td></tr>
+              </tbody>
+            </table>
+            <button class="add-btn" data-add="boosters">Add Boosters to request summary</button>
+          </div>
+          <div class="price-panel">
+            <h3>Start with a trial</h3>
+            <p class="panel-note">Every Launch starts with a 14-day free trial: one real job, on your real work. No card, no charge, no auto-renew — on day 14 it stops unless you say go.</p>
+            <div class="buy-group"><a class="buy-btn" href="#trial">Start your 14-day free trial →</a></div>
+          </div>
+        </div>
+        <div class="price-groups" style="margin-top:22px">
+          <div class="price-panel">
+            <h3>Meet the Atoms</h3>
+            <p class="panel-note">Twelve personal Launches — the personal-side counterparts to the Photons. Their names, roles and portraits arrive from the app leg; the roster holds their places until then.</p>
+            <div class="buy-group"><a class="buy-btn" href="#atoms">Meet the Atoms →</a></div>
+          </div>
+          <div class="price-panel">
+            <h3>Not sure which door?</h3>
+            <p class="panel-note">People need one inbox, one calendar, and help starting. Businesses need the front desk, calls, quotes and multiple accounts. If this door feels wrong, the <a href="#business">business door</a> is one tap away — and the switcher at the top of every page flips sides any time.</p>
+          </div>
+        </div>
+        <p class="ask-line">One transaction holds one side only — personal or business, never both mixed. If your request summary already holds business items, these personal items start a separate transaction. Nothing is charged on this page.</p>
+      </details>
     </div>
   </section>
 
@@ -3144,6 +3407,9 @@ footer.site {
         <h4>Explore</h4>
         <ul>
           <li><a href="#top">Home — pick a page</a></li>
+          <li><a href="#business">For my business</a></li>
+          <li><a href="#personal">For me, personally</a></li>
+          <li><a href="#atoms">Meet the Atoms</a></li>
           <li><a href="#launches">Launches</a></li>
           <li><a href="#meet">The Photons</a></li>
           <li><a href="#catalog">À la carte</a></li>
@@ -3231,6 +3497,7 @@ footer.site {
     <button class="icon-btn" id="closeSummary" aria-label="Close request summary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
   </div>
   <div class="drawer-body" id="summaryBody"></div>
+  <p class="cart-lock-note" id="cartLockNote" role="status" hidden></p>
   <div class="drawer-foot" id="summaryFoot" style="display:none">
     <p class="note" id="summaryTotal" style="font-weight:700;font-size:1rem"></p>
     <p class="note">A request summary sent by email — not a purchase. Prices as shown. Nothing is charged on this page.</p>
@@ -3389,7 +3656,10 @@ footer.site {
     "job-done-post":{p:["https://buy.stripe.com/00waEWeJi72o1sy1bMfQI0M","job-done-post-personal"],b:["https://buy.stripe.com/fZufZgfNm2M87QW6w6fQI0X","job-done-post-business"]},
     "spreadsheet-report":{p:["https://buy.stripe.com/4gM3cu30A2M87QW8EefQI0N","spreadsheet-report-personal"],b:["https://buy.stripe.com/8x25kC0Ss0E01sybQqfQI0O","spreadsheet-report-business"]},
     "file-sorting-plan":{p:["https://buy.stripe.com/3cIdR87gQ3Qc1sy6w6fQI0P","file-sorting-plan-personal"],b:["https://buy.stripe.com/28E7sKat2gCY2wCbQqfQI0Q","file-sorting-plan-business"]},
-    "form-copy-helper":{p:["https://buy.stripe.com/6oU4gydFecmIgnsf2CfQI0R","form-copy-helper-personal"],b:["https://buy.stripe.com/14A14m58IeuQ8V07AafQI0S","form-copy-helper-business"]}
+    "form-copy-helper":{p:["https://buy.stripe.com/6oU4gydFecmIgnsf2CfQI0R","form-copy-helper-personal"],b:["https://buy.stripe.com/14A14m58IeuQ8V07AafQI0S","form-copy-helper-business"]},
+    "nova":{p:["https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g","nova-personal"]},
+    "nova-monthly":{p:["https://buy.stripe.com/14A9AS6cM2M8fjo4nYfQI1e","nova-monthly"]},
+    "personal-upkeep":{p:["https://buy.stripe.com/bJeaEW8kU9aw8V04nYfQI1f","personal-upkeep"]}
   };
   var SUPERNOVA_BUY = [
     {label:"Buy Supernova — $499 one-time",url:"https://buy.stripe.com/8x2fZg1Ww86s0ou07IfQI00",ref:"supernova"},
@@ -3408,7 +3678,7 @@ footer.site {
   function catalogBuyHref(id){
     var e = CATALOG_BUY[id]; if(!e) return null;
     if(e.f) return e.f[0] + "?client_reference_id=" + e.f[1];
-    var pair = audience === "business" ? e.b : e.p;
+    var pair = (audience === "business" ? e.b : e.p) || e.p || e.b;
     return pair[0] + "?client_reference_id=" + pair[1];
   }
   function launchBuyHtml(items, refOverride, photonName){
@@ -3448,6 +3718,9 @@ footer.site {
   var EXTRA_PRODUCTS = [
     { id:"supernova", name:"Supernova — Full Launch", detail:"$499 one-time · or $49/mo · or $39/mo on a 2-year commitment." },
     { id:"satellite", name:"Satellite — One Job Launch", detail:"$99 one-time · or $33/mo · or $26/mo on a 2-year commitment." },
+    { id:"nova", name:"Nova — Personal Launch", detail:"$79 one-time ($81.37 total with the 3% card fee) · or $12/mo ($12.36/mo total). One inbox, one calendar, and help starting." },
+    { id:"nova-monthly", name:"Nova — Personal Launch, monthly", detail:"$12/mo ($12.36/mo total with the 3% card fee). One inbox, one calendar, and help starting." },
+    { id:"personal-upkeep", name:"Personal Upkeep", detail:"$9/mo ($9.27/mo total with the 3% card fee). Fixes, upgrades and priority help for Nova. Never required." },
     { id:"boosters", name:"Boosters — Sparks & Plugs", detail:"Spark $19 Personal · $25 Business — pay once, push it again and again. Plug $39 Personal · $59 Business — pay once, it runs on its own." },
     { id:"switchboard", name:"Switchboard — AI-to-AI Plug", detail:"Part of the Lab — ask us about it." },
     { id:"whiteglove", name:"White Glove — full setup service", detail:"Quote basis. We install, connect, personalize and test everything, top to bottom, specifically for you. Priced in a written quote before anything starts.", priceValue:0 },
@@ -3466,8 +3739,18 @@ footer.site {
     { id:"owen", name:"Goldstar — Supernova (the learning & scheduling desk)", detail:"$499 one-time · or $49/mo · or $39/mo on a 2-year commitment." }
   ];
 
-  var EXTRA_PRICE = { supernova:499, satellite:99, boosters:0, switchboard:0, trial:0,
+  var EXTRA_PRICE = { supernova:499, satellite:99, nova:79, "nova-monthly":0, "personal-upkeep":0, boosters:0, switchboard:0, trial:0,
     sunbeam:499, juniper:499, melissa:499, derek:499, tess:499, hana:499, rosa:499, mabel:499, marlo:499, walt:499, grace:499, owen:499 };
+  /* Atoms (Novas split): twelve personal-side counterparts to the Photons.
+     STRUCTURAL ONLY — names, roles and portraits are canonical from the app
+     leg and arrive as a follow-up. Do not invent them here; these twelve
+     numbered slots hold their places. */
+  var ATOMS = [];
+  for(var ai = 1; ai <= 12; ai++){
+    var an = ("0" + ai).slice(-2);
+    ATOMS.push({ id:"atom-" + an, num:an, name:"Atom " + an,
+      role:"Personal Launch — name, role and portrait arriving from the app leg." });
+  }
   var byId = {};
   var dynamicProducts = {};
   function rebuildById(){
@@ -3475,6 +3758,12 @@ footer.site {
     EXTRA_PRODUCTS.forEach(function(pr){ byId[pr.id] = { name: pr.name, detail: pr.detail, priceValue: (typeof pr.priceValue === "number" ? pr.priceValue : (EXTRA_PRICE[pr.id] || 0)) }; });
     Object.keys(dynamicProducts).forEach(function(id){ byId[id] = dynamicProducts[id]; });
   }
+  rebuildById();
+  /* Atoms in the store (request summary): placeholder entries until the
+     canonical twelve arrive — price to be confirmed with them. */
+  ATOMS.forEach(function(a){
+    dynamicProducts[a.id] = { name: a.name + " — Personal Launch", detail: a.role + " Price to be confirmed with the canonical twelve.", priceValue: 0 };
+  });
   rebuildById();
 
   /* ---------- Item detail view (whole-card tap) ---------- */
@@ -3608,6 +3897,34 @@ footer.site {
 
   var root = document.getElementById("catalogRoot");
   var request = {}; // id -> qty (in-memory session state only)
+  /* Novas split: one category per transaction. The request summary locks to
+     business or personal on the first item; adding from the other side does
+     not mix in — it starts a separate transaction, said plainly. */
+  var requestCategory = null; // null | "personal" | "business"
+  function itemCategory(id){
+    if(id === "nova" || id === "nova-monthly" || id === "personal-upkeep") return "personal";
+    if(id.indexOf("atom-") === 0) return "personal";
+    if(id === "supernova" || id === "satellite" || PHOTON_BY_ADD[id]) return "business";
+    if(id === "trial" || id === "switchboard" || id === "whiteglove" || id === "build-focus" || id === "build-style") return null;
+    return audience; // catalog Sparks/Plugs and Boosters follow the Personal/Business toggle
+  }
+  function cartLockMessage(cat){
+    var other = cat === "personal" ? "business" : "personal";
+    return "That is a " + cat + " item, and this request is " + other + " so far. One transaction holds one side only — this would be a separate transaction. Finish this request first, or clear the summary to start the other side.";
+  }
+  function showCartLockNote(msg){
+    var n = document.getElementById("cartLockNote");
+    if(n){ n.textContent = msg; n.removeAttribute("hidden"); }
+  }
+  function checkCartLock(cat){
+    if(!cat) return true;
+    if(!requestCategory){ requestCategory = cat; return true; }
+    if(requestCategory === cat) return true;
+    var msg = cartLockMessage(cat);
+    toast(msg);
+    showCartLockNote(msg);
+    return false;
+  }
 
   function renderCatalog(filter){
     root.innerHTML = "";
@@ -3640,6 +3957,23 @@ footer.site {
       });
       root.appendChild(grid);
     });
+    if(filter === "all" || filter === "atoms"){
+      var ah = document.createElement("h3");
+      ah.className = "cat-label";
+      ah.innerHTML = '<span class="burst" style="width:20px;height:20px;display:inline-flex">' + STARBURST + '</span> Atoms — Personal Launches';
+      root.appendChild(ah);
+      var agrid = document.createElement("div"); agrid.className = "cards";
+      ATOMS.forEach(function(a){
+        var card = document.createElement("article"); card.className = "card atom-card";
+        card.innerHTML =
+          '<div class="atom-portrait" aria-hidden="true"><span class="atom-mark">' + PRISM_MARK + '</span><span class="atom-num">ATOM ' + a.num + '</span><span class="atom-coming">PORTRAIT COMING</span></div>' +
+          '<h3>' + a.name + '</h3>' +
+          '<p class="price-line">Personal Launch — name, role and portrait arriving from the app leg.</p>' +
+          '<div class="meta buy-actions"><button class="add-btn" data-add="' + a.id + '">Add to request summary</button></div>';
+        agrid.appendChild(card);
+      });
+      root.appendChild(agrid);
+    }
     refreshAddButtons();
   }
 
@@ -3667,6 +4001,7 @@ footer.site {
     if(!btn) return;
     var id = btn.getAttribute("data-add");
     if(!byId[id]) return;
+    if(!checkCartLock(itemCategory(id))){ openSummary(); return; }
     request[id] = (request[id] || 0) + 1;
     updateSummaryUI();
     toast(byId[id].name + " added to your request summary");
@@ -3717,6 +4052,9 @@ footer.site {
     }
     var ids = summaryEntries();
     if(!ids.length){
+      requestCategory = null;
+      var lockNote = document.getElementById("cartLockNote");
+      if(lockNote){ lockNote.textContent = ""; lockNote.setAttribute("hidden", ""); }
       summaryBody.innerHTML = '<div class="summary-empty"><p>Your request summary is empty.<br/>Add items from the catalog or pricing, and they will show up here.</p></div>';
       summaryFoot.style.display = "none";
     } else {
@@ -3744,6 +4082,7 @@ footer.site {
 
   function summaryText(){
     var lines = ["REQUEST SUMMARY — Prism 5 Labs", "", "I would like to request the following items at the prices shown.", ""];
+    if(requestCategory){ lines.push("Category: " + (requestCategory === "personal" ? "Personal" : "Business") + " — one transaction, one side only."); lines.push(""); }
     summaryEntries().forEach(function(id){
       var item = byId[id];
       lines.push("• " + item.name + " × " + request[id] + " — " + item.detail);
@@ -3851,10 +4190,44 @@ footer.site {
     renderCatalog(active ? active.getAttribute("data-filter") : "all");
     if(typeof renderBuildJobs === "function"){ renderBuildJobs(); updateBuildTotal(); }
     updateSummaryUI();
+    updateSideSwitch();
   }
   document.querySelectorAll("[data-aud]").forEach(function(b){
     b.addEventListener("click", function(){ applyAudience(b.getAttribute("data-aud")); });
   });
+
+  /* Novas split: first-open chooser. The side (business / personal) persists
+     in localStorage; a deep link to a door wins over the stored side. */
+  var SIDE_KEY = "prism5labs-side";
+  function currentSide(){ try{ return localStorage.getItem(SIDE_KEY); }catch(e){ return null; } }
+  function setSide(side){ try{ localStorage.setItem(SIDE_KEY, side); }catch(e){} applyAudience(side); }
+  function updateSideSwitch(){
+    var b = document.getElementById("sideSwitch");
+    if(b) b.textContent = "Side: " + (audience === "business" ? "Business" : "Personal") + " · Switch";
+  }
+  var sideSwitchBtn = document.getElementById("sideSwitch");
+  if(sideSwitchBtn){
+    sideSwitchBtn.addEventListener("click", function(){
+      var next = audience === "business" ? "personal" : "business";
+      setSide(next);
+      if(location.hash !== "#" + next) location.hash = next;
+    });
+  }
+  window.addEventListener("hashchange", function(){
+    if(location.hash === "#business") setSide("business");
+    else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") setSide("personal");
+  });
+
+  /* Novas split: walking through a door sets the audience to that side, so
+     Sparks, Plugs and Boosters price for the side you are on. */
+  document.querySelectorAll('a[href="#business"], a[href="#personal"]').forEach(function(a){
+    a.addEventListener("click", function(){ setSide(a.getAttribute("href") === "#business" ? "business" : "personal"); });
+  });
+  var storedSide = currentSide();
+  if(location.hash === "#business") setSide("business");
+  else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") setSide("personal");
+  else if(storedSide) applyAudience(storedSide);
+  updateSideSwitch();
 
   /* ---------- Meet the Photons: show all / fewer ---------- */
   var togglePhotons = document.getElementById("togglePhotons");
@@ -3983,6 +4356,8 @@ footer.site {
   if(buildIt){
     buildIt.addEventListener("click", function(){
       var sel = buildSelections();
+      var tierCat = sel.tier === "boosters" ? audience : "business";
+      if(!checkCartLock(tierCat)){ openSummary(); return; }
       if(sel.tier === "boosters"){
         request["boosters"] = 1;
         sel.jobs.forEach(function(id){ request[id] = (request[id] || 0) + 1; });
@@ -4023,6 +4398,23 @@ footer.site {
   }
   injectStaticBuys();
 
+  function renderAtoms(){
+    var grid = document.getElementById("atomsGrid");
+    if(!grid) return;
+    grid.innerHTML = "";
+    ATOMS.forEach(function(a){
+      var card = document.createElement("article");
+      card.className = "atom-card";
+      card.innerHTML =
+        '<div class="atom-portrait" aria-hidden="true"><span class="atom-mark">' + PRISM_MARK + '</span><span class="atom-num">ATOM ' + a.num + '</span><span class="atom-coming">PORTRAIT COMING</span></div>' +
+        '<div class="atom-body"><p class="kind">ATOM · PERSONAL LAUNCH</p><h3>' + a.name + '</h3>' +
+        '<p class="for-line">' + a.role + '</p>' +
+        '<p class="voice">Twelve personal-side counterparts to the Photons — inbox, calendar, check-ins, focus and getting-started help, morning briefing, and the like. This card holds the place until the app leg sends the canonical name, role and portrait.</p>' +
+        '<div class="meta"><button class="add-btn" data-add="' + a.id + '">Add ' + a.name + ' to request summary</button></div></div>';
+      grid.appendChild(card);
+    });
+  }
+  renderAtoms();
   renderCatalog("all");
   updateSummaryUI();
 })();
@@ -4087,7 +4479,7 @@ footer.site {
      and only that page is shown. */
   var views = document.querySelectorAll("[data-view]");
   if(!views.length) return;
-  var TITLES = { home:"Prism 5 Labs — Your own AI, built for you", launches:"The Launches — Prism 5 Labs", photons:"The Photons — Prism 5 Labs", catalog:"À la carte — Prism 5 Labs", build:"Build your own — Prism 5 Labs", pricing:"Pricing — Prism 5 Labs", help:"FAQ — Prism 5 Labs", trial:"Free trial — Prism 5 Labs", custom:"Custom build — Prism 5 Labs", story:"Our story — Prism 5 Labs", contact:"Contact — Prism 5 Labs" };
+  var TITLES = { home:"Prism 5 Labs — Your own AI, built for you", launches:"The Launches — Prism 5 Labs", photons:"The Photons — Prism 5 Labs", catalog:"À la carte — Prism 5 Labs", build:"Build your own — Prism 5 Labs", pricing:"Pricing — Prism 5 Labs", help:"FAQ — Prism 5 Labs", trial:"Free trial — Prism 5 Labs", custom:"Custom build — Prism 5 Labs", story:"Our story — Prism 5 Labs", contact:"Contact — Prism 5 Labs", business:"For my business — Prism 5 Labs", personal:"For me, personally — Prism 5 Labs", atoms:"The Atoms — Prism 5 Labs" };
   function viewOf(el){
     while(el && el !== document.body){
       if(el.hasAttribute && el.hasAttribute("data-view")) return el.getAttribute("data-view");
@@ -4177,6 +4569,12 @@ footer.site {
     btn.addEventListener("click", function(){
       var path = btn.getAttribute("data-gate");
       dismiss();
+      if(path === "business" || path === "personal"){
+        try{ localStorage.setItem("prism5labs-side", path); }catch(err){}
+        document.body.classList.remove("mode-custom");
+        routeTo(path);
+        return;
+      }
       if(path === "custom"){
         document.body.classList.add("mode-custom");
         routeTo("custom");
@@ -4189,6 +4587,16 @@ footer.site {
       }
     });
   });
+  /* Novas split: remember the side picked last time, and say so. */
+  var sideNote = document.getElementById("gateSideNote");
+  var savedSide = null;
+  try{ savedSide = localStorage.getItem("prism5labs-side"); }catch(err){}
+  if(savedSide && sideNote){
+    sideNote.textContent = "Last time you picked " + (savedSide === "business" ? "For my business" : "For me, personally") + " — the doors above remember. Pick again any time.";
+    sideNote.removeAttribute("hidden");
+    var sideBtn = gate.querySelector('[data-gate="' + savedSide + '"]');
+    if(sideBtn) sideBtn.classList.add("is-side");
+  }
   var exitBtn = document.getElementById("exitCustomMode");
   if(exitBtn) exitBtn.addEventListener("click", function(){
     document.body.classList.remove("mode-custom");
