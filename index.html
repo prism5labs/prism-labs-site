@@ -4279,20 +4279,38 @@ footer.site {
 
   /* Novas split: first-open chooser. The side (business / personal) persists
      in localStorage; a deep link to a door wins over the stored side. */
-  /* Account sync (Nov 19, 2026 — NOT live): the app stores `side` on the
-     account profile (GET /api/state reads it, POST /api/profile writes it),
-     but the website cannot reach it yet: the app server sends no
-     Access-Control-Allow-Origin header (a cross-origin GET is unreadable,
-     the POST preflight 404s), and the account id lives only in the app's
-     own localStorage (prism5.accountId) — no shared cookie or session, so
-     the website has no account to ask about. Until the app leg adds CORS
-     for prism5labs.com plus a shared session (or an explicit link step),
-     the side lives in this device's localStorage only. Verified live
-     against the staged app branch Nov 19, 2026: both cross-origin calls
-     fail with "Failed to fetch" while curl to the same endpoints works. */
+  /* Account sync (Nov 19, 2026 — LIVE): the app stores `side` on the
+     account profile, and the website now reads and writes it through the
+     app server at APP_API_BASE. The app server sends CORS for
+     prism5labs.com / www.prism5labs.com (plus loopback dev origins) with
+     credentials on GET /api/state and GET/POST /api/profile, and mints a
+     shared session cookie (`prism5_account`) whenever a valid accountId is
+     presented. On load the site asks GET /api/state: a `side` of
+     "business" or "personal" wins over this device's localStorage and is
+     persisted here, so the gate note and the pill follow. A null side, a
+     missing cookie, a network failure, or any non-ok response falls back
+     to localStorage exactly as before — silently, nothing shown to the
+     visitor. Every side change also POSTs {side} to /api/profile; a
+     failed POST is ignored entirely (no cookie means no account to sync)
+     and the localStorage write is the truth either way. A deep link to a
+     door (#business / #personal) still wins over the synced side. */
+  var APP_API_BASE = "https://app.prism5labs.com";
   var SIDE_KEY = "prism5labs-side";
   function currentSide(){ try{ return localStorage.getItem(SIDE_KEY); }catch(e){ return null; } }
-  function setSide(side){ try{ localStorage.setItem(SIDE_KEY, side); }catch(e){} applyAudience(side); }
+  function syncSide(side){
+    if(typeof fetch !== "function") return Promise.resolve();
+    return fetch(APP_API_BASE + "/api/profile", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ side: side })
+    }).then(function(){}, function(){});
+  }
+  async function setSide(side){
+    try{ localStorage.setItem(SIDE_KEY, side); }catch(e){}
+    applyAudience(side);
+    try{ await syncSide(side); }catch(e){}
+  }
   function updateSideSwitch(){
     var b = document.getElementById("sideSwitch");
     if(b) b.textContent = "Side: " + (audience === "business" ? "Business" : "Personal") + " · Switch";
@@ -4320,6 +4338,33 @@ footer.site {
   else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") setSide("personal");
   else if(storedSide) applyAudience(storedSide);
   updateSideSwitch();
+
+  /* Account sync on load: ask the app for the account's side. A synced
+     side wins over localStorage; a deep-link hash wins over both. Any
+     failure falls back to the localStorage behaviour above, silently. */
+  function fetchSyncedSide(){
+    if(typeof fetch !== "function") return;
+    fetch(APP_API_BASE + "/api/state", { credentials: "include" })
+      .then(function(res){ if(!res.ok) return null; return res.json(); })
+      .then(function(data){
+        if(!data || (data.side !== "business" && data.side !== "personal")) return;
+        if(location.hash === "#business" || location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") return;
+        setSide(data.side);
+        var note = document.getElementById("gateSideNote");
+        if(note){
+          note.textContent = "Last time you picked " + (data.side === "business" ? "For my business" : "For me, personally") + " — the doors above remember. Pick again any time.";
+          note.removeAttribute("hidden");
+          var gateEl = document.getElementById("gate");
+          if(gateEl){
+            gateEl.querySelectorAll("[data-gate]").forEach(function(b){ b.classList.remove("is-side"); });
+            var sideBtn = gateEl.querySelector('[data-gate="' + data.side + '"]');
+            if(sideBtn) sideBtn.classList.add("is-side");
+          }
+        }
+      })
+      .catch(function(){});
+  }
+  fetchSyncedSide();
 
   /* ---------- Roster carousels: Photons + Atoms, one hero at a time ----------
      No auto-advance: a slide moves only when the visitor taps a control.
@@ -4714,6 +4759,9 @@ footer.site {
       dismiss();
       if(path === "business" || path === "personal"){
         try{ localStorage.setItem("prism5labs-side", path); }catch(err){}
+        /* Account sync: routeTo below sets the #business/#personal hash,
+           whose hashchange calls setSide, which POSTs the side to the
+           account — no second POST is needed here. */
         document.body.classList.remove("mode-custom");
         routeTo(path);
         return;
