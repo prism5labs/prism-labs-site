@@ -4309,6 +4309,17 @@ footer.site {
   async function setSide(side){
     try{ localStorage.setItem(SIDE_KEY, side); }catch(e){}
     applyAudience(side);
+    var gateNote = document.getElementById("gateSideNote");
+    if(gateNote){
+      gateNote.textContent = "Last time you picked " + (side === "business" ? "For my business" : "For me, personally") + " — the doors above remember. Pick again any time.";
+      gateNote.removeAttribute("hidden");
+      var gateEl = document.getElementById("gate");
+      if(gateEl){
+        gateEl.querySelectorAll("[data-gate]").forEach(function(b){ b.classList.remove("is-side"); });
+        var sideBtn = gateEl.querySelector('[data-gate="' + side + '"]');
+        if(sideBtn) sideBtn.classList.add("is-side");
+      }
+    }
     try{ await syncSide(side); }catch(e){}
   }
   function updateSideSwitch(){
