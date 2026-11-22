@@ -62,7 +62,7 @@
   .sim-banner strong{font-family:var(--font-head);font-size:1.15rem;display:block;margin-bottom:4px}
   .sim-banner p{margin:0}
 
-  .demo-card{background:var(--paper);border:3px solid var(--black);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px rgba(46,38,32,.18)}
+  .demo-card{background:var(--paper);border:3px solid var(--black);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px rgba(46,38,32,.18);scroll-margin-top:14px}
   .demo-head{background:var(--black);color:var(--warm-white);padding:14px 20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
   .demo-head strong{font-family:var(--font-head);font-size:1.2rem}
   .demo-head span{font-size:.9rem;opacity:.9}
@@ -322,7 +322,16 @@
     if(text != null) n.textContent = text;
     return n;
   }
-  function scrollDown(){ log.scrollTop = log.scrollHeight; }
+  function scrollDown(){
+    log.scrollTop = log.scrollHeight;
+    // The log grows downward as the demo plays, and the job picks sit
+    // below it: on a phone the action ran up the page, out of sight,
+    // while the visitor stayed where they tapped (reported Nov 21,
+    // 2026). Keep the newest line on the screen — nearest, so a line
+    // already in view never makes the page jump.
+    var last = log.lastElementChild;
+    if(last && last.scrollIntoView) last.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
   function wait(ms){ return new Promise(function(res){ setTimeout(res, ms); }); }
 
   function addMsg(who, text, kind){
@@ -406,6 +415,10 @@
     state.playing = true;
     state.picked = job;
     disablePicks(btn);
+    // Bring the stage into view before the curtain goes up: the picks
+    // are below the log, so without this the run starts off-screen.
+    var card = document.getElementById("demoCard");
+    if(card && card.scrollIntoView) card.scrollIntoView({ behavior: "smooth", block: "start" });
     addMsg("user", job.id + ". " + job.name);
     await wait(300);
     for(var i = 0; i < job.script.length; i++){
