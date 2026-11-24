@@ -6686,6 +6686,134 @@ footer.site{
   .vm-glass::after{animation:none;opacity:0}
   .btn,.summary-btn,.buy-btn,.add-btn,.chip,.aud-btn,.gate-enter{transition:none}
 }
+
+/* ============================================================
+   CONTRAST PASS — Nov 24, 2026 (owner's screenshot: the hero
+   trial callout was dark text on a dark ground).
+   A measured audit of every text surface found the gloss pass
+   had lightened several grounds their text was never re-set
+   for. Everything below restores a readable pairing inside
+   the same glossy idiom — no copy, no layout changes.
+   ============================================================ */
+
+/* deeper candy + enamel: the sheen stays, but the colour under
+   the lettering now carries white/cream text at 4.5:1+ */
+:root{
+  --candy-red:linear-gradient(180deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.03) 46%,rgba(0,0,0,.04) 54%,rgba(0,0,0,.12) 100%),linear-gradient(180deg,#DE352B 0%,#D62828 38%,#A81E1E 100%);
+  --enamel-teal:linear-gradient(180deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,.03) 46%,rgba(0,0,0,.05) 54%,rgba(0,0,0,.15) 100%),linear-gradient(180deg,#16666F 0%,#0F5257 52%,#093A3E 100%);
+}
+
+/* the hero trial callout: light lacquer and chrome, like the
+   cards — its ink text and black lead-ins read again */
+.rb-hero .trial-line{
+  background:var(--lacquer) padding-box,var(--chrome) border-box !important;
+  border:2px solid transparent !important;
+  border-radius:12px !important;
+  box-shadow:var(--gloss-lift) !important;
+}
+
+/* dark-by-design cards the lacquer list swept up: back to teal
+   enamel with chrome edges, as the promise cards already are */
+.meet-card,.reco-card.dark,.dark-band .page-top{
+  border:2px solid transparent !important;
+  border-radius:14px !important;
+  background:linear-gradient(180deg,#0F5257 0%,#0B3E42 55%,#082F33 100%) padding-box,var(--chrome) border-box !important;
+  box-shadow:0 1px 2px rgba(0,0,0,.20),0 20px 38px -16px rgba(0,0,0,.50),inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+
+/* the gate's path cards sit on lacquer now: ink text, and the
+   go-line in the site's dark red */
+.gate-path{color:var(--ink) !important}
+.gate-path span{color:var(--ink) !important}
+.gate-path .gate-go{color:var(--red-dark) !important}
+.gate-app-note{color:var(--ink) !important}
+
+/* the White Glove ghost button keeps its cream enamel: ink text */
+.whiteglove .btn-ghost{color:var(--ink) !important}
+
+/* teal grounds deepen one step at the top, where the butter
+   kickers and footer headings sit */
+section.dark-band{background-image:linear-gradient(180deg,#12545B 0%,#0F5257 42%,#093A3E 100%) !important}
+footer.site{background-image:linear-gradient(180deg,#12545B 0%,#0F5257 34%,#0B3E42 78%,#093A3E 100%) !important}
+
+/* the machines band: a deeper top and a calmer glow, so the
+   butter eyebrow over it reads */
+.rb-machines-band{
+  background:
+    radial-gradient(1100px 480px at 50% -60px, rgba(244,201,93,.12), rgba(244,201,93,0) 60%),
+    linear-gradient(180deg,#0E464D 0%,#0B3D41 45%,#051D1F 100%);
+}
+
+/* the one plain link in the Photons band that missed the
+   section's cream link colour */
+#meet p a:not([class]){color:#F7E8C8 !important}
+
+/* the referral card's script line: butter on its teal enamel */
+.referral .script{color:#F4C95D}
+
+/* DISPENSE and the bay buy button: candy depth under the
+   lettering, the glow kept in the shadow */
+.vm-dispense-btn,.vm-buy-btn{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.20) 0%, rgba(255,255,255,.04) 42%, rgba(0,0,0,.05) 55%, rgba(0,0,0,.14) 100%),
+    linear-gradient(180deg,#D62828 0%,#BC2121 55%,#8F1616 100%);
+}
+
+/* pack-top strip: a deeper cherry under the cream lettering */
+.vm-pack .vm-pack-top{background:linear-gradient(180deg,#BE1E1E,#8F1616)}
+
+/* the drum hint sits over the lit floor: a smoked caption bar
+   and brighter cream lettering */
+.vm-drum-hint{
+  bottom:0;
+  padding-top:4px;padding-bottom:5px;
+  background:linear-gradient(180deg, rgba(6,42,45,.55), rgba(6,42,45,.55));
+  color:rgba(255,243,220,.92);
+}
+
+/* the empty-bay line: the same cream, less faded */
+.vm-bay-empty{color:rgba(255,243,220,.72)}
+
+/* maker's plate: the brass lifts a step, the engraving deepens */
+.vm-makers-plate{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.06) 46%, rgba(0,0,0,.05) 54%, rgba(0,0,0,.12) 100%),
+    linear-gradient(180deg, #F7DE8E, #D9A92F 55%, #C0932B);
+}
+.vm-makers-plate .vm-mp-name{color:#241A02}
+.vm-makers-plate .vm-mp-sub{color:#2E2003}
+
+/* small red glyphs on cream: the dark red reads where the
+   bright red could not */
+.vm-roster-toggle .vm-chev{color:#A31616}
+.rb-chip-go{color:#A81E1E}
+
+/* the outline button on teal bands: a deeper pool under its
+   glass, so the cream lettering carries */
+.btn-outline-light{background-color:rgba(8,47,51,.45) !important}
+
+/* second look, same pass: three stragglers the audit caught
+   once the first fixes landed */
+
+/* the step buttons carry their own gloss gradient: deepen its
+   sheen the same way as the enamel buttons */
+.vm-step-btn{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.20) 0%, rgba(255,255,255,.03) 46%, rgba(0,0,0,.05) 54%, rgba(0,0,0,.15) 100%),
+    linear-gradient(180deg, #16666F, #0F5257 55%, #093A3E);
+}
+
+/* the enamel page-top's bold current-page name was set in dark
+   red for light grounds: butter on the enamel instead */
+.dark-band .page-top .here b{color:var(--butter)}
+
+/* the maker's plate: a touch less shade at its foot, so the
+   small engraved line clears the bar */
+.vm-makers-plate{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.06) 46%, rgba(0,0,0,.05) 54%, rgba(0,0,0,.07) 100%),
+    linear-gradient(180deg, #F7DE8E, #D9A92F 55%, #C0932B);
+}
 </style>
 
 </body>
