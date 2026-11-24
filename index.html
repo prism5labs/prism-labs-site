@@ -2174,6 +2174,7 @@ footer.site {
         <p class="demo-note">Prefer to watch it run first? <a href="/demo.html">Try the simulation</a> — one sample job, start to finish. No phone needed, nothing is sent.</p>
         <form class="gate-demo gate-demo-form" id="demoForm" hidden>
           <label for="demoPhone">See it work on your own phone — tell us the number to text the demo to.</label>
+          <input type="text" id="demoWebsite" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
           <div class="gate-demo-row">
             <input type="tel" id="demoPhone" name="demoPhone" autocomplete="tel" inputmode="tel" placeholder="Cell number" />
             <button class="btn btn-primary" type="submit">Text me the demo</button>
@@ -5019,8 +5020,9 @@ footer.site {
     gate.classList.remove("gone");
     window.scrollTo(0, 0);
   });
-  /* Demo by text: ask for a number, then the request reaches us by email
-     so we can text the demo. The opt-out language rides along in the copy. */
+  /* Demo by text: ask for a number, then the request goes straight to
+     the app (POST /api/demo-request) — no mail app, no detour. The
+     opt-out language rides along in the copy. */
   var demoToggle = document.getElementById("demoToggle");
   var demoForm = document.getElementById("demoForm");
   if(demoToggle && demoForm){
@@ -5039,19 +5041,25 @@ footer.site {
         box.classList.add("show");
         return;
       }
-      var body = [
-        "DEMO REQUEST — Prism 5 Labs", "",
-        "Please text the demo to this number: " + num, "",
-        "I understand texts from Prism 5 Labs include opt-out language (reply STOP to opt out, HELP for help) and that message & data rates may apply."
-      ].join("\n");
-      var a = document.createElement("a");
-      a.href = "mailto:prism5labscontact@gmail.com?subject=" + encodeURIComponent("Demo request — text my demo") + "&body=" + encodeURIComponent(body);
-      a.style.display = "none";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      box.textContent = "Your demo request is ready in your email app, addressed to Prism 5 Labs — send it and we’ll text the demo to " + num + ". Every text includes the opt-out: reply STOP to opt out.";
+      var btn = demoForm.querySelector("button[type=submit]");
+      if(btn) btn.disabled = true;
+      box.textContent = "Sending your request…";
       box.classList.add("show");
+      fetch("https://app.prism5labs.com/api/demo-request", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ phone: num, website: document.getElementById("demoWebsite").value })
+      }).then(function(res){
+        return res.json().catch(function(){ return null; }).then(function(data){
+          if(data && data.message) box.textContent = data.message;
+          else if(res.ok) box.textContent = "Your demo request is in — we’ll text the demo to " + num + ". Every text includes the opt-out: reply STOP to opt out.";
+          else box.textContent = "That didn’t go through — try again in a moment, or email us at prism5labscontact@gmail.com and we’ll set it up.";
+        });
+      }).catch(function(){
+        box.textContent = "That didn’t go through — try again in a moment, or email us at prism5labscontact@gmail.com and we’ll set it up.";
+      }).then(function(){
+        if(btn) btn.disabled = false;
+      });
     });
   }
   /* "Book a demo" opens the same demo-by-text form and lands on the phone field. */
