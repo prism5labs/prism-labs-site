@@ -6815,6 +6815,297 @@ footer.site{background-image:linear-gradient(180deg,#12545B 0%,#0F5257 34%,#0B3E
     linear-gradient(180deg, #F7DE8E, #D9A92F 55%, #C0932B);
 }
 </style>
+<style id="depth-pass">
+/* ============================================================
+   DEPTH PASS — Nov 24, 2026 (owner's direction)
+   "Give the site depth and texture and lighting — the real
+   retro futurism stuff." Built from the period references:
+   pulp space covers (chrome rocket, atom emblem, four-point
+   stars on a deep teal airbrushed sky) and Googie diners at
+   night (Galaxy Diner, Mel's Drive-In) — layered foreground /
+   midground / background, rim light tracing the curves, warm
+   pools of light on the ground, star-speckled night.
+   Everything here is decoration painted as backgrounds UNDER
+   the existing content, or shadows around it: no copy, colour,
+   price or layout changes, and no text pairing is altered.
+   Each starfield is a single SVG tile (one background layer),
+   so layer sizes, positions and repeats stay exactly aligned.
+   ============================================================ */
+:root{
+  /* --py: live scroll offset in px, set by the parallax script
+     at the end of this layer; 0 when scripting or motion is off */
+  --py:0px;
+  /* starfields: one tile each — near (bright), far (dim), light (for cream) */
+  --starfield:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='300' viewBox='0 0 340 300'%3E%3Cpolygon points='58,39 60.3,49.7 71,52 60.3,54.3 58,65 55.7,54.3 45,52 55.7,49.7' fill='%23F4C95D' fill-opacity='.95'/%3E%3Cpolygon points='216,149 217.6,156.4 225,158 217.6,159.6 216,167 214.4,159.6 207,158 214.4,156.4' fill='%23FFF3DC' fill-opacity='.85'/%3E%3Cpolygon points='282,37 283.3,42.7 289,44 283.3,45.3 282,51 280.7,45.3 275,44 280.7,42.7' fill='%23F4C95D' fill-opacity='.6'/%3E%3Ccircle cx='22' cy='34' r='1.3' fill='%23FFF3DC' fill-opacity='.95'/%3E%3Ccircle cx='128' cy='84' r='1' fill='%23F4C95D' fill-opacity='.85'/%3E%3Ccircle cx='74' cy='158' r='1.6' fill='%23FFFFFF' fill-opacity='.9'/%3E%3Ccircle cx='186' cy='196' r='1' fill='%23FFF3DC' fill-opacity='.75'/%3E%3Ccircle cx='228' cy='44' r='1.2' fill='%23FFFFFF' fill-opacity='.7'/%3E%3Ccircle cx='44' cy='226' r='1' fill='%23F4C95D' fill-opacity='.65'/%3E%3Ccircle cx='244' cy='150' r='1' fill='%23FFF3DC' fill-opacity='.55'/%3E%3Ccircle cx='300' cy='230' r='1.8' fill='%23FFFFFF' fill-opacity='.5'/%3E%3Ccircle cx='120' cy='250' r='1.3' fill='%23FFF3DC' fill-opacity='.4'/%3E%3Ccircle cx='180' cy='264' r='1.2' fill='%23F4C95D' fill-opacity='.4'/%3E%3Ccircle cx='330' cy='120' r='1.4' fill='%23FFF3DC' fill-opacity='.5'/%3E%3C/svg%3E");
+  --starfield-far:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='250' viewBox='0 0 260 250'%3E%3Ccircle cx='30' cy='40' r='1' fill='%23FFF3DC' fill-opacity='.5'/%3E%3Ccircle cx='140' cy='90' r='1.2' fill='%23F4C95D' fill-opacity='.45'/%3E%3Ccircle cx='80' cy='170' r='1' fill='%23FFFFFF' fill-opacity='.5'/%3E%3Ccircle cx='200' cy='210' r='1.1' fill='%23FFF3DC' fill-opacity='.4'/%3E%3Ccircle cx='235' cy='50' r='1' fill='%23F4C95D' fill-opacity='.4'/%3E%3Ccircle cx='50' cy='235' r='1.2' fill='%23FFFFFF' fill-opacity='.35'/%3E%3Ccircle cx='170' cy='140' r='1' fill='%23FFF3DC' fill-opacity='.35'/%3E%3Ccircle cx='105' cy='20' r='1.1' fill='%23F4C95D' fill-opacity='.3'/%3E%3C/svg%3E");
+  --starfield-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='300' viewBox='0 0 340 300'%3E%3Cpolygon points='58,39 60.3,49.7 71,52 60.3,54.3 58,65 55.7,54.3 45,52 55.7,49.7' fill='%23D9A92F' fill-opacity='.5'/%3E%3Cpolygon points='216,149 217.6,156.4 225,158 217.6,159.6 216,167 214.4,159.6 207,158 214.4,156.4' fill='%23D9A92F' fill-opacity='.42'/%3E%3Cpolygon points='282,37 283.3,42.7 289,44 283.3,45.3 282,51 280.7,45.3 275,44 280.7,42.7' fill='%23D9A92F' fill-opacity='.34'/%3E%3Ccircle cx='22' cy='34' r='1.3' fill='%23D9A92F' fill-opacity='.4'/%3E%3Ccircle cx='128' cy='84' r='1' fill='%23D9A92F' fill-opacity='.38'/%3E%3Ccircle cx='74' cy='158' r='1.6' fill='%23D9A92F' fill-opacity='.36'/%3E%3Ccircle cx='186' cy='196' r='1' fill='%23D9A92F' fill-opacity='.34'/%3E%3Ccircle cx='300' cy='230' r='1.8' fill='%23D9A92F' fill-opacity='.3'/%3E%3Ccircle cx='120' cy='250' r='1.3' fill='%23D9A92F' fill-opacity='.3'/%3E%3C/svg%3E");
+  /* a Googie starburst: eight rays, gold, cherry nucleus */
+  --burst:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M60 2 L64.5 55.5 L118 60 L64.5 64.5 L60 118 L55.5 64.5 L2 60 L55.5 55.5 Z' fill='%23F4C95D' fill-opacity='.55'/%3E%3Cpath d='M60 18 L63.2 56.8 L102 60 L63.2 63.2 L60 102 L56.8 63.2 L18 60 L56.8 56.8 Z' fill='%23F4C95D' fill-opacity='.38' transform='rotate(45 60 60)'/%3E%3Ccircle cx='60' cy='60' r='5.5' fill='%23D62828' fill-opacity='.6'/%3E%3C/svg%3E");
+  /* the atomic emblem: three orbits, one electron, cherry nucleus */
+  --atom:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23F4C95D' stroke-width='3.5' stroke-opacity='.55'%3E%3Cellipse cx='60' cy='60' rx='52' ry='19'/%3E%3Cellipse cx='60' cy='60' rx='52' ry='19' transform='rotate(60 60 60)'/%3E%3Cellipse cx='60' cy='60' rx='52' ry='19' transform='rotate(120 60 60)'/%3E%3C/g%3E%3Ccircle cx='112' cy='60' r='4' fill='%23F4C95D' fill-opacity='.6'/%3E%3Ccircle cx='60' cy='60' r='7' fill='%23D62828' fill-opacity='.55'/%3E%3C/svg%3E");
+  /* one small sparkle, for furniture (rule caps, eyebrows) */
+  --spark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpolygon points='12,1 13.8,10.2 23,12 13.8,13.8 12,23 10.2,13.8 1,12 10.2,10.2' fill='%23F4C95D'/%3E%3Ccircle cx='12' cy='12' r='2.1' fill='%23D62828'/%3E%3C/svg%3E");
+}
+
+/* ---------- the gate: a lit stage, sparkles in the cream ---------- */
+.gate{
+  background-image:
+    var(--starfield-light),
+    var(--burst),
+    radial-gradient(900px 460px at 50% -120px, rgba(255,255,255,.75), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg,#FFFEF9 0%,#FFF3DC 55%,#F6E7C4 100%);
+  background-size:340px 300px, 110px 110px, auto, auto;
+  background-position:0 calc(var(--py) * -.03), right 14px bottom 16px, 0 0, 0 0;
+  background-repeat:repeat, no-repeat, no-repeat, no-repeat;
+}
+.gate::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(105% 78% at 50% 36%, rgba(6,42,45,0) 58%, rgba(6,42,45,.17) 100%);
+}
+.gate-inner{position:relative;z-index:1}
+
+/* ---------- hero: gold sparkles over the lacquer, a lit horizon ---------- */
+.rb-hero{
+  background-image:
+    var(--starfield-light),
+    var(--burst),
+    radial-gradient(900px 420px at 92% -80px, rgba(244,201,93,.38), rgba(244,201,93,0) 62%),
+    radial-gradient(700px 300px at 8% -60px, rgba(255,255,255,.50), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg,#FFFEF9 0%,#FFF3DC 72%,#F6E7C4 100%) !important;
+  background-size:340px 300px, 100px 100px, auto, auto, auto !important;
+  background-position:0 calc(var(--py) * -.03), right 4% top 12px, 0 0, 0 0, 0 0 !important;
+  background-repeat:repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
+  box-shadow:inset 0 -1px 0 rgba(164,124,44,.18), inset 0 -46px 44px -30px rgba(15,82,87,.20);
+}
+.rb-hero h1{text-shadow:0 1px 0 rgba(255,255,255,.9),0 4px 12px rgba(6,42,45,.15) !important}
+.beam{filter:drop-shadow(0 0 5px rgba(244,201,93,.55)) drop-shadow(0 2px 3px rgba(6,42,45,.20))}
+
+/* the dark heroes of the other doors get the night sky too */
+.hero:not(.rb-hero){
+  background-image:
+    var(--starfield-far),
+    var(--starfield),
+    radial-gradient(900px 420px at 92% -80px, rgba(244,201,93,.28), rgba(244,201,93,0) 62%),
+    linear-gradient(180deg,#12545B 0%,#0F5257 45%,#0B3E42 100%) !important;
+  background-size:260px 250px, 340px 300px, auto, auto !important;
+  background-position:0 calc(var(--py) * -.05), 0 calc(var(--py) * -.09), 0 0, 0 0 !important;
+  background-repeat:repeat, repeat, no-repeat, no-repeat !important;
+}
+
+/* ---------- framed pictures: windows into that world ----------
+   a deep teal frame and a gold hairline outside the chrome,
+   and a longer, softer shadow thrown across the room */
+.gate-pic,.rb-scene,.rb-launch-fig,.rb-hero-poster{
+  box-shadow:
+    0 0 0 6px #0F5257,
+    0 0 0 8px rgba(244,201,93,.55),
+    0 2px 3px rgba(46,38,32,.10),
+    0 34px 58px -16px rgba(6,42,45,.52),
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+.rb-hero-poster::before{
+  background:radial-gradient(50% 100% at 50% 0, rgba(6,42,45,.38), rgba(6,42,45,0) 70%);
+}
+/* the business card in the contact band, lifted off the table */
+.rb-card-pic{
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(46,38,32,.10),0 22px 40px -12px rgba(6,42,45,.42),0 0 0 1px rgba(164,124,44,.28);
+}
+
+/* ---------- cards: a longer cast, a pool of ambient shade ---------- */
+.card,.step,.plain-panel,.price-panel,.offer-card,.contact-card,
+.faq details,.tier-card,.face-card,.hub-card,.does-tile,.reco-card,
+.guide-step,.fact-card,.qs-panel,.build-panel,.start-card,
+form.panel,.page-top,.work-visual,.gate-path,.meet-card,
+.pricing-explainer,.door-explainer,.confirm-box{
+  box-shadow:
+    0 1px 2px rgba(46,38,32,.05),
+    0 26px 46px -18px rgba(6,42,45,.40),
+    0 5px 12px -4px rgba(6,42,45,.10),
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(164,124,44,.14) !important;
+}
+.promise-card,.referral{
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.20),
+    0 26px 46px -16px rgba(0,0,0,.55),
+    0 0 44px -8px rgba(46,125,116,.35),
+    inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+.rb-chip{
+  box-shadow:0 1px 2px rgba(46,38,32,.06),0 16px 28px -12px rgba(6,42,45,.34),inset 0 1px 0 #fff;
+}
+
+/* ---------- section furniture: a starburst caps the rule,
+   a sparkle leads the eyebrow ---------- */
+.sec-head .rule{position:relative}
+.sec-head .rule::after{
+  content:"";position:absolute;right:-25px;top:50%;width:17px;height:17px;
+  transform:translateY(-50%);
+  background:var(--spark) center/contain no-repeat;
+  filter:drop-shadow(0 1px 2px rgba(6,42,45,.35));
+}
+.rb-eyebrow::before{
+  content:"";display:inline-block;width:.6em;height:.6em;margin-right:.85em;
+  vertical-align:-.04em;
+  background:var(--spark) center/contain no-repeat;
+}
+
+/* ---------- tinted bands: morning light, a shaded seam below ---------- */
+section.tint{
+  background-image:
+    radial-gradient(720px 260px at 10% -50px, rgba(255,255,255,.55), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg,#FAEECB 0%,#F7E8C8 55%,#F2DFB2 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.65),
+    inset 0 -1px 0 rgba(164,124,44,.16),
+    inset 0 -26px 34px -26px rgba(164,124,44,.28);
+}
+
+/* ---------- dark bands: the night sky, an atom in the corner,
+   and a vignette that pulls the eye to the centre ---------- */
+section.dark-band{
+  background-image:
+    var(--starfield-far),
+    var(--starfield),
+    var(--atom),
+    linear-gradient(180deg,#12545B 0%,#0F5257 42%,#093A3E 100%) !important;
+  background-size:260px 250px, 340px 300px, 148px 148px, auto !important;
+  background-position:0 calc(var(--py) * -.05), 0 calc(var(--py) * -.09), right 12px top 14px, 0 0 !important;
+  background-repeat:repeat, repeat, no-repeat, no-repeat !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -18px 30px rgba(0,0,0,.28),
+    inset 0 44px 54px -34px rgba(0,0,0,.38),
+    inset 0 -58px 68px -38px rgba(0,0,0,.42);
+}
+.proof-band{
+  background-image:
+    var(--starfield-far),
+    var(--starfield),
+    linear-gradient(180deg,#0A3F44 0%,#0F5257 60%,#12545B 100%) !important;
+  background-size:260px 250px, 340px 300px, auto !important;
+  background-position:0 calc(var(--py) * -.05), 0 calc(var(--py) * -.09), 0 0 !important;
+  background-repeat:repeat, repeat, no-repeat !important;
+  box-shadow:inset 0 -40px 50px -30px rgba(0,0,0,.45);
+}
+
+/* ---------- the machines band: a showroom at night ----------
+   two depths of starfield and a starburst over the deep teal,
+   the whole room vignetted so the machines hold the light */
+.rb-machines-band{
+  background-image:
+    var(--starfield-far),
+    var(--starfield),
+    var(--burst),
+    radial-gradient(1100px 480px at 50% -60px, rgba(244,201,93,.12), rgba(244,201,93,0) 60%),
+    linear-gradient(180deg,#0E464D 0%,#0B3D41 45%,#051D1F 100%);
+  background-size:260px 250px, 340px 300px, 104px 104px, auto, auto;
+  background-position:
+    0 calc(var(--py) * -.05),
+    0 calc(var(--py) * -.11),
+    right 14px top 16px,
+    0 0, 0 0;
+  background-repeat:repeat, repeat, no-repeat, no-repeat, no-repeat;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 26px 44px -30px rgba(255,255,255,.22),
+    inset 0 50px 60px -40px rgba(0,0,0,.35),
+    inset 0 -90px 90px -60px rgba(0,0,0,.50);
+}
+/* the checkered floor catches the machines' light */
+.rb-floor{
+  background-image:
+    radial-gradient(62% 100% at 50% 0, rgba(244,201,93,.20), rgba(244,201,93,0) 70%),
+    linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,0) 45%),
+    repeating-conic-gradient(#0d2f31 0% 25%, #E9D9B4 0% 50%);
+  background-size:auto, auto, 44px 44px;
+  opacity:.42;
+}
+/* each machine stands in its own pool of reflected light */
+.vm-col{position:relative;z-index:0}
+.vm-col::after{
+  content:"";position:absolute;left:3%;right:3%;bottom:-16px;height:56px;z-index:-1;
+  background:radial-gradient(50% 100% at 50% 0, rgba(244,201,93,.15), rgba(244,201,93,0) 70%);
+  pointer-events:none;
+}
+/* the cabinet glows in the room's light, and the room answers */
+.vm-machine{
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.65),
+    inset 0 -16px 30px rgba(0,0,0,.50),
+    inset 4px 0 10px rgba(255,255,255,.18),
+    inset -4px 0 10px rgba(0,0,0,.32),
+    0 0 0 1px #6E7B78,
+    0 26px 48px rgba(0,0,0,.55),
+    0 8px 16px rgba(0,0,0,.50),
+    0 0 70px rgba(244,201,93,.20),
+    0 0 130px rgba(46,125,116,.25);
+}
+/* showroom light spilling down the cabinet front */
+.vm-machine::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,244,205,.15), rgba(255,244,205,0) 36%);
+}
+/* the marquee burns a little brighter against the night */
+.vm-marquee{
+  box-shadow:
+    inset 0 2px 0 #fff, inset 0 -10px 18px rgba(160,120,40,.22),
+    0 0 44px rgba(244,201,93,.55), 0 6px 14px rgba(0,0,0,.40);
+}
+.vm-marquee h2{text-shadow:0 1px 0 rgba(255,255,255,.8),0 0 16px rgba(244,201,93,.65)}
+/* a cone of light inside the drum, so the packs catch it as they turn */
+.vm-drum-window::before{
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(ellipse 72% 46% at 50% 0%, rgba(255,238,190,.34), rgba(255,238,190,0) 60%);
+}
+
+/* ---------- footer: stars over the enamel, the room darkens at the edges ---------- */
+footer.site{
+  background-image:
+    var(--starfield-far),
+    var(--starfield),
+    linear-gradient(180deg,#12545B 0%,#0F5257 34%,#0B3E42 78%,#093A3E 100%) !important;
+  background-size:260px 250px, 340px 300px, auto !important;
+  background-position:0 calc(var(--py) * -.05), 0 calc(var(--py) * -.09), 0 0 !important;
+  background-repeat:repeat, repeat, no-repeat !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 18px 30px -18px rgba(255,255,255,.18),
+    inset 0 -70px 80px -46px rgba(0,0,0,.50);
+}
+
+/* ---------- sticky mobile bar: a few stars in the enamel ---------- */
+@media (max-width:860px){
+  .mobile-bar{
+    background-image:
+      var(--starfield),
+      linear-gradient(180deg,#16666F 0%,#0F5257 45%,#093A3E 100%);
+    background-size:340px 300px, auto;
+  }
+}
+</style>
+<script>
+/* DEPTH PASS — gentle parallax for the starfields.
+   Sets --py (the scroll offset) on the root; the depth layer's
+   star backgrounds drift against it at different rates, so the
+   sky sits behind the page. Decorative only; off entirely for
+   reduced motion, and the sky simply rests if this never runs. */
+(function () {
+  "use strict";
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var root = document.documentElement, ticking = false;
+  function update() {
+    root.style.setProperty("--py", (window.scrollY || window.pageYOffset || 0) + "px");
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+</script>
+
 
 </body>
 </html>
