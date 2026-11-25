@@ -532,7 +532,7 @@
     .tier-card h3{font-size:1.22rem}
     .tier-card p{font-size:.94rem}
     table.compare th,table.compare td{padding:9px 8px;font-size:.88rem;line-height:1.45}
-    /* The Photons: portrait as a small side portrait, card in a row */
+    /* The Supernovas: portrait as a small side portrait, card in a row */
     .meet-card{flex-direction:row;flex-wrap:nowrap;align-items:flex-start}
     .meet-card .portrait{width:104px;flex:none;border-bottom:0;border-right:3px solid var(--red);align-self:stretch;object-fit:contain;background:var(--black)}
     .meet-body{flex:1;min-width:0;padding:13px 14px 15px;gap:6px}
@@ -682,7 +682,7 @@
   .face-card{border:2px solid var(--black);border-radius:10px;box-shadow:6px 6px 0 rgba(46,38,32,.9)}
   form.panel{border-radius:10px;box-shadow:6px 6px 0 rgba(46,38,32,.9)}
 
-  /* ---------- The Photons: a gallery wall ---------- */
+  /* ---------- The Supernovas: a gallery wall ---------- */
   #meet{position:relative;overflow:hidden}
   #meet::before{content:"";position:absolute;inset:0;background:url(assets/img/bg-meet.webp) center 18%/cover no-repeat;opacity:.05;pointer-events:none}
   #meet .wrap{position:relative;z-index:1}
@@ -858,7 +858,7 @@
   /* ---------- Tiers: text cards, no posters ---------- */
   .tier-card{border-top:6px solid var(--red)}
 
-  /* ---------- The Photons: small faces, big job list ---------- */
+  /* ---------- The Supernovas: small faces, big job list ---------- */
   .meet-card{flex-direction:row;align-items:flex-start}
   .meet-card .portrait{width:84px;height:auto;flex:none;object-fit:contain;background:var(--black);border:2px solid var(--red);border-radius:8px;margin:16px 0 0 16px;align-self:flex-start}
   .meet-body{flex:1;min-width:0}
@@ -1332,11 +1332,11 @@
 </style>
 <style id="supernova-hero-pass">
   /* ============================================================
-     SUPERNOVA HERO PASS — the Photons, branded as superheroes:
+     SUPERNOVA HERO PASS — the Supernovas, branded as superheroes:
      mid-century superhero poster portraits in palette A (cream,
      deep teal, soft teal, charcoal), and every portrait carries
      its name underneath as a layout label — a cream name plate
-     in the gate grid and under each Meet the Photons portrait.
+     in the gate grid and under each Meet the Supernovas portrait.
      ============================================================ */
   .gate-face figcaption{background:var(--cream);color:var(--teal);border-top:2px solid var(--teal-soft)}
   .gate-face.lead figcaption{background:var(--teal-soft);color:var(--cream)}
@@ -1359,7 +1359,7 @@
      recolored to the 1950s diner scheme: cream #FFF3DC page,
      deep teal #0F5257 structure and wordmark, cherry #D62828
      headlines and accents, butter #F4C95D highlights. The logo
-     mark is a cherry Pyramid on a cream tile. The Photons wear
+     mark is a cherry Pyramid on a cream tile. The Supernovas wear
      the diner portraits — staged in front of the atomic symbol,
      framed by its outer orbit, the red Pyramid riding an orbit
      as an electron. Final roster: Prism, Juniper, Encore, Zero,
@@ -1380,7 +1380,7 @@
   .pop-badge{background:var(--cherry);color:#fff}
   .progress span{background:var(--cherry)}
   .meet-card .voice,.story-quote{border-left-color:var(--cherry)}
-  /* The Photons cast the diner's cherry shadow */
+  /* The Supernovas cast the diner's cherry shadow */
   .meet-card{box-shadow:7px 7px 0 rgba(214,40,40,.4)}
   .gate-face.lead figcaption{background:var(--cherry);color:var(--cream)}
   .gate-face{cursor:pointer}
@@ -1854,7 +1854,7 @@ section.dark-band .sec-head h2 { color: var(--butter, #F4C95D); box-shadow: inse
 .price-panel { border-top: 8px solid var(--red, #D62828) !important; }
 .tier-card { border-top: 8px solid var(--red, #D62828) !important; }
 
-/* ---------- Meet the Photons: poster portraits ---------- */
+/* ---------- Meet the Supernovas: poster portraits ---------- */
 .meet-card { border: 3px solid rgba(255,243,220,.85) !important; }
 .meet-card .portrait { border-right: 3px solid var(--red, #D62828) !important; }
 
@@ -1949,48 +1949,48 @@ footer.site {
   /* Header side switcher. */
   .side-switch{background:transparent;border:2px solid var(--black);color:var(--ink);border-radius:999px;padding:6px 13px;font-weight:700;font-size:.82rem;min-height:36px;cursor:pointer;white-space:nowrap;font-family:var(--font-body)}
   .side-switch:hover{background:var(--black);color:var(--warm-white)}
-  /* Atom cards: the same depth language as the chooser. */
-  .atom-card{background:linear-gradient(180deg,#FFFBF0 0%,#FFF3DC 70%,#F7E8C8 100%);border:2px solid var(--warm-line);border-top:5px solid var(--red);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(46,38,32,.3),0 14px 30px rgba(15,82,87,.22),inset 0 1px 0 rgba(255,255,255,.65)}
-  .atom-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
-  .atom-body .kind{font-family:var(--font-head);font-weight:600;color:var(--red-dark);letter-spacing:.05em;font-size:.88rem}
-  .atom-body h3{font-size:1.45rem;color:var(--ink)}
-  .atom-body .for-line{font-weight:600;font-size:.98rem}
-  .atom-body .voice{font-family:var(--font-head);font-size:1.02rem;border-left:4px solid var(--red);padding-left:12px}
-  .atom-body p{font-size:.95rem}
-  .atom-body .meta{margin-top:auto;padding-top:8px}
-  .atom-portrait{position:relative;width:100%;flex:none;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 50% 0%,#2E7D74 0%,#0F5257 55%,#0B3E42 100%);border-radius:12px 12px 0 0;overflow:hidden}
-  .atom-portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 108%,rgba(244,201,93,.5),transparent 60%);pointer-events:none}
-  .atom-portrait .atom-mark{width:84px;height:84px;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
-  .atom-portrait .atom-mark svg{width:84px;height:84px}
-  .atom-portrait .atom-num{position:absolute;left:12px;bottom:10px;font-family:var(--font-mono);font-size:.78rem;font-weight:700;letter-spacing:.1em;color:#FFF3DC;text-shadow:0 1px 3px rgba(0,0,0,.5)}
-  .atom-portrait .atom-coming{position:absolute;right:12px;top:10px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#0B3E42;background:#F4C95D;border-radius:999px;padding:4px 9px}
-  /* Atom portrait figure: mirrors the Photon .portrait-fig — small portrait
-     with a cream name plate underneath, on the Atom card's light ground. */
-  .atom-card .portrait-fig{margin:16px 0 0 16px;flex:none;width:96px;display:flex;flex-direction:column}
-  .atom-card .portrait-fig .portrait{margin:0;width:100%;height:auto;border-radius:8px 8px 0 0}
-  .atom-card .portrait-name{font-family:var(--font-head);font-size:.8rem;line-height:1.3;text-align:center;color:var(--teal);background:var(--cream);border:2px solid var(--red);border-top:0;border-radius:0 0 8px 8px;padding:5px 4px 6px}
-  .atom-body .quote-price{font-weight:600;color:var(--ink);font-size:.94rem}
-  @media (max-width:860px){.atom-card .portrait-fig{width:82px;margin:13px 0 0 13px}.atom-card .portrait-name{font-size:.7rem;padding:4px 2px 5px}}
-  /* Catalog Atom cards: the square portrait reads as a taller strip so the
+  /* Nova cards: the same depth language as the chooser. */
+  .nova-card{background:linear-gradient(180deg,#FFFBF0 0%,#FFF3DC 70%,#F7E8C8 100%);border:2px solid var(--warm-line);border-top:5px solid var(--red);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 0 rgba(46,38,32,.3),0 14px 30px rgba(15,82,87,.22),inset 0 1px 0 rgba(255,255,255,.65)}
+  .nova-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .nova-body .kind{font-family:var(--font-head);font-weight:600;color:var(--red-dark);letter-spacing:.05em;font-size:.88rem}
+  .nova-body h3{font-size:1.45rem;color:var(--ink)}
+  .nova-body .for-line{font-weight:600;font-size:.98rem}
+  .nova-body .voice{font-family:var(--font-head);font-size:1.02rem;border-left:4px solid var(--red);padding-left:12px}
+  .nova-body p{font-size:.95rem}
+  .nova-body .meta{margin-top:auto;padding-top:8px}
+  .nova-portrait{position:relative;width:100%;flex:none;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 50% 0%,#2E7D74 0%,#0F5257 55%,#0B3E42 100%);border-radius:12px 12px 0 0;overflow:hidden}
+  .nova-portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 108%,rgba(244,201,93,.5),transparent 60%);pointer-events:none}
+  .nova-portrait .nova-mark{width:84px;height:84px;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+  .nova-portrait .nova-mark svg{width:84px;height:84px}
+  .nova-portrait .nova-num{position:absolute;left:12px;bottom:10px;font-family:var(--font-mono);font-size:.78rem;font-weight:700;letter-spacing:.1em;color:#FFF3DC;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .nova-portrait .nova-coming{position:absolute;right:12px;top:10px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.08em;color:#0B3E42;background:#F4C95D;border-radius:999px;padding:4px 9px}
+  /* Nova portrait figure: mirrors the Supernova .portrait-fig — small portrait
+     with a cream name plate underneath, on the Nova card's light ground. */
+  .nova-card .portrait-fig{margin:16px 0 0 16px;flex:none;width:96px;display:flex;flex-direction:column}
+  .nova-card .portrait-fig .portrait{margin:0;width:100%;height:auto;border-radius:8px 8px 0 0}
+  .nova-card .portrait-name{font-family:var(--font-head);font-size:.8rem;line-height:1.3;text-align:center;color:var(--teal);background:var(--cream);border:2px solid var(--red);border-top:0;border-radius:0 0 8px 8px;padding:5px 4px 6px}
+  .nova-body .quote-price{font-weight:600;color:var(--ink);font-size:.94rem}
+  @media (max-width:860px){.nova-card .portrait-fig{width:82px;margin:13px 0 0 13px}.nova-card .portrait-name{font-size:.7rem;padding:4px 2px 5px}}
+  /* Catalog Nova cards: the square portrait reads as a taller strip so the
      face stays in frame (the standard cat-img is a 110px banner). */
-  .card.atom-card .cat-img{height:220px;object-position:center 20%}
+  .card.nova-card .cat-img{height:220px;object-position:center 20%}
   .fee-note{font-size:.92rem;color:var(--ink)}
 </style>
 <style id="roster-carousel">
-  /* Roster carousels (Nov 19, 2026, staged branch): the Photon and Atom
+  /* Roster carousels (Nov 19, 2026, staged branch): the Supernova and Nova
      rosters show one hero at a time. No auto-advance: a slide moves only
      when the visitor taps a control. Presentation only — every card keeps
      its portrait, name, role and card copy. */
   .meet-grid.roster-carousel{display:block;max-width:880px;margin-left:auto;margin-right:auto}
-  .roster-carousel .meet-card,.roster-carousel .atom-card{display:none}
-  .roster-carousel .meet-card.is-active,.roster-carousel .atom-card.is-active{display:flex}
-  /* The old show-more hid Photon cards 4-12; the carousel owns visibility now. */
+  .roster-carousel .meet-card,.roster-carousel .nova-card{display:none}
+  .roster-carousel .meet-card.is-active,.roster-carousel .nova-card.is-active{display:flex}
+  /* The old show-more hid Supernova cards 4-12; the carousel owns visibility now. */
   .roster-carousel .meet-card.meet-extra{display:none}
   .roster-carousel .meet-card.meet-extra.is-active{display:flex}
   .roster-carousel .meet-card.is-active{opacity:1;animation:roster-fade .35s ease}
-  .roster-carousel .atom-card.is-active{animation:roster-fade .35s ease}
+  .roster-carousel .nova-card.is-active{animation:roster-fade .35s ease}
   @keyframes roster-fade{from{opacity:0}to{opacity:1}}
-  .roster-carousel .meet-card,.roster-carousel .atom-card{margin:0 auto}
+  .roster-carousel .meet-card,.roster-carousel .nova-card{margin:0 auto}
   .roster-controls{display:flex;align-items:center;gap:14px;max-width:880px;margin:18px auto 0}
   .roster-arrow{flex:none;min-width:52px;min-height:52px;padding:10px 16px;border-radius:12px;border:2px solid #0F5257;background:#FFF3DC;color:#0F5257;font-family:var(--font-head);font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 3px 0 rgba(15,82,87,.45),0 10px 22px rgba(15,82,87,.25)}
   .roster-arrow:hover{background:#F4C95D}
@@ -2001,7 +2001,7 @@ footer.site {
   .roster-dot[aria-current="true"]{background:#D62828;border-color:#D62828;transform:scale(1.25)}
   .roster-count-line{text-align:center;margin:10px auto 0;max-width:880px}
   .roster-count{font-family:var(--font-mono);font-size:.85rem;font-weight:700;letter-spacing:.06em;color:#FFF3DC;white-space:nowrap}
-  #atoms .roster-count{color:var(--ink)}
+  #novas .roster-count{color:var(--ink)}
   .roster-arrow:focus-visible,.roster-dot:focus-visible{outline:3px solid #F4C95D;outline-offset:2px}
   @media (max-width:620px){
     .roster-controls{gap:10px}
@@ -2009,7 +2009,7 @@ footer.site {
     .roster-count{font-size:.78rem}
   }
   @media (prefers-reduced-motion: reduce){
-    .roster-carousel .meet-card.is-active,.roster-carousel .atom-card.is-active{animation:none}
+    .roster-carousel .meet-card.is-active,.roster-carousel .nova-card.is-active{animation:none}
     .roster-arrow,.roster-dot{transition:none}
   }
 </style>
@@ -2100,7 +2100,7 @@ footer.site {
     </a>
     <nav class="main" aria-label="Pages">
       <a href="#launches">Launches</a>
-      <a href="#meet">The Photons</a>
+      <a href="#meet">The Supernovas</a>
       <a href="#catalog">À la carte</a>
       <a href="#build">Build your own</a>
       <a href="#pricing">Pricing</a>
@@ -2122,9 +2122,9 @@ footer.site {
     <a href="#top">Home — pick a page</a>
     <a href="#business">For my business</a>
     <a href="#personal">For me, personally</a>
-    <a href="#atoms">Meet the Atoms</a>
+    <a href="#novas">Meet the Novas</a>
     <a href="#launches">Launches</a>
-    <a href="#meet">The Photons</a>
+    <a href="#meet">The Supernovas</a>
     <a href="#catalog">À la carte</a>
     <a href="#build">Build your own</a>
     <a href="#pricing">Pricing</a>
@@ -2186,7 +2186,7 @@ footer.site {
       <div class="rule" aria-hidden="true"></div>
       <p class="rb-eyebrow">THE FACES</p>
       <h2>Pick your Face.</h2>
-      <p>Two vintage merchandisers, stocked with Faces instead of sandwiches. The SUPERNOVAS drum holds the twelve Photons, one per Launch. The NOVAS drum holds the twelve personal Faces. Spin the drum, tap out a compartment code, press DISPENSE — your Face lands in the pickup door, ready to make yours.</p>
+      <p>Two vintage merchandisers, stocked with Faces instead of sandwiches. The SUPERNOVAS drum holds the twelve Supernovas, one per Launch. The NOVAS drum holds the twelve personal Faces. Spin the drum, tap out a compartment code, press DISPENSE — your Face lands in the pickup door, ready to make yours.</p>
     </div>
     <div class="vm-scope">
 <div class="vm-machines">
@@ -2416,7 +2416,7 @@ footer.site {
       <p>Three steps, and the noise is handled. Live in 5–10 minutes.</p>
     </div>
     <div class="steps">
-      <div class="step rb-reveal"><p class="num">STEP 1</p><h3>Pick your Face</h3><p>Spin a drum above, or browse the <a href="#meet">Photons</a> and <a href="#atoms">Atoms</a>. One Face, one job it is built for.</p></div>
+      <div class="step rb-reveal"><p class="num">STEP 1</p><h3>Pick your Face</h3><p>Spin a drum above, or browse the <a href="#meet">Supernovas</a> and <a href="#novas">Novas</a>. One Face, one job it is built for.</p></div>
       <div class="step rb-reveal"><p class="num">STEP 2</p><h3>Start the free trial</h3><p>Every Launch starts with a <a href="#trial">14-day free trial</a> — one real job, no card, no auto-renew. The quick start asks only the starter questions.</p></div>
       <div class="step rb-reveal"><p class="num">STEP 3</p><h3>It goes to work</h3><p>It sorts, drafts and chases. Nothing sends, books or posts without your OK — drafts first, always.</p></div>
     </div>
@@ -2439,8 +2439,8 @@ footer.site {
     <div class="rb-dir-grid">
       <a class="rb-chip rb-reveal" href="#business"><span class="rb-chip-kind">DOOR</span><span class="rb-chip-name">For my business</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
       <a class="rb-chip rb-reveal" href="#personal"><span class="rb-chip-kind">DOOR</span><span class="rb-chip-name">For me, personally</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
-      <a class="rb-chip rb-reveal" href="#meet"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">The Photons</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
-      <a class="rb-chip rb-reveal" href="#atoms"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">Meet the Atoms</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
+      <a class="rb-chip rb-reveal" href="#meet"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">The Supernovas</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
+      <a class="rb-chip rb-reveal" href="#novas"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">Meet the Novas</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
       <a class="rb-chip rb-reveal" href="#catalog"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">&#192; la carte</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
       <a class="rb-chip rb-reveal" href="#build"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">Build your own</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
       <a class="rb-chip rb-reveal" href="#pricing"><span class="rb-chip-kind">PAGE</span><span class="rb-chip-name">Pricing</span><span class="rb-chip-go" aria-hidden="true">&#8594;</span></a>
@@ -2580,7 +2580,7 @@ footer.site {
     <div class="wrap proof-grid">
       <div class="proof-item"><span class="p-num">205<em> hrs</em></span><span class="p-label">HANDLED IN TWO WEEKS</span><p>Real work, done in the background.</p></div>
       <div class="proof-item"><span class="p-num">5–10<em> min</em></span><span class="p-label">TO WORKING</span><p>Quick start, installed by you.</p></div>
-      <div class="proof-item"><span class="p-num">12</span><span class="p-label">READY-MADE PHOTONS</span><p>Pick by the job, not the picture.</p></div>
+      <div class="proof-item"><span class="p-num">12</span><span class="p-label">READY-MADE SUPERNOVAS</span><p>Pick by the job, not the picture.</p></div>
       <div class="proof-item"><span class="p-num">14<em> days</em></span><span class="p-label">FREE TRIAL</span><p>One real job. No card, no auto-renew.</p></div>
     </div>
   </section>
@@ -2692,7 +2692,7 @@ footer.site {
         <button class="chip" data-filter="communication" aria-pressed="false">Communication</button>
         <button class="chip" data-filter="business" aria-pressed="false">Business Operations</button>
         <button class="chip" data-filter="data" aria-pressed="false">Data &amp; Documents</button>
-        <button class="chip" data-filter="atoms" aria-pressed="false">Atoms</button>
+        <button class="chip" data-filter="novas" aria-pressed="false">Novas</button>
       </div>
       <div id="catalogRoot"></div>
 
@@ -2740,7 +2740,7 @@ footer.site {
           <article class="reco-card dark">
             <p class="rtag">TIER 1 · THE WHOLE FRONT OFFICE</p>
             <h4>Supernova — the whole front office</h4>
-            <p>The whole front office, working as one assistant: inbox, calendar, messages, paperwork — handled. Or pick a ready-made one from the Photons.</p>
+            <p>The whole front office, working as one assistant: inbox, calendar, messages, paperwork — handled. Or pick a ready-made one from the Supernovas.</p>
             <p class="rprice"><a href="#pricing">See how pricing works</a></p>
             <div class="meta"><button class="add-btn" data-add="supernova">Add Supernova to request summary</button></div>
           </article>
@@ -2776,7 +2776,7 @@ footer.site {
           <span class="pop-badge">MOST POPULAR</span>
           <p class="kind">TIER 1 · FULL LAUNCH</p>
           <h3>Supernova</h3>
-          <p>The whole front office, handled. Or pick a ready-made one from <a href="#meet">the Photons</a>.</p>
+          <p>The whole front office, handled. Or pick a ready-made one from <a href="#meet">the Supernovas</a>.</p>
           <p>A Supernova takes roughly 300 hours of careful building and testing, and is designed to do exactly what it is meant to do. The prompts are written in a language designed specifically for precision — exact, deliberate wording that leaves nothing to guesswork. It is not a language most people know. And one assistant is not one thing. Underneath it are 30 different specialists, plus five tuning dials set specifically so it focuses on what matters to you. When you buy a Supernova, you get all of it, the lines, the specialists, the dials, the testing time, the care, built in. That is roughly 300 hours of building and testing, about 37 working days, built in.</p>
           <p class="install-line">Self-install: working in 5–10 minutes · Personalize later, only if you want</p>
           <p class="quote-price"><a href="#pricing">See how pricing works</a> — plain words first, prices after.</p>
@@ -2882,12 +2882,12 @@ footer.site {
   </section>
 
   <!-- ============ MEET THE LAUNCHES ============ -->
-  <section class="block dark-band" id="meet" data-view="photons">
+  <section class="block dark-band" id="meet" data-view="supernovas">
     <div class="wrap">
-      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>THE PHOTONS</b></span></div>
+      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>THE SUPERNOVAS</b></span></div>
       <div class="sec-head">
         <div class="rule" aria-hidden="true"></div>
-        <h2>The Photons — ready-made Supernovas</h2>
+        <h2>The Supernovas — ready-made</h2>
         <p>Pick by the job, not the picture.</p>
         <p style="margin-top:10px">Twelve ready-made assistants — pick by the job, not the picture. Each one handles a whole front office: inbox, calendar, messages and follow-ups. Before any prices, <a href="#pricing-explainer" style="color:#F7E8C8">understand our pricing</a> in plain words — or jump straight to <a href="#pricing" style="color:#F7E8C8">Pricing</a>.</p>
       </div>
@@ -2896,188 +2896,188 @@ footer.site {
         <div class="promise-card"><h3>Change anything</h3><p>Name, voice, rules — anytime.</p></div>
         <div class="promise-card"><h3>Changes stay</h3><p>Updates never undo them.</p></div>
       </div>
-      <div class="meet-grid roster-carousel" id="photonGrid" role="region" aria-roledescription="carousel" aria-label="The Photons — one at a time">
+      <div class="meet-grid roster-carousel" id="supernovaGrid" role="region" aria-roledescription="carousel" aria-label="The Supernovas — one at a time">
 
         <article class="meet-card">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-prism.webp" width="792" height="792" loading="lazy" alt="Prism, the original Supernova — a crystal superheroine staged before a great atomic symbol, a tiny pyramid riding its orbit"  decoding="async"/><figcaption class="portrait-name">Prism</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-prism.webp" width="792" height="792" loading="lazy" alt="Prism, the original Supernova — a crystal superheroine staged before a great atomic symbol, a tiny pyramid riding its orbit"  decoding="async"/><figcaption class="portrait-name">Supernova Prism</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE ORIGINAL</p>
-            <h3>Prism <span class="brain">· Brain: Nova</span></h3>
+            <h3>Supernova Prism <span class="brain">· Brain: Nova</span></h3>
             <p class="for-line">For anyone who wants the whole front office handled.</p>
             <p class="voice">The original build: inbox, calendar, messages and follow-ups, handled end to end.</p>
             <p class="origin"><span class="o-label">Origin</span>Prism came first. When the flood of modern messages grew too loud for one man to sort alone, the Lab built her to stand in the gap — she catches every note, every date, every loose end, and hands back only what truly needs you. The original Supernova, and still the one who shows the others how it is done.</p>
-            <div class="meta"><button class="add-btn" data-add="sunbeam">Add Prism to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="sunbeam">Add Supernova Prism to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-juniper.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Juniper, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Juniper</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-juniper.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Juniper, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Juniper</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · ORDERS, CUSTOMERS &amp; CALENDAR</p>
-            <h3>Juniper</h3>
+            <h3>Supernova Juniper</h3>
             <p class="for-line">For anyone juggling orders, customers, and a busy life.</p>
             <p class="voice">Orders, customers, appointments and the everyday calendar, kept in one tidy place.</p>
             <p class="origin"><span class="o-label">Origin</span>Juniper was built for anyone whose work and home life run on the same calendar — orders to fill, customers to answer, and a household that won't wait. She keeps the orders, the customers, and the dates in one tidy row — warm, unflappable, and always one step ahead of the game.</p>
-            <div class="meta"><button class="add-btn" data-add="juniper">Add Juniper to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="juniper">Add Supernova Juniper to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-encore.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Encore, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Encore</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-encore.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Encore, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Encore</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE BOOKING DESK</p>
-            <h3>Encore</h3>
+            <h3>Supernova Encore</h3>
             <p class="for-line">For anyone whose work runs on bookings and dates.</p>
             <p class="voice">Inquiries answered the same day; dates held and agreements chased until they’re signed.</p>
             <p class="origin"><span class="o-label">Origin</span>Encore was built for anyone who lives by the booking — where a date left waiting is a date lost, and folks' patience runs mighty thin. She answers every inquiry the day it lands, holds the date fast, and chases the paperwork until the ink is dry — and she never promises a date the calendar cannot keep.</p>
-            <div class="meta"><button class="add-btn" data-add="melissa">Add Encore to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="melissa">Add Supernova Encore to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-zero.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Zero, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Zero</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-zero.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Zero, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Zero</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE INBOX-ZERO DESK</p>
-            <h3>Zero</h3>
+            <h3>Supernova Zero</h3>
             <p class="for-line">For anyone who wants a clear desk and an empty inbox.</p>
             <p class="voice">Follow-ups, prep notes and scheduling, handled — for a solo practice or a whole team.</p>
             <p class="origin"><span class="o-label">Origin</span>Zero was built for anyone whose morning disappears under four inboxes at once and a pile that never shrinks. He clears it down to nothing flat and keeps it there — the briefing at dawn, the replies drafted and ready, and a desk so clean you could serve supper on it.</p>
-            <div class="meta"><button class="add-btn" data-add="derek">Add Zero to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="derek">Add Supernova Zero to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-proof.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Proof, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Proof</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-proof.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Proof, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Proof</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE STEADY CHECKER</p>
-            <h3>Proof <span class="brain">· Brain: Verity</span></h3>
+            <h3>Supernova Proof <span class="brain">· Brain: Verity</span></h3>
             <p class="for-line">For anyone who needs the details right, every time.</p>
             <p class="voice">Double-checks details, flags defects and keeps the record straight.</p>
             <p class="origin"><span class="o-label">Origin</span>Proof was built for anyone whose work can't afford a missed detail — where one wrong figure or one unchecked claim costs real money. She reads the fine print, flags the flaw before it ships, and keeps the record straight as a ruler.</p>
-            <div class="meta"><button class="add-btn" data-add="tess">Add Proof to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="tess">Add Supernova Proof to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-barnstormer.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Barnstormer, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Barnstormer</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-barnstormer.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Barnstormer, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Barnstormer</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE OPERATIONS LAUNCH</p>
-            <h3>Barnstormer</h3>
+            <h3>Supernova Barnstormer</h3>
             <p class="for-line">For anyone running a busy, hands-on operation.</p>
             <p class="voice">Bookings, schedules and daily messages, answered before the day gets going.</p>
             <p class="origin"><span class="o-label">Origin</span>Barnstormer was built for work that starts early and never sits still — bookings to tend, schedules to keep, and messages that pile up before the coffee's on. Whatever your operation runs on, she keeps the lists straight and the word going out on time — steady, sensible, and not a lick of fuss about any of it.</p>
-            <div class="meta"><button class="add-btn" data-add="hana">Add Barnstormer to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="hana">Add Supernova Barnstormer to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-blueprint.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Blueprint, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Blueprint</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-blueprint.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Blueprint, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Blueprint</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE QUOTES &amp; JOBS DESK</p>
-            <h3>Blueprint</h3>
+            <h3>Supernova Blueprint</h3>
             <p class="for-line">For anyone who quotes work and chases invoices.</p>
             <p class="voice">Quotes out the same day, invoices chased, customers kept posted.</p>
             <p class="origin"><span class="o-label">Origin</span>Blueprint was built for anyone who wins work by answering first — where a quote left sitting is a job gone to the next fellow down the road. She gets estimates out the same day, chases the invoice so you never have to, and keeps every customer posted from the first call to the final handshake.</p>
-            <div class="meta"><button class="add-btn" data-add="rosa">Add Blueprint to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="rosa">Add Supernova Blueprint to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-calendra.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Calendra, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Calendra</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-calendra.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Calendra, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Calendra</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE APPOINTMENTS DESK</p>
-            <h3>Calendra</h3>
+            <h3>Supernova Calendra</h3>
             <p class="for-line">For anyone whose day runs on appointments.</p>
             <p class="voice">Bookings, reminders and reschedules — and how each client likes things done.</p>
             <p class="origin"><span class="o-label">Origin</span>Calendra was built for anyone whose whole day runs on a schedule — clinics, salons, offices, studios, you name it. Bookings, confirmations, and day-before reminders flow from her pencil like clockwork — the book stays full, the no-shows stay few, and nothing under the sun rattles her.</p>
-            <div class="meta"><button class="add-btn" data-add="mabel">Add Calendra to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="mabel">Add Supernova Calendra to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-shopbell.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Shopbell, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Shopbell</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-shopbell.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Shopbell, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Shopbell</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE CUSTOMERS &amp; ORDERS DESK</p>
-            <h3>Shopbell</h3>
+            <h3>Supernova Shopbell</h3>
             <p class="for-line">For anyone who serves customers and regulars.</p>
             <p class="voice">Orders, regulars and everyday messages, all kept straight.</p>
             <p class="origin"><span class="o-label">Origin</span>Shopbell was built for anyone whose customers come back because they're known by name — a shop, a studio, a service counter, any place where a neighbor is never just another sale. He remembers every regular, answers every order with a thank-you, and turns one-time buyers into folks who come back week after week.</p>
-            <div class="meta"><button class="add-btn" data-add="marlo">Add Shopbell to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="marlo">Add Supernova Shopbell to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-keystone.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Keystone, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Keystone</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-keystone.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Keystone, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Keystone</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE REMINDERS &amp; REQUESTS DESK</p>
-            <h3>Keystone</h3>
+            <h3>Supernova Keystone</h3>
             <p class="for-line">For anyone keeping track of people, places, and dates.</p>
             <p class="voice">Reminders, requests and key dates that don’t slip — rent and leases, or whatever your calendar holds.</p>
             <p class="origin"><span class="o-label">Origin</span>Keystone was built for anyone trusted with other people's details — messages, requests, reminders, and dates that must not slip: all in writing, all on time, and never a two-in-the-morning phone call that could have waited for breakfast.</p>
-            <div class="meta"><button class="add-btn" data-add="walt">Add Keystone to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="walt">Add Supernova Keystone to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-vesper.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Vesper, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Vesper</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-vesper.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Vesper, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Vesper</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE CARE &amp; CONFIDENCE DESK</p>
-            <h3>Vesper</h3>
+            <h3>Supernova Vesper</h3>
             <p class="for-line">For anyone whose work calls for care and discretion.</p>
             <p class="voice">Calls, visits and confidential notes, handled with discretion.</p>
             <p class="origin"><span class="o-label">Origin</span>Vesper was built for anyone whose work runs on trust — an office, a practice, a congregation, a community. Calls, rotas, requests, and follow-ups pass through her hands gently and in confidence — and not one soul on her list is ever forgotten.</p>
-            <div class="meta"><button class="add-btn" data-add="grace">Add Vesper to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="grace">Add Supernova Vesper to request summary</button></div>
           </div>
         </article>
 
         <article class="meet-card meet-extra">
-          <figure class="portrait-fig"><img class="portrait" src="assets/img/photon-goldstar.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Goldstar, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Goldstar</figcaption></figure>
+          <figure class="portrait-fig"><img class="portrait" src="assets/img/supernova-goldstar.webp" width="792" height="792" loading="lazy" alt="Superhero portrait of Goldstar, staged before an atomic symbol"  decoding="async"/><figcaption class="portrait-name">Supernova Goldstar</figcaption></figure>
           <div class="meet-body">
             <p class="kind">SUPERNOVA · THE LEARNING &amp; SCHEDULING DESK</p>
-            <h3>Goldstar</h3>
+            <h3>Supernova Goldstar</h3>
             <p class="for-line">For anyone who teaches, trains, or coaches.</p>
             <p class="voice">Sessions scheduled, progress tracked, everyone kept in the loop.</p>
             <p class="origin"><span class="o-label">Origin</span>Goldstar was built for anyone who helps other folks learn and grow — where one patient word at the right moment can turn the whole thing around. Sessions are scheduled to the minute, progress notes kept faithfully, and everybody kept in step — every learner gets a fair shot at the star.</p>
-            <div class="meta"><button class="add-btn" data-add="owen">Add Goldstar to request summary</button></div>
+            <div class="meta"><button class="add-btn" data-add="owen">Add Supernova Goldstar to request summary</button></div>
           </div>
         </article>
 
       </div>
-      <div class="roster-controls" id="photonControls">
-        <button class="roster-arrow" type="button" data-roster-prev aria-label="Previous Photon">← Prev</button>
-        <div class="roster-dots" role="group" aria-label="Choose a Photon"></div>
-        <button class="roster-arrow" type="button" data-roster-next aria-label="Next Photon">Next →</button>
+      <div class="roster-controls" id="supernovaControls">
+        <button class="roster-arrow" type="button" data-roster-prev aria-label="Previous Supernova">← Prev</button>
+        <div class="roster-dots" role="group" aria-label="Choose a Supernova"></div>
+        <button class="roster-arrow" type="button" data-roster-next aria-label="Next Supernova">Next →</button>
       </div>
-      <p class="roster-count-line"><span class="roster-count" id="photonCount" aria-live="polite"></span></p>
-      <p style="text-align:center;margin-top:14px">Looking for the personal side? <a href="#atoms">Meet the Atoms →</a> — twelve personal Launches, the counterparts to the Photons.</p>
+      <p class="roster-count-line"><span class="roster-count" id="supernovaCount" aria-live="polite"></span></p>
+      <p style="text-align:center;margin-top:14px">Looking for the personal side? <a href="#novas">Meet the Novas →</a> — twelve personal Launches, the counterparts to the Supernovas.</p>
       <p class="collect-line" style="color:var(--warm-white)"><span class="script" style="color:#F4C95D">Pick the job. The name is yours.</span></p>
       <p style="text-align:center;margin-top:10px;font-size:.97rem">Each starts with a 14-day free trial. Or <a href="#build" style="color:#F7E8C8">build your own</a>.</p>
       <p class="ask-line" style="text-align:center;color:var(--warm-white)">Questions about any of this? Ask us — we would rather explain it than have you guess. Email <a href="mailto:prism5labscontact@gmail.com" style="color:#F7E8C8">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294" style="color:#F7E8C8">(920) 393-7294</a>.</p>
     </div>
   </section>
 
-  <!-- ============ ATOMS (Novas split — canonical twelve from the app leg) ============ -->
-  <section class="block" id="atoms" data-view="atoms">
+  <!-- ============ NOVAS (Novas split — canonical twelve from the app leg) ============ -->
+  <section class="block" id="novas" data-view="novas">
     <div class="wrap">
-      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>THE ATOMS</b></span></div>
+      <div class="page-top"><a class="back" href="#start">← ALL PAGES</a><span class="here">YOU ARE ON: <b>THE NOVAS</b></span></div>
       <div class="sec-head">
         <div class="rule" aria-hidden="true"></div>
-        <h2>The Atoms — personal Launches</h2>
-        <p>Twelve personal-side counterparts to the Photons — inbox, calendar, check-ins, focus and getting-started help, morning briefing, and the like. One inbox, one calendar, and help starting.</p>
+        <h2>The Novas — personal Launches</h2>
+        <p>Twelve personal-side counterparts to the Supernovas — inbox, calendar, check-ins, focus and getting-started help, morning briefing, and the like. One inbox, one calendar, and help starting.</p>
       </div>
       <div class="door-explainer">
         <h3>About this roster</h3>
-        <p>Meet the twelve Atoms — Mabel, Hazel, Willa, Ruby, Jude, Sadie, Bea, Flora, Pierce, Iris, Clive and Nora — each with a portrait, a role, and a focus of their own. Pick the one who fits your day.</p>
-        <p>Atoms are personal-side only — they always check out as a personal transaction, never mixed with business.</p>
+        <p>Meet the twelve Novas — Nova Mabel, Nova Hazel, Nova Willa, Nova Ruby, Nova Jude, Nova Sadie, Nova Bea, Nova Flora, Nova Pierce, Nova Iris, Nova Clive and Nova Nora — each with a portrait, a role, and a focus of their own. Pick the one who fits your day.</p>
+        <p>Novas are personal-side only — they always check out as a personal transaction, never mixed with business.</p>
       </div>
-      <div class="meet-grid roster-carousel" id="atomsGrid" role="region" aria-roledescription="carousel" aria-label="The Atoms — one at a time"></div>
-      <div class="roster-controls" id="atomControls">
-        <button class="roster-arrow" type="button" data-roster-prev aria-label="Previous Atom">← Prev</button>
-        <div class="roster-dots" role="group" aria-label="Choose an Atom"></div>
-        <button class="roster-arrow" type="button" data-roster-next aria-label="Next Atom">Next →</button>
+      <div class="meet-grid roster-carousel" id="novasGrid" role="region" aria-roledescription="carousel" aria-label="The Novas — one at a time"></div>
+      <div class="roster-controls" id="novaControls">
+        <button class="roster-arrow" type="button" data-roster-prev aria-label="Previous Nova">← Prev</button>
+        <div class="roster-dots" role="group" aria-label="Choose a Nova"></div>
+        <button class="roster-arrow" type="button" data-roster-next aria-label="Next Nova">Next →</button>
       </div>
-      <p class="roster-count-line"><span class="roster-count" id="atomCount" aria-live="polite"></span></p>
-      <p class="ask-line">Questions about the Atoms? Ask us — email <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294">(920) 393-7294</a>. Nothing is charged on this page.</p>
+      <p class="roster-count-line"><span class="roster-count" id="novaCount" aria-live="polite"></span></p>
+      <p class="ask-line">Questions about the Novas? Ask us — email <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294">(920) 393-7294</a>. Nothing is charged on this page.</p>
     </div>
   </section>
 
@@ -3097,7 +3097,7 @@ footer.site {
         <ul>
           <li><strong>A Spark</strong> is one button for one job. Push it and the job gets done. Push it again tomorrow and it gets done again. It never wears out and it is never used up. You pay once, and it is yours to keep using.</li>
           <li><strong>A Plug</strong> is a Spark with no button to push. It watches for the moment the job needs doing and does it by itself. You pay once, and it is yours to keep using.</li>
-          <li><strong>A Supernova</strong> is a whole assistant — a Launch — that handles your whole front office: inbox, calendar, messages, follow-ups and paperwork. Our twelve ready-made Supernovas are called Photons; pick by the job, not the picture.</li>
+          <li><strong>A Supernova</strong> is a whole assistant — a Launch — that handles your whole front office: inbox, calendar, messages, follow-ups and paperwork. Our twelve ready-made Supernovas each carry their own name and focus; pick by the job, not the picture.</li>
           <li><strong>A Satellite</strong> is a whole assistant built around one single job — say, keeping the inbox sorted — and it does that one job every day.</li>
           <li><strong>Upkeep</strong> is a small monthly amount, and only for folks who bought outright. It covers fixes, upgrades, new jobs added, and priority help. It is never required — skip it and what you bought keeps running as installed. It is already included in every monthly plan, never charged on top.</li>
         </ul>
@@ -3340,9 +3340,9 @@ footer.site {
         </div>
         <div class="price-groups" style="margin-top:22px">
           <div class="price-panel">
-            <h3>Meet the Atoms</h3>
-            <p class="panel-note">Twelve personal Launches — the personal-side counterparts to the Photons. The canonical twelve have arrived: Mabel, Hazel, Willa, Ruby, Jude, Sadie, Bea, Flora, Pierce, Iris, Clive and Nora — $79 one-time ($81.37 total) or $10/mo ($10.30/mo total) each.</p>
-            <div class="buy-group"><a class="buy-btn" href="#atoms">Meet the Atoms →</a></div>
+            <h3>Meet the Novas</h3>
+            <p class="panel-note">Twelve personal Launches — the personal-side counterparts to the Supernovas. The canonical twelve: Nova Mabel, Nova Hazel, Nova Willa, Nova Ruby, Nova Jude, Nova Sadie, Nova Bea, Nova Flora, Nova Pierce, Nova Iris, Nova Clive and Nova Nora — $79 one-time ($81.37 total) or $10/mo ($10.30/mo total) each.</p>
+            <div class="buy-group"><a class="buy-btn" href="#novas">Meet the Novas →</a></div>
           </div>
           <div class="price-panel">
             <h3>Not sure which door?</h3>
@@ -3637,9 +3637,9 @@ footer.site {
           <li><a href="#top">Home — pick a page</a></li>
           <li><a href="#business">For my business</a></li>
           <li><a href="#personal">For me, personally</a></li>
-          <li><a href="#atoms">Meet the Atoms</a></li>
+          <li><a href="#novas">Meet the Novas</a></li>
           <li><a href="#launches">Launches</a></li>
-          <li><a href="#meet">The Photons</a></li>
+          <li><a href="#meet">The Supernovas</a></li>
           <li><a href="#catalog">À la carte</a></li>
           <li><a href="#build">Build your own</a></li>
           <li><a href="#pricing">Pricing</a></li>
@@ -3900,7 +3900,7 @@ footer.site {
     {label:"Buy Satellite — $26/month 2-year",url:"https://buy.stripe.com/3cI4gygRq0E0c7cdYyfQI0b",ref:"satellite-monthly-2yr"},
     {label:"Buy Satellite — $363/year",url:"https://buy.stripe.com/fZucN48kUbiE0ou2fQfQI0c",ref:"satellite-annual"}
   ];
-  var PHOTON_BY_ADD = {sunbeam:"Prism",juniper:"Juniper",melissa:"Encore",derek:"Zero",tess:"Proof",hana:"Barnstormer",rosa:"Blueprint",mabel:"Calendra",marlo:"Shopbell",walt:"Keystone",grace:"Vesper",owen:"Goldstar"};
+  var SUPERNOVA_BY_ADD = {sunbeam:"Prism",juniper:"Juniper",melissa:"Encore",derek:"Zero",tess:"Proof",hana:"Barnstormer",rosa:"Blueprint",mabel:"Calendra",marlo:"Shopbell",walt:"Keystone",grace:"Vesper",owen:"Goldstar"};
   var audience = "personal";
   function catalogBuyHref(id){
     var e = CATALOG_BUY[id]; if(!e) return null;
@@ -3908,10 +3908,10 @@ footer.site {
     var pair = (audience === "business" ? e.b : e.p) || e.p || e.b;
     return pair[0] + "?client_reference_id=" + pair[1];
   }
-  function launchBuyHtml(items, refOverride, photonName){
+  function launchBuyHtml(items, refOverride, superName){
     return '<div class="buy-group">' + items.map(function(it){
       var ref = refOverride || it.ref;
-      var label = photonName ? it.label.replace("Supernova", photonName) : it.label;
+      var label = superName ? it.label.replace("Supernova", superName) : it.label;
       return '<a class="buy-btn small" href="' + it.url + '?client_reference_id=' + ref + '" target="_blank" rel="noopener">' + label + '</a>';
     }).join("") + '</div>';
   }
@@ -3920,16 +3920,16 @@ footer.site {
       var href = catalogBuyHref(id);
       return href ? '<div class="buy-group"><a class="buy-btn" data-buy-catalog="' + id + '" href="' + href + '" target="_blank" rel="noopener">Buy now</a></div>' : "";
     }
-    if(PHOTON_BY_ADD[id]){
-      var nm = PHOTON_BY_ADD[id];
-      return launchBuyHtml(SUPERNOVA_BUY, "Photon-" + nm, nm);
+    if(SUPERNOVA_BY_ADD[id]){
+      var nm = SUPERNOVA_BY_ADD[id];
+      return launchBuyHtml(SUPERNOVA_BUY, "Supernova-" + nm, "Supernova " + nm);
     }
     if(id === "supernova") return launchBuyHtml(SUPERNOVA_BUY, null, null);
     if(id === "satellite") return launchBuyHtml(SATELLITE_BUY, null, null);
-    if(id && id.indexOf("atom-") === 0){
+    if(id && id.indexOf("nova-") === 0){
       var at = null;
-      ATOMS.forEach(function(x){ if(x.id === id) at = x; });
-      if(at) return atomBuyHtml(at.name);
+      NOVAS.forEach(function(x){ if(x.id === id) at = x; });
+      if(at) return novaBuyHtml(at.name);
     }
     return "";
   }
@@ -3973,31 +3973,31 @@ footer.site {
 
   var EXTRA_PRICE = { supernova:499, satellite:99, nova:79, "nova-monthly":0, "personal-upkeep":0, boosters:0, switchboard:0, trial:0,
     sunbeam:499, juniper:499, melissa:499, derek:499, tess:499, hana:499, rosa:499, mabel:499, marlo:499, walt:499, grace:499, owen:499 };
-  /* Atoms (Novas split): the canonical twelve from the app leg
-     (src/shared/atoms.ts) — names, pronouns, taglines, focus lines and
+  /* Novas: the canonical twelve from the app leg
+     (the app leg's shared Nova roster) — names, pronouns, taglines, focus lines and
      portraits, exactly as the app lists them. Portraits are JPEG 792x792
-     base64, the same pattern as the Photon portraits in this file. */
-  var ATOM_ONE_TIME = "https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g";
-  var ATOM_MONTHLY = "https://buy.stripe.com/aFa28qbx686s3AG6w6fQI1h";
-  function atomBuyHtml(name){
+     base64, the same pattern as the Supernova portraits in this file. */
+  var NOVA_ONE_TIME = "https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g";
+  var NOVA_MONTHLY = "https://buy.stripe.com/aFa28qbx686s3AG6w6fQI1h";
+  function novaBuyHtml(name){
     return '<div class="buy-group">' +
-      '<a class="buy-btn small" href="' + ATOM_ONE_TIME + '?client_reference_id=Atom-' + name + '" target="_blank" rel="noopener">Buy ' + name + ' \u2014 $79 one-time ($81.37 total)</a>' +
-      '<a class="buy-btn small" href="' + ATOM_MONTHLY + '?client_reference_id=Atom-' + name + '" target="_blank" rel="noopener">Buy ' + name + ' \u2014 $10/mo ($10.30/mo total)</a>' +
+      '<a class="buy-btn small" href="' + NOVA_ONE_TIME + '?client_reference_id=Nova-' + name + '" target="_blank" rel="noopener">Buy ' + name + ' \u2014 $79 one-time ($81.37 total)</a>' +
+      '<a class="buy-btn small" href="' + NOVA_MONTHLY + '?client_reference_id=Nova-' + name + '" target="_blank" rel="noopener">Buy ' + name + ' \u2014 $10/mo ($10.30/mo total)</a>' +
       '</div>';
   }
-  var ATOMS = [
-    { id:"atom-mabel", name:"Mabel", pronoun:"she/her", tagline:"For anyone whose personal inbox never stops.", focus:"Personal messages, triaged, with replies drafted in your words.", img:"assets/img/atom-mabel.webp" },
-    { id:"atom-hazel", name:"Hazel", pronoun:"she/her", tagline:"For anyone whose days need to fit together.", focus:"Time, appointments, and fitting it all in.", img:"assets/img/atom-hazel.webp" },
-    { id:"atom-willa", name:"Willa", pronoun:"she/her", tagline:"For anyone who wants the day laid out plain at breakfast.", focus:"A morning briefing: the day, top to bottom, in plain words.", img:"assets/img/atom-willa.webp" },
-    { id:"atom-ruby", name:"Ruby", pronoun:"she/her", tagline:"For anyone who means to keep in touch and never quite gets round to it.", focus:"Check-ins with the people who matter, drafted in your words.", img:"assets/img/atom-ruby.webp" },
-    { id:"atom-jude", name:"Jude", pronoun:"they/them", tagline:"For anyone who needs a gentle nudge to begin.", focus:"Getting started: the first small step, then the next.", img:"assets/img/atom-jude.webp" },
-    { id:"atom-sadie", name:"Sadie", pronoun:"they/them", tagline:"For anyone who needs one thing at a time and nothing else.", focus:"Focus: distractions set aside, one thing in front of you.", img:"assets/img/atom-sadie.webp" },
-    { id:"atom-bea", name:"Bea", pronoun:"she/her", tagline:"For anyone who wants the day settled before tomorrow.", focus:"Evenings, wrap-up, and tomorrow's top three.", img:"assets/img/atom-bea.webp" },
-    { id:"atom-flora", name:"Flora", pronoun:"she/her", tagline:"For anyone keeping a household running.", focus:"Home, lists, errands, and the everyday running of things.", img:"assets/img/atom-flora.webp" },
-    { id:"atom-pierce", name:"Pierce", pronoun:"he/him", tagline:"For anyone who wants the money plain and simple.", focus:"Bills, due dates, and what came in — no jargon.", img:"assets/img/atom-pierce.webp" },
-    { id:"atom-iris", name:"Iris", pronoun:"she/her", tagline:"For anyone who wants what they said kept and found again.", focus:"Memory and notes: what you told her, kept and found.", img:"assets/img/atom-iris.webp" },
-    { id:"atom-clive", name:"Clive", pronoun:"he/him", tagline:"For anyone with a list that never gets shorter.", focus:"To-dos and errands, done in order, nothing dropped.", img:"assets/img/atom-clive.webp" },
-    { id:"atom-nora", name:"Nora", pronoun:"she/her", tagline:"For anyone who wants one helper for the whole of their own day.", focus:"The whole of your own day: a bit of everything, done steady.", img:"assets/img/atom-nora.webp" }
+  var NOVAS = [
+    { id:"nova-mabel", name:"Mabel", pronoun:"she/her", tagline:"For anyone whose personal inbox never stops.", focus:"Personal messages, triaged, with replies drafted in your words.", img:"assets/img/nova-mabel.webp" },
+    { id:"nova-hazel", name:"Hazel", pronoun:"she/her", tagline:"For anyone whose days need to fit together.", focus:"Time, appointments, and fitting it all in.", img:"assets/img/nova-hazel.webp" },
+    { id:"nova-willa", name:"Willa", pronoun:"she/her", tagline:"For anyone who wants the day laid out plain at breakfast.", focus:"A morning briefing: the day, top to bottom, in plain words.", img:"assets/img/nova-willa.webp" },
+    { id:"nova-ruby", name:"Ruby", pronoun:"she/her", tagline:"For anyone who means to keep in touch and never quite gets round to it.", focus:"Check-ins with the people who matter, drafted in your words.", img:"assets/img/nova-ruby.webp" },
+    { id:"nova-jude", name:"Jude", pronoun:"they/them", tagline:"For anyone who needs a gentle nudge to begin.", focus:"Getting started: the first small step, then the next.", img:"assets/img/nova-jude.webp" },
+    { id:"nova-sadie", name:"Sadie", pronoun:"they/them", tagline:"For anyone who needs one thing at a time and nothing else.", focus:"Focus: distractions set aside, one thing in front of you.", img:"assets/img/nova-sadie.webp" },
+    { id:"nova-bea", name:"Bea", pronoun:"she/her", tagline:"For anyone who wants the day settled before tomorrow.", focus:"Evenings, wrap-up, and tomorrow's top three.", img:"assets/img/nova-bea.webp" },
+    { id:"nova-flora", name:"Flora", pronoun:"she/her", tagline:"For anyone keeping a household running.", focus:"Home, lists, errands, and the everyday running of things.", img:"assets/img/nova-flora.webp" },
+    { id:"nova-pierce", name:"Pierce", pronoun:"he/him", tagline:"For anyone who wants the money plain and simple.", focus:"Bills, due dates, and what came in — no jargon.", img:"assets/img/nova-pierce.webp" },
+    { id:"nova-iris", name:"Iris", pronoun:"she/her", tagline:"For anyone who wants what they said kept and found again.", focus:"Memory and notes: what you told her, kept and found.", img:"assets/img/nova-iris.webp" },
+    { id:"nova-clive", name:"Clive", pronoun:"he/him", tagline:"For anyone with a list that never gets shorter.", focus:"To-dos and errands, done in order, nothing dropped.", img:"assets/img/nova-clive.webp" },
+    { id:"nova-nora", name:"Nora", pronoun:"she/her", tagline:"For anyone who wants one helper for the whole of their own day.", focus:"The whole of your own day: a bit of everything, done steady.", img:"assets/img/nova-nora.webp" }
   ];
   var byId = {};
   var dynamicProducts = {};
@@ -4007,10 +4007,10 @@ footer.site {
     Object.keys(dynamicProducts).forEach(function(id){ byId[id] = dynamicProducts[id]; });
   }
   rebuildById();
-  /* Atoms in the store (request summary): the canonical twelve —
+  /* Novas in the store (request summary): the canonical twelve —
      $79 one-time ($81.37 total) or $10/mo ($10.30/mo total). */
-  ATOMS.forEach(function(a){
-    dynamicProducts[a.id] = { name: a.name + " — Atom, Personal Launch", detail: a.tagline + " $79 one-time ($81.37 total with the 3% card fee) · or $10/mo ($10.30/mo total).", priceValue: 79 };
+  NOVAS.forEach(function(a){
+    dynamicProducts[a.id] = { name: "Nova " + a.name + ", Personal Launch", detail: a.tagline + " $79 one-time ($81.37 total with the 3% card fee) · or $10/mo ($10.30/mo total).", priceValue: 79 };
   });
   rebuildById();
 
@@ -4128,8 +4128,8 @@ footer.site {
   var requestCategory = null; // null | "personal" | "business"
   function itemCategory(id){
     if(id === "nova" || id === "nova-monthly" || id === "personal-upkeep") return "personal";
-    if(id.indexOf("atom-") === 0) return "personal";
-    if(id === "supernova" || id === "satellite" || PHOTON_BY_ADD[id]) return "business";
+    if(id.indexOf("nova-") === 0) return "personal";
+    if(id === "supernova" || id === "satellite" || SUPERNOVA_BY_ADD[id]) return "business";
     if(id === "trial" || id === "switchboard" || id === "whiteglove" || id === "build-focus" || id === "build-style") return null;
     return audience; // catalog Sparks/Plugs and Boosters follow the Personal/Business toggle
   }
@@ -4182,21 +4182,21 @@ footer.site {
       });
       root.appendChild(grid);
     });
-    if(filter === "all" || filter === "atoms"){
+    if(filter === "all" || filter === "novas"){
       var ah = document.createElement("h3");
       ah.className = "cat-label";
-      ah.innerHTML = '<span class="burst" style="width:20px;height:20px;display:inline-flex">' + STARBURST + '</span> Atoms — Personal Launches';
+      ah.innerHTML = '<span class="burst" style="width:20px;height:20px;display:inline-flex">' + STARBURST + '</span> Novas — Personal Launches';
       root.appendChild(ah);
       var agrid = document.createElement("div"); agrid.className = "cards";
-      ATOMS.forEach(function(a){
-        var card = document.createElement("article"); card.className = "card atom-card";
+      NOVAS.forEach(function(a){
+        var card = document.createElement("article"); card.className = "card nova-card";
         card.innerHTML =
-          '<img class="cat-img" src="' + a.img + '" width="792" height="792" loading="lazy" alt="' + a.name + ', Atom portrait"  decoding="async"/>' +
-          '<h3>' + a.name + ' — Atom</h3>' +
+          '<img class="cat-img" src="' + a.img + '" width="792" height="792" loading="lazy" alt="' + a.name + ', Nova portrait"  decoding="async"/>' +
+          '<h3>Nova ' + a.name + '</h3>' +
           '<p class="price-line">' + a.tagline + ' $79 one-time ($81.37 total) · or $10/mo ($10.30/mo total).</p>' +
           '<div class="meta buy-actions"><button class="add-btn" data-add="' + a.id + '">Add to request summary</button>' +
-          '<a class="buy-btn" href="' + ATOM_ONE_TIME + '?client_reference_id=Atom-' + a.name + '" target="_blank" rel="noopener">Buy — $79 one-time ($81.37 total)</a>' +
-          '<a class="buy-btn" href="' + ATOM_MONTHLY + '?client_reference_id=Atom-' + a.name + '" target="_blank" rel="noopener">Buy — $10/mo ($10.30/mo total)</a></div>';
+          '<a class="buy-btn" href="' + NOVA_ONE_TIME + '?client_reference_id=Nova-' + a.name + '" target="_blank" rel="noopener">Buy — $79 one-time ($81.37 total)</a>' +
+          '<a class="buy-btn" href="' + NOVA_MONTHLY + '?client_reference_id=Nova-' + a.name + '" target="_blank" rel="noopener">Buy — $10/mo ($10.30/mo total)</a></div>';
         agrid.appendChild(card);
       });
       root.appendChild(agrid);
@@ -4482,7 +4482,7 @@ footer.site {
   }
   window.addEventListener("hashchange", function(){
     if(location.hash === "#business") setSide("business");
-    else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") setSide("personal");
+    else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#novas" || location.hash === "#atoms") setSide("personal");
   });
 
   /* Novas split: walking through a door sets the audience to that side, so
@@ -4492,7 +4492,7 @@ footer.site {
   });
   var storedSide = currentSide();
   if(location.hash === "#business") setSide("business");
-  else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") setSide("personal");
+  else if(location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#novas" || location.hash === "#atoms") setSide("personal");
   else if(storedSide) applyAudience(storedSide);
   updateSideSwitch();
 
@@ -4505,7 +4505,7 @@ footer.site {
       .then(function(res){ if(!res.ok) return null; return res.json(); })
       .then(function(data){
         if(!data || (data.side !== "business" && data.side !== "personal")) return;
-        if(location.hash === "#business" || location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#atoms") return;
+        if(location.hash === "#business" || location.hash === "#personal" || location.hash === "#personal-pricing" || location.hash === "#novas" || location.hash === "#atoms") return;
         setSide(data.side);
         var note = document.getElementById("gateSideNote");
         if(note){
@@ -4523,7 +4523,7 @@ footer.site {
   }
   fetchSyncedSide();
 
-  /* ---------- Roster carousels: Photons + Atoms, one hero at a time ----------
+  /* ---------- Roster carousels: Supernovas + Novas, one hero at a time ----------
      No auto-advance: a slide moves only when the visitor taps a control.
      Each carousel owns its own controls. Slides keep all their content;
      only the presentation changes. */
@@ -4539,7 +4539,7 @@ footer.site {
     var controls = document.getElementById(controlsId);
     if(!grid || !controls) return null;
     var slides = Array.prototype.slice.call(grid.children).filter(function(el){
-      return el.classList.contains("meet-card") || el.classList.contains("atom-card");
+      return el.classList.contains("meet-card") || el.classList.contains("nova-card");
     });
     if(!slides.length) return null;
     var dotsWrap = controls.querySelector(".roster-dots");
@@ -4582,7 +4582,7 @@ footer.site {
     show(0);
     return { show: show, count: slides.length };
   }
-  initRosterCarousel("photonGrid", "photonControls", "photonCount", "Photon");
+  initRosterCarousel("supernovaGrid", "supernovaControls", "supernovaCount", "Supernova");
 
   /* ---------- Trial form ---------- */
   function showConfirm(id, msg){ var el = document.getElementById(id); if(el){ el.textContent = msg; el.classList.add("show"); } }
@@ -4725,7 +4725,7 @@ footer.site {
   renderBuildJobs();
   updateBuildTotal();
 
-  /* Inject Buy buttons next to every static Add button (catalog reco cards, tier cards, pricing panels, Photon cards) */
+  /* Inject Buy buttons next to every static Add button (catalog reco cards, tier cards, pricing panels, Supernova cards) */
   function injectStaticBuys(){
     document.querySelectorAll("[data-add]").forEach(function(btn){
       if(btn.closest("#catalogRoot") || btn.closest("#detailView")) return;
@@ -4741,25 +4741,25 @@ footer.site {
   }
   injectStaticBuys();
 
-  function renderAtoms(){
-    var grid = document.getElementById("atomsGrid");
+  function renderNovas(){
+    var grid = document.getElementById("novasGrid");
     if(!grid) return;
     grid.innerHTML = "";
-    ATOMS.forEach(function(a){
+    NOVAS.forEach(function(a){
       var card = document.createElement("article");
-      card.className = "atom-card";
+      card.className = "nova-card";
       card.innerHTML =
-        '<figure class="portrait-fig"><img class="portrait" src="' + a.img + '" width="792" height="792" loading="lazy" alt="' + a.name + ', Atom portrait"  decoding="async"/><figcaption class="portrait-name">' + a.name + '</figcaption></figure>' +
-        '<div class="atom-body"><p class="kind">ATOM · PERSONAL LAUNCH</p><h3>' + a.name + '</h3>' +
+        '<figure class="portrait-fig"><img class="portrait" src="' + a.img + '" width="792" height="792" loading="lazy" alt="' + a.name + ', Nova portrait"  decoding="async"/><figcaption class="portrait-name">Nova ' + a.name + '</figcaption></figure>' +
+        '<div class="nova-body"><p class="kind">NOVA · PERSONAL LAUNCH</p><h3>Nova ' + a.name + '</h3>' +
         '<p class="for-line">' + a.tagline + '</p>' +
         '<p class="voice">' + a.focus + '</p>' +
         '<p class="quote-price">$79 one-time ($81.37 total with the 3% card fee) · or $10/mo ($10.30/mo total)</p>' +
-        '<div class="meta"><button class="add-btn" data-add="' + a.id + '">Add ' + a.name + ' to request summary</button>' + atomBuyHtml(a.name) + '</div></div>';
+        '<div class="meta"><button class="add-btn" data-add="' + a.id + '">Add Nova ' + a.name + ' to request summary</button>' + novaBuyHtml(a.name) + '</div></div>';
       grid.appendChild(card);
     });
   }
-  renderAtoms();
-  initRosterCarousel("atomsGrid", "atomControls", "atomCount", "Atom");
+  renderNovas();
+  initRosterCarousel("novasGrid", "novaControls", "novaCount", "Nova");
   renderCatalog("all");
   updateSummaryUI();
 })();
@@ -4818,13 +4818,13 @@ footer.site {
 (function(){
   /* Paged site: one page at a time, never one long scroll.
      Home is a short hub (hero + what it does + directory + how).
-     Every other topic is its own page: Launches, Photons,
+     Every other topic is its own page: Launches, Supernovas,
      À la carte, Build, Pricing, FAQ, Trial, Custom, Story, Contact.
      Every in-page link routes to the page that holds its target,
      and only that page is shown. */
   var views = document.querySelectorAll("[data-view]");
   if(!views.length) return;
-  var TITLES = { home:"Prism 5 Labs — Your own AI, built for you", launches:"The Launches — Prism 5 Labs", photons:"The Photons — Prism 5 Labs", catalog:"À la carte — Prism 5 Labs", build:"Build your own — Prism 5 Labs", pricing:"Pricing — Prism 5 Labs", help:"FAQ — Prism 5 Labs", trial:"Free trial — Prism 5 Labs", custom:"Custom build — Prism 5 Labs", story:"Our story — Prism 5 Labs", contact:"Contact — Prism 5 Labs", business:"For my business — Prism 5 Labs", personal:"For me, personally — Prism 5 Labs", atoms:"The Atoms — Prism 5 Labs" };
+  var TITLES = { home:"Prism 5 Labs — Your own AI, built for you", launches:"The Launches — Prism 5 Labs", supernovas:"The Supernovas — Prism 5 Labs", catalog:"À la carte — Prism 5 Labs", build:"Build your own — Prism 5 Labs", pricing:"Pricing — Prism 5 Labs", help:"FAQ — Prism 5 Labs", trial:"Free trial — Prism 5 Labs", custom:"Custom build — Prism 5 Labs", story:"Our story — Prism 5 Labs", contact:"Contact — Prism 5 Labs", business:"For my business — Prism 5 Labs", personal:"For me, personally — Prism 5 Labs", novas:"The Novas — Prism 5 Labs" };
   function viewOf(el){
     while(el && el !== document.body){
       if(el.hasAttribute && el.hasAttribute("data-view")) return el.getAttribute("data-view");
@@ -4848,6 +4848,7 @@ footer.site {
     else { window.scrollTo(0, 0); }
   }
   function goToId(id){
+    if(id === "atoms") id = "novas";
     var t = id ? document.getElementById(id) : null;
     if(!t){ show("home", null); return; }
     if(t.tagName === "DETAILS") t.open = true;
@@ -5799,9 +5800,9 @@ section.dark-band {
         var DATA = {
           novas: {
             price: "See how pricing works",
-            brand: "NOVAS · ATOM",
+            brand: "NOVAS",
             kind: "nova",
-            base: "https://app.prism5labs.com/atoms/thumbs/",
+            base: "https://app.prism5labs.com/novas/thumbs/",
             items: [
               ["Mabel", "Personal messages, triaged, with replies drafted in your words."],
               ["Hazel", "Time, appointments, and fitting it all in."],
@@ -5819,9 +5820,9 @@ section.dark-band {
           },
           supernovas: {
             price: "See how pricing works",
-            brand: "SUPERNOVAS · PHOTON",
+            brand: "SUPERNOVAS",
             kind: "supernova",
-            base: "https://app.prism5labs.com/photons/thumbs/",
+            base: "https://app.prism5labs.com/supernovas/thumbs/",
             items: [
               ["Prism", "Your front desk, your memory, and your voice."],
               ["Juniper", "Daily life, family, home, and the personal side of everything."],
@@ -5843,11 +5844,11 @@ section.dark-band {
         function buyLinks(kind, name) {
           var enc = encodeURIComponent(name);
           if (kind === "supernova") {
-            return { primary: { href: "https://buy.stripe.com/8x2fZg1Ww86s0ou07IfQI00?client_reference_id=Photon-" + enc, label: "Get " + name + " — $499" }, alt: null };
+            return { primary: { href: "https://buy.stripe.com/8x2fZg1Ww86s0ou07IfQI00?client_reference_id=Supernova-" + enc, label: "Get Supernova " + name + " — $499" }, alt: null };
           }
           return {
-            primary: { href: "https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g?client_reference_id=Atom-" + enc, label: "Get " + name + " — $79" },
-            alt: { href: "https://buy.stripe.com/aFa28qbx686s3AG6w6fQI1h?client_reference_id=Atom-" + enc, label: "or $10/month" }
+            primary: { href: "https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g?client_reference_id=Nova-" + enc, label: "Get Nova " + name + " — $79" },
+            alt: { href: "https://buy.stripe.com/aFa28qbx686s3AG6w6fQI1h?client_reference_id=Nova-" + enc, label: "or $10/month" }
           };
         }
 
@@ -5965,7 +5966,7 @@ section.dark-band {
           });
           var item = this.cfg.items[this.sel];
           this.root.querySelector("[data-lcd-code]").textContent = codeFor(this.sel);
-          this.root.querySelector("[data-lcd-name]").textContent = item[0];
+          this.root.querySelector("[data-lcd-name]").textContent = (this.cfg.kind === "nova" ? "Nova " : "Supernova ") + item[0];
           this.root.querySelector("[data-lcd-role]").textContent = item[1];
           this.root.querySelector("[data-lcd-price]").textContent = this.cfg.price;
         };
@@ -6084,7 +6085,7 @@ section.dark-band {
             var brandTxt = document.createElement("span"); brandTxt.textContent = "PRISM 5 LABS";
             brandStrip.appendChild(brandImg); brandStrip.appendChild(brandTxt);
             photo.appendChild(brandStrip);
-            root.querySelector("[data-bay-name]").textContent = name;
+            root.querySelector("[data-bay-name]").textContent = (self.cfg.kind === "nova" ? "Nova " : "Supernova ") + name;
             root.querySelector("[data-bay-code]").textContent = "Compartment " + code + " · " + self.cfg.price;
             root.querySelector("[data-bay-note]").textContent = item[1];
             var buyBox = root.querySelector("[data-bay-buy]");
@@ -6104,7 +6105,7 @@ section.dark-band {
             bayItem.hidden = false;
             // fade in on the next frame
             requestAnimationFrame(function () { bayItem.classList.add("vm-show"); });
-            self.setMsg(code + " " + name + " — in the pickup bay");
+            self.setMsg(code + " " + (self.cfg.kind === "nova" ? "Nova " : "Supernova ") + name + " — in the pickup bay");
           }, 780);
 
           setTimeout(function () {
@@ -6744,7 +6745,7 @@ footer.site{background-image:linear-gradient(180deg,#12545B 0%,#0F5257 34%,#0B3E
     linear-gradient(180deg,#0E464D 0%,#0B3D41 45%,#051D1F 100%);
 }
 
-/* the one plain link in the Photons band that missed the
+/* the one plain link in the Supernovas band that missed the
    section's cream link colour */
 #meet p a:not([class]){color:#F7E8C8 !important}
 
@@ -6820,7 +6821,7 @@ footer.site{background-image:linear-gradient(180deg,#12545B 0%,#0F5257 34%,#0B3E
    DEPTH PASS — Nov 24, 2026 (owner's direction)
    "Give the site depth and texture and lighting — the real
    retro futurism stuff." Built from the period references:
-   pulp space covers (chrome rocket, atom emblem, four-point
+   pulp space covers (chrome rocket, orbit emblem, four-point
    stars on a deep teal airbrushed sky) and Googie diners at
    night (Galaxy Diner, Mel's Drive-In) — layered foreground /
    midground / background, rim light tracing the curves, warm
@@ -6842,7 +6843,7 @@ footer.site{background-image:linear-gradient(180deg,#12545B 0%,#0F5257 34%,#0B3E
   /* a Googie starburst: eight rays, gold, cherry nucleus */
   --burst:url("assets/img/tex-burst.svg");
   /* the atomic emblem: three orbits, one electron, cherry nucleus */
-  --atom:url("assets/img/tex-atom.svg");
+  --emblem:url("assets/img/tex-emblem.svg");
   /* one small sparkle, for furniture (rule caps, eyebrows) */
   --spark:url("assets/img/tex-spark.svg");
 }
@@ -6962,13 +6963,13 @@ section.tint{
     inset 0 -26px 34px -26px rgba(164,124,44,.28);
 }
 
-/* ---------- dark bands: the night sky, an atom in the corner,
+/* ---------- dark bands: the night sky, the emblem in the corner,
    and a vignette that pulls the eye to the centre ---------- */
 section.dark-band{
   background-image:
     var(--starfield-far),
     var(--starfield),
-    var(--atom),
+    var(--emblem),
     linear-gradient(180deg,#12545B 0%,#0F5257 42%,#093A3E 100%) !important;
   background-size:260px 250px, 340px 300px, 148px 148px, auto !important;
   background-position:0 calc(var(--py) * -.05), 0 calc(var(--py) * -.09), right 12px top 14px, 0 0 !important;
