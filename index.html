@@ -644,16 +644,14 @@
   .hero-cta .text-link:hover{border-color:var(--red);color:#fff}
   /* The prism splits light on load */
   .beam{display:block;width:min(470px,100%);height:auto;margin:4px 0 8px;overflow:visible}
-  .beam-in{stroke:#FFF3DC;stroke-width:3;stroke-dasharray:230;stroke-dashoffset:230;animation:beamDraw .7s ease-out .15s forwards}
-  .beam-out{stroke-width:3;stroke-dasharray:280;stroke-dashoffset:280;animation:beamDraw .85s ease-out forwards}
-  .beam-out.o1{stroke:#2E7D74;animation-delay:.9s}
-  .beam-out.o2{stroke:#0F5257;animation-delay:1.05s}
-  .beam-out.o3{stroke:#FFF3DC;animation-delay:1.2s}
-  .beam-prism{fill:#0F5257;opacity:0;animation:prismIn .5s ease-out .72s forwards}
-  .beam-facet{stroke:#0F5257;stroke-width:2;fill:none;opacity:0;animation:prismIn .3s ease-out 1.1s forwards}
-  .beam-star{fill:#FFF3DC;opacity:0;animation:prismIn .4s ease-out 1.6s forwards}
-  @keyframes beamDraw{to{stroke-dashoffset:0}}
-  @keyframes prismIn{from{opacity:0}to{opacity:1;filter:drop-shadow(0 0 9px rgba(46,125,116,.8))}}
+  .beam-in{stroke:#FFF3DC;stroke-width:3}
+  .beam-out{stroke-width:3}
+  .beam-out.o1{stroke:#2E7D74}
+  .beam-out.o2{stroke:#0F5257}
+  .beam-out.o3{stroke:#FFF3DC}
+  .beam-prism{fill:#0F5257}
+  .beam-facet{stroke:#0F5257;stroke-width:2;fill:none}
+  .beam-star{fill:#FFF3DC}
   @keyframes burstSpin{to{transform:rotate(360deg)}}
   /* Poster art: burst behind, halftone on the art, hard poster shadow */
   .hero-art{position:relative}
@@ -2040,6 +2038,16 @@ footer.site {
 .gate-contact a{color:var(--red-dark)}
 .gate-loremaster-btn{color:var(--black);border-color:rgba(15,82,87,.6)}
 .gate-side-note{color:var(--ink)}
+/* Opening film (Nov 25, 2026): a real rendered film replaces the old
+   CSS/SVG entrance tricks. It covers the gate, plays once, and melts
+   into the Front B gate underneath with a slow fade — the film itself
+   also fades from and to the gate cream at its own ends. */
+.gate-film{position:fixed;inset:0;z-index:130;background:var(--cream);opacity:1;transition:opacity 1.4s ease}
+.gate-film video{width:100%;height:100%;object-fit:cover;display:block}
+.gate-film.gone{opacity:0;pointer-events:none;visibility:hidden;transition:opacity 1.4s ease,visibility 0s linear 1.4s}
+.gate-film.instant{transition:none}
+.gate-film-skip{position:absolute;right:18px;bottom:18px;background:rgba(15,82,87,.88);color:#FFF3DC;border:2px solid rgba(255,243,220,.55);border-radius:999px;padding:10px 20px;font-family:var(--font-head);font-weight:700;font-size:1rem;cursor:pointer;min-height:44px}
+@media (prefers-reduced-motion: reduce){.gate-film{display:none}}
 </style>
 </head>
 <body>
@@ -2048,6 +2056,10 @@ footer.site {
 
 <!-- ============ ENTRANCE GATE ============ -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-film" id="gateFilm">
+    <video id="gateVideo" src="assets/opening-film.mp4" poster="assets/opening-poster.jpg" autoplay muted playsinline preload="auto" aria-hidden="true"></video>
+    <button class="gate-film-skip" id="gateFilmSkip" type="button">Skip intro →</button>
+  </div>
   <div class="gate-inner">
     <img class="gate-lockup" src="assets/prism5labs-logo-lockup.png" alt="Prism 5 Labs" width="2307" height="780" />
     <p class="gate-kicker">Prism 5 Labs · Green Bay, Wisconsin</p>
@@ -4894,8 +4906,31 @@ footer.site {
     }
   }
   function dismiss(){ gate.classList.add("gone"); }
+  /* Opening film: plays once over the gate, then slow-fades away
+     (1.4s, the house fade). A click anywhere on it, the Skip button,
+     the film ending, a load error, or a 12s backstop all clear it;
+     a deep link that dismisses the gate clears it instantly. */
+  var film = document.getElementById("gateFilm");
+  var filmVideo = document.getElementById("gateVideo");
+  function hideFilm(instant){
+    if(!film) return;
+    if(instant) film.classList.add("instant");
+    film.classList.add("gone");
+    if(filmVideo){ try{ filmVideo.pause(); }catch(err){} }
+  }
+  if(film){
+    film.addEventListener("click", function(){ hideFilm(false); });
+    if(filmVideo){
+      filmVideo.addEventListener("ended", function(){ hideFilm(false); });
+      filmVideo.addEventListener("error", function(){ hideFilm(true); }, true);
+      var fp = null;
+      try{ fp = filmVideo.play(); }catch(err){}
+      if(fp && fp.catch) fp.catch(function(){ /* poster stands; backstop clears */ });
+    }
+    setTimeout(function(){ hideFilm(false); }, 12000);
+  }
   var initialId = location.hash ? location.hash.slice(1) : "";
-  if(initialId && initialId !== "top" && document.getElementById(initialId)){ dismiss(); }
+  if(initialId && initialId !== "top" && document.getElementById(initialId)){ hideFilm(true); dismiss(); }
   /* Entering through the main door clears the #top hash entering would
      otherwise leave behind, so the address bar stays clean: a reload or
      a copied link lands on the gate again instead of skipping it. */
