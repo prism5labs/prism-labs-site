@@ -25,7 +25,7 @@ this file first, before changing prices, copy, or the launch model.
 - A Spark is a single button for one job; push it and it does the thing, push
   it again and it does it again. Never single-use, never dies. A Plug is a
   Spark that does not need pushing; it runs on its own.
-- One Supernova = one Photon, not all twelve. No bundle price exists.
+- One Supernova = one named Supernova (Supernova Prism, Supernova Juniper, and so on), not all twelve. No bundle price exists.
 
 ## Launch model — corrected Nov 15, 2026
 
