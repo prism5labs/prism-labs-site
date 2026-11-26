@@ -3672,11 +3672,12 @@ footer.site {
         <p>One short email when something new is ready. No noise.</p>
         <form class="news-form" id="newsForm">
           <label for="newsEmail" style="position:absolute;left:-9999px">Email for the mailing list</label>
+          <input type="text" id="newsWebsite" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
           <input type="email" id="newsEmail" autocomplete="email" />
           <button class="btn btn-primary" type="submit" style="padding:11px 16px">Subscribe</button>
         </form>
         <div class="confirm-box" id="newsConfirm" role="status" style="background:#0B3E42;color:var(--warm-white)"></div>
-        <p style="margin-top:12px">Opens your email app. Nothing is stored here.</p>
+        <p style="margin-top:12px">We add your email to our list and send one short welcome email. Unsubscribe any time.</p>
       </div>
       <div>
         <h4>Contact</h4>
@@ -4635,13 +4636,37 @@ footer.site {
   }
 
   /* ---------- Mailing list (inline, no pop-up) ---------- */
+  /* The signup goes straight to the app (POST /api/newsletter/subscribe)
+     — the address is stored on the real list and a welcome email
+     follows. No mail app, no detour. */
   var newsForm = document.getElementById("newsForm");
   if(newsForm){
     newsForm.addEventListener("submit", function(e){
       e.preventDefault();
       var em = document.getElementById("newsEmail").value.trim();
-      sendMail("Mailing list signup — Prism 5 Labs", "Please add this email to the Prism 5 Labs mailing list: " + (em || "(email not given)"));
-      showConfirm("newsConfirm", "Your signup is ready in your email app, addressed to us. Nothing is stored on this page — the list lives with your sent email.");
+      var box = document.getElementById("newsConfirm");
+      if(!em){
+        showConfirm("newsConfirm", "Add your email address and we’ll put you on the list.");
+        return;
+      }
+      var btn = newsForm.querySelector("button[type=submit]");
+      if(btn) btn.disabled = true;
+      showConfirm("newsConfirm", "Adding you to the list…");
+      fetch("https://app.prism5labs.com/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: em, website: document.getElementById("newsWebsite").value })
+      }).then(function(res){
+        return res.json().catch(function(){ return null; }).then(function(data){
+          if(data && data.message) showConfirm("newsConfirm", data.message);
+          else if(res.ok) showConfirm("newsConfirm", "You’re on the list — welcome! A short welcome email is on its way to " + em + ".");
+          else showConfirm("newsConfirm", "That didn’t go through — try again in a moment, or email us at prism5labscontact@gmail.com and we’ll add you by hand.");
+        });
+      }).catch(function(){
+        showConfirm("newsConfirm", "That didn’t go through — try again in a moment, or email us at prism5labscontact@gmail.com and we’ll add you by hand.");
+      }).then(function(){
+        if(btn) btn.disabled = false;
+      });
     });
   }
 
