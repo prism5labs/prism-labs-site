@@ -2038,12 +2038,16 @@ footer.site {
 .gate-contact a{color:var(--red-dark)}
 .gate-loremaster-btn{color:var(--black);border-color:rgba(15,82,87,.6)}
 .gate-side-note{color:var(--ink)}
-/* Opening film (Nov 25, 2026): a real rendered film replaces the old
-   CSS/SVG entrance tricks. It covers the gate, plays once, and melts
-   into the Front B gate underneath with a slow fade — the film itself
-   also fades from and to the gate cream at its own ends. */
+/* Opening film (Nov 25, 2026, rebuilt same day at the owner's word):
+   three photographic beats of the one physical mark — the chrome and
+   teal-enamel disc wide, the glass prism in macro with its spectrum,
+   then the printed business card on the cream desk — dissolving into
+   each other on the gate cream itself. It covers the gate, plays once,
+   and melts into the Front B gate underneath with a slow fade — the
+   film itself also fades from and to the gate cream at its own ends.
+   Shown whole (contain), never cropped, on the matching cream. */
 .gate-film{position:fixed;inset:0;z-index:130;background:var(--cream);opacity:1;transition:opacity 1.4s ease}
-.gate-film video{width:100%;height:100%;object-fit:cover;display:block}
+.gate-film video{width:100%;height:100%;object-fit:contain;display:block}
 .gate-film.gone{opacity:0;pointer-events:none;visibility:hidden;transition:opacity 1.4s ease,visibility 0s linear 1.4s}
 .gate-film.instant{transition:none}
 .gate-film-skip{position:absolute;right:18px;bottom:18px;background:rgba(15,82,87,.88);color:#FFF3DC;border:2px solid rgba(255,243,220,.55);border-radius:999px;padding:10px 20px;font-family:var(--font-head);font-weight:700;font-size:1rem;cursor:pointer;min-height:44px}
@@ -2057,7 +2061,7 @@ footer.site {
 <!-- ============ ENTRANCE GATE ============ -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
   <div class="gate-film" id="gateFilm">
-    <video id="gateVideo" src="assets/opening-film.mp4" poster="assets/opening-poster.jpg" autoplay muted playsinline preload="auto" aria-hidden="true"></video>
+    <video id="gateVideo" src="assets/opening-film-v2.mp4" poster="assets/opening-poster-v2.jpg" autoplay muted playsinline preload="auto" aria-hidden="true"></video>
     <button class="gate-film-skip" id="gateFilmSkip" type="button">Skip intro →</button>
   </div>
   <div class="gate-inner">
@@ -4908,7 +4912,7 @@ footer.site {
   function dismiss(){ gate.classList.add("gone"); }
   /* Opening film: plays once over the gate, then slow-fades away
      (1.4s, the house fade). A click anywhere on it, the Skip button,
-     the film ending, a load error, or a 12s backstop all clear it;
+     the film ending, a load error, or a 9s backstop all clear it;
      a deep link that dismisses the gate clears it instantly. */
   var film = document.getElementById("gateFilm");
   var filmVideo = document.getElementById("gateVideo");
@@ -4927,7 +4931,7 @@ footer.site {
       try{ fp = filmVideo.play(); }catch(err){}
       if(fp && fp.catch) fp.catch(function(){ /* poster stands; backstop clears */ });
     }
-    setTimeout(function(){ hideFilm(false); }, 12000);
+    setTimeout(function(){ hideFilm(false); }, 9000);
   }
   var initialId = location.hash ? location.hash.slice(1) : "";
   if(initialId && initialId !== "top" && document.getElementById(initialId)){ hideFilm(true); dismiss(); }
