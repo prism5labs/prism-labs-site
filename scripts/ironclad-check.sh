@@ -30,14 +30,23 @@ else
 fi
 
 # 2. Canon prices must be present in the site copy.
+#    Multi-page site (Nov 26, 2026): prices live on pricing.html, behind the
+#    "Understand our pricing" gate — and nowhere else.
 #    Boundary-aware so $49 does not match inside $499.
 for p in 499 99 39 19 49 33 26 29 25 59 539 363; do
-  grep -qE '\$'"$p"'([^0-9]|$)' index.html || fail "canon price \$$p missing from index.html"
+  grep -qE '\$'"$p"'([^0-9]|$)' pricing.html || fail "canon price \$$p missing from pricing.html"
 done
 ok "canon prices present on the site"
+hits=$(grep -lE '\$[0-9]' index.html nova.html supernova.html how.html faq.html contact.html 2>/dev/null || true)
+if [ -n "$hits" ]; then
+  echo "$hits"
+  fail "a price appears outside pricing.html; pricing lives only behind the pricing gate"
+else
+  ok "no prices outside pricing.html"
+fi
 
 # 3. No zero price anywhere on the site.
-if grep -qE '\$0([^0-9]|$)' index.html; then
+if grep -qE '\$0([^0-9]|$)' *.html; then
   fail "a \$0 price on the site; nothing is free"
 else
   ok "no zero price on the site"
@@ -45,7 +54,7 @@ fi
 
 # 4. Prism must never be described as free in site copy.
 #    (The 14-day free trial is canon and is not matched by these patterns.)
-hits=$(grep -inE 'prism is free|free prism|is free for everyone' index.html || true)
+hits=$(grep -inE 'prism is free|free prism|is free for everyone' *.html || true)
 if [ -n "$hits" ]; then
   echo "$hits"
   fail "Prism described as free; Prism is NOT free (see IRONCLAD.md)"

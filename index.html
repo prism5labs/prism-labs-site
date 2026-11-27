@@ -23,282 +23,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<style>
-:root{
-  --cream:#FFF6E0; --cream-2:#FFEFCC; --paper:#FFFDF6;
-  --ink:#173A3C; --ink-soft:#3D5A5C;
-  --teal:#0F5257; --teal-deep:#01313E; --teal-bright:#2A7F86;
-  --red:#BE1E2D; --gold:#D9A441; --gold-hi:#EFC65C;
-  /* Photographic plates — real materials, not drawn ones. Built by
-     scripts/build-plates.py from generated photographs + the app
-     builds' chrome and lacquer plates. ~101 KB for all five. */
-  --tex-cream:url("assets/tex-cream.webp");
-  --plate-showroom:url("assets/plate-showroom.webp");
-  --plate-enamel:url("assets/plate-teal-enamel.webp");
-  --plate-lacquer:url("assets/plate-lacquer.webp");
-  --plate-chrome:url("assets/plate-chrome.webp");
-  --enamel:linear-gradient(180deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.05) 44%, rgba(0,0,0,.20) 100%),
-    var(--plate-enamel) center 42%/cover, #0F5257;
-  --lift:0 1px 2px rgba(1,49,62,.14), 0 5px 10px rgba(1,49,62,.10),
-    0 18px 34px -10px rgba(1,49,62,.28), 0 36px 64px -28px rgba(1,49,62,.22);
-  --lift-hi:0 2px 3px rgba(1,49,62,.16), 0 8px 16px rgba(1,49,62,.12),
-    0 26px 48px -12px rgba(1,49,62,.36), 0 48px 80px -32px rgba(1,49,62,.28);
-  --bevel:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -2px 5px rgba(146,116,44,.14),
-    inset 1px 0 0 rgba(255,255,255,.5), inset -1px 0 0 rgba(146,116,44,.08);
-  --shadow:var(--lift);
-  --radius:18px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background-color:var(--cream);background-image:var(--tex-cream);
-  background-size:380px;color:var(--ink);overflow-x:hidden;
-  font-family:"Libre Franklin",system-ui,sans-serif;font-size:17px;line-height:1.55;}
-img{max-width:100%;display:block}
-a{color:var(--teal)}
-h1,h2,h3{font-family:"Patua One",serif;font-weight:400;line-height:1.15;color:var(--teal-deep);margin:0 0 .4em}
-h2{font-size:clamp(1.7rem,4.5vw,2.5rem)}
-h3{font-size:1.25rem}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-section{padding:64px 0}
-.sec-head{max-width:640px;margin-bottom:30px}
-.sec-head p{color:var(--ink-soft);margin:0}
-.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 8px}
-
-/* ---------- header: cream stock under a real chrome rail ---------- */
-header.site{position:sticky;top:0;z-index:50;background-color:var(--cream);
-  background-image:var(--tex-cream);background-size:380px;
-  box-shadow:0 10px 24px -12px rgba(1,49,62,.35)}
-header.site::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
-  background:var(--plate-chrome) center/cover;
-  box-shadow:0 1px 2px rgba(1,49,62,.35), inset 0 1px 0 rgba(255,255,255,.6)}
-.bar{display:flex;align-items:center;gap:18px;padding:10px 0;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand img{width:40px;height:40px;border-radius:50%;
-  box-shadow:0 0 0 2px #FFFDF6, 0 0 0 4px rgba(217,164,65,.75), 0 4px 10px rgba(1,49,62,.4)}
-.brand b{font-family:"Patua One",serif;font-weight:400;font-size:1.25rem;color:var(--teal-deep)}
-nav.main{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
-nav.main a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.98rem;
-  padding:10px 12px;border-radius:10px;min-height:44px;display:inline-flex;align-items:center}
-nav.main a:hover{background:rgba(217,164,65,.16)}
-.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;
-  min-height:52px;padding:12px 26px;border-radius:999px;border:0;cursor:pointer;
-  font-family:inherit;font-weight:800;font-size:1.02rem;text-decoration:none;color:#fff;background:var(--enamel);
-  text-shadow:0 1px 3px rgba(0,20,24,.5);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.55), inset 0 -3px 7px rgba(0,0,0,.38),
-    inset 1px 0 0 rgba(255,255,255,.18), inset -1px 0 0 rgba(0,0,0,.22),
-    0 12px 26px -8px rgba(1,49,62,.55), 0 4px 10px rgba(1,49,62,.35);
-  transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
-.btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);
-  animation:shine 45s ease-in-out infinite}
-@keyframes shine{0%{left:-80%}7%,100%{left:130%}}
-.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.btn:active{transform:translateY(1px);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -1px 3px rgba(0,0,0,.35),
-    0 5px 12px -4px rgba(1,49,62,.5), 0 2px 5px rgba(1,49,62,.3)}
-.btn.small{min-height:46px;padding:9px 20px;font-size:.95rem}
-.btn.ghost{background:linear-gradient(180deg,#FFFDF6 0%,#FFF1CE 100%);color:var(--teal-deep);
-  text-shadow:none;
-  box-shadow:inset 0 0 0 2px var(--teal), inset 0 1px 0 #fff, inset 0 -3px 6px rgba(146,116,44,.18),
-    0 10px 22px -8px rgba(1,49,62,.35), 0 3px 8px rgba(1,49,62,.2)}
-.btn.ghost::after{display:none}
-header .btn{margin-left:6px}
-
-/* ---------- hero: the showroom stage ---------- */
-.hero{position:relative;overflow:hidden;padding:56px 0 72px;color:var(--cream);
-  background:#062A30 var(--plate-showroom) center 30%/cover no-repeat;
-  box-shadow:inset 0 -30px 60px -30px rgba(0,0,0,.55)}
-.hero::before{content:"";position:absolute;top:-10%;bottom:-10%;left:0;width:34%;z-index:1;pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(255,240,200,.13) 45%,rgba(255,240,200,.22) 50%,rgba(255,240,200,.13) 55%,transparent);
-  transform:translateX(-140%) skewX(-16deg);animation:herosweep 45s ease-in-out infinite}
-@keyframes herosweep{0%{transform:translateX(-140%) skewX(-16deg)}10%,100%{transform:translateX(430%) skewX(-16deg)}}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:54px;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(255,246,224,.9) 82%,var(--cream))}
-.hero .wrap{position:relative;z-index:2}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;perspective:1200px}
-.hero h1{font-size:clamp(2.1rem,5.6vw,3.4rem);color:#FFF6E0;text-shadow:0 2px 4px rgba(0,0,0,.5),0 10px 34px rgba(0,0,0,.5)}
-.hero .eyebrow{color:var(--gold-hi);text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.hero .sub{font-size:1.16rem;color:rgba(255,246,224,.92);max-width:34em;text-shadow:0 1px 8px rgba(0,0,0,.55)}
-.hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 10px}
-.hero .btn.ghost{background:rgba(255,246,224,.08);color:#FFF6E0;
-  box-shadow:inset 0 0 0 2px rgba(255,246,224,.65), inset 0 1px 0 rgba(255,255,255,.35),
-    0 10px 22px -8px rgba(0,0,0,.6);backdrop-filter:blur(4px)}
-.trust{font-size:.95rem;font-weight:600;color:#FFEFC4;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.trust span{margin-right:14px;white-space:nowrap}
-.hero .note{color:rgba(255,246,224,.78)}
-.hero .note a{color:var(--gold-hi)}
-.hero-grid>div:last-child{position:relative}
-.hero-grid>div:last-child::before{content:"";position:absolute;inset:-8% -6% 6%;
-  background:radial-gradient(50% 50% at 50% 46%,rgba(239,198,92,.34),transparent 70%);pointer-events:none}
-.card-frame{position:relative;background:var(--plate-chrome) center/cover;padding:11px;border-radius:20px;
-  transform:rotateY(-8deg) rotateX(2deg) rotate(1deg);transform-style:preserve-3d;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.75), inset 0 -2px 5px rgba(0,0,0,.35),
-    -30px 44px 60px -18px rgba(0,0,0,.65), 0 18px 30px -10px rgba(0,0,0,.5);
-  -webkit-box-reflect:below 12px linear-gradient(transparent 58%,rgba(255,255,255,.20))}
-.card-frame img{border-radius:12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
-.card-cap{position:relative;text-align:center;font-size:.9rem;color:rgba(255,246,224,.85);
-  margin-top:34px;text-shadow:0 1px 6px rgba(0,0,0,.65)}
-
-/* ---------- cards & grids: enamelled, bevelled, lifted ---------- */
-.grid{display:grid;gap:18px}
-.grid.c3{grid-template-columns:repeat(3,1fr)}
-.grid.c4{grid-template-columns:repeat(4,1fr)}
-.card{position:relative;overflow:hidden;background-color:var(--paper);background-image:var(--tex-cream);
-  background-size:340px;border:1px solid #E2D0A0;border-radius:var(--radius);padding:24px 22px 22px;
-  box-shadow:var(--bevel),var(--lift);transition:transform .35s ease,box-shadow .35s ease}
-.card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;z-index:1;
-  background:var(--plate-chrome) center/cover;
-  box-shadow:0 1px 2px rgba(1,49,62,.3), inset 0 1px 0 rgba(255,255,255,.65)}
-.card:hover{transform:translateY(-4px);box-shadow:var(--bevel),var(--lift-hi)}
-.card h3{margin-bottom:.25em}
-.card p{margin:0;color:var(--ink-soft)}
-.step-num{position:relative;font-family:"Patua One",serif;font-size:2rem;color:#fff;background:var(--enamel);
-  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  text-shadow:0 1px 3px rgba(0,20,24,.5);
-  box-shadow:inset 0 2px 2px rgba(255,255,255,.5), inset 0 -4px 8px rgba(0,0,0,.4),
-    0 8px 18px -4px rgba(0,0,0,.5), 0 3px 6px rgba(0,0,0,.3);margin-bottom:12px}
-.face{position:relative;background-color:var(--paper);background-image:var(--tex-cream);background-size:340px;
-  border:1px solid #E2D0A0;border-radius:var(--radius);overflow:hidden;
-  box-shadow:var(--bevel),var(--lift);transition:transform .35s ease,box-shadow .35s ease}
-.face::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;z-index:3;
-  background:var(--plate-chrome) center/cover;
-  box-shadow:0 1px 2px rgba(1,49,62,.3), inset 0 1px 0 rgba(255,255,255,.65)}
-.face::after{content:"";position:absolute;top:0;left:0;right:0;height:52%;z-index:2;pointer-events:none;
-  background:linear-gradient(112deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.05) 30%,transparent 48%)}
-.face:hover{transform:translateY(-4px);box-shadow:var(--bevel),var(--lift-hi)}
-.face img{width:100%;aspect-ratio:1/1;object-fit:cover;
-  border-bottom:5px solid transparent;border-image:var(--plate-chrome) 30% stretch;
-  box-shadow:0 10px 18px -8px rgba(1,49,62,.45)}
-.svc img{aspect-ratio:3/2;object-position:50% 30%}
-.face .f-body{padding:14px 16px 18px}
-.face h3{font-size:1.08rem;margin:0}
-.face .desk{font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin:2px 0 6px}
-.face p{margin:0;font-size:.94rem;color:var(--ink-soft)}
-.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:26px}
-.aud{position:relative;overflow:hidden;border-radius:var(--radius);padding:26px;color:#fff;
-  border:1px solid rgba(0,0,0,.35);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 8px rgba(0,0,0,.35), var(--lift);
-  transition:transform .35s ease,box-shadow .35s ease}
-.aud:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.4), inset 0 -3px 8px rgba(0,0,0,.35), var(--lift-hi)}
-.aud h3{color:#fff;font-size:1.5rem;text-shadow:0 1px 4px rgba(0,0,0,.45)}
-.aud p{color:rgba(255,255,255,.92);text-shadow:0 1px 4px rgba(0,0,0,.4)}
-.aud.personal{background:linear-gradient(180deg,rgba(1,49,62,.34),rgba(1,49,62,.58)),var(--plate-enamel) center 38%/cover,#0F5257}
-.aud.business{background:linear-gradient(180deg,rgba(46,4,10,.30),rgba(46,4,10,.55)),var(--plate-lacquer) center 42%/cover,#8E1420}
-.aud a{color:#fff;font-weight:800}
-
-/* ---------- bands: teal enamel under glass ---------- */
-.band{position:relative;color:#EAF4F2;
-  background:linear-gradient(180deg,rgba(1,42,48,.60),rgba(1,36,41,.80)),var(--plate-enamel) center 30%/cover,#07333A;
-  box-shadow:inset 0 14px 30px -14px rgba(0,0,0,.65), inset 0 -14px 30px -14px rgba(0,0,0,.65)}
-.band h2,.band h3{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.5)}
-.band .sec-head p{color:#CFE6E1}
-.band .card{background:rgba(4,36,41,.62);background-image:none;backdrop-filter:blur(6px);
-  border:1px solid rgba(255,246,224,.26);color:#EAF4F2;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -2px 5px rgba(0,0,0,.3),
-    0 18px 34px -12px rgba(0,0,0,.6), 0 34px 58px -26px rgba(0,0,0,.55)}
-.band .card::before{background:linear-gradient(90deg,#8a6420,var(--gold-hi) 30%,var(--gold) 55%,#8a6420);
-  box-shadow:0 1px 2px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.7)}
-.band .card p{color:#CFE6E1}
-
-/* ---------- pricing ---------- */
-details.pricing-gate{position:relative;overflow:hidden;background-color:var(--paper);
-  background-image:var(--tex-cream);background-size:340px;border:1px solid #E2D0A0;
-  border-radius:var(--radius);box-shadow:var(--bevel),var(--lift);padding:14px 26px 26px}
-details.pricing-gate::before{content:"";position:absolute;top:0;left:0;right:0;height:7px;z-index:1;
-  background:var(--plate-chrome) center/cover;
-  box-shadow:0 1px 2px rgba(1,49,62,.3), inset 0 1px 0 rgba(255,255,255,.65)}
-details.pricing-gate summary{cursor:pointer;list-style:none;padding:18px 0 6px}
-details.pricing-gate summary::-webkit-details-marker{display:none}
-table.prices{width:100%;border-collapse:collapse;margin-top:14px}
-table.prices th,table.prices td{text-align:left;padding:12px 10px;border-bottom:1px solid #E4D3A4;vertical-align:top}
-table.prices th{font-family:"Patua One",serif;font-weight:400;color:var(--teal-deep)}
-table.prices .buy{white-space:nowrap}
-.note{font-size:.93rem;color:var(--ink-soft)}
-
-/* ---------- catalog ---------- */
-.toggle{display:inline-flex;background:linear-gradient(180deg,#F3E5C0,#EAD9AC);border-radius:999px;
-  box-shadow:inset 0 2px 7px rgba(101,78,20,.35), inset 0 -1px 0 rgba(255,255,255,.8),
-    0 8px 18px -6px rgba(1,49,62,.3);padding:5px;gap:4px}
-.toggle button{border:0;background:transparent;font:inherit;font-weight:700;padding:10px 20px;border-radius:999px;cursor:pointer;min-height:44px;color:var(--ink)}
-.toggle button[aria-pressed="true"]{background:var(--enamel);color:#fff;text-shadow:0 1px 3px rgba(0,20,24,.5);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), inset 0 -3px 6px rgba(0,0,0,.35), 0 5px 12px -3px rgba(1,49,62,.5)}
-.svc .f-body p{min-height:3.1em}
-.chip{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-  padding:4px 10px;border-radius:999px;color:#4A3205;
-  background:linear-gradient(180deg,#F6DE9C 0%,var(--gold) 55%,#B9832E 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.85), inset 0 -2px 3px rgba(101,64,5,.4), 0 3px 7px rgba(1,49,62,.25);
-  margin-bottom:8px}
-.buy-link{font-weight:800}
-
-/* ---------- forms: panels on stock, inputs carved in ---------- */
-form.panel{position:relative;overflow:hidden;background-color:var(--paper);background-image:var(--tex-cream);
-  background-size:340px;border:1px solid #E2D0A0;border-radius:var(--radius);
-  box-shadow:var(--bevel),var(--lift);padding:26px;max-width:560px}
-form.panel::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;
-  background:var(--plate-chrome) center/cover;
-  box-shadow:0 1px 2px rgba(1,49,62,.3), inset 0 1px 0 rgba(255,255,255,.65)}
-label{display:block;font-weight:700;margin:14px 0 6px}
-input[type=text],input[type=email]{width:100%;padding:13px 14px;font:inherit;border:1px solid #C9B586;border-radius:12px;
-  background:#FFFDF8;min-height:50px;box-shadow:inset 0 2px 6px rgba(101,78,20,.20), inset 0 -1px 0 #fff}
-input:focus{outline:3px solid rgba(42,127,134,.35);border-color:var(--teal)}
-.confirm{display:none;margin-top:14px;font-weight:600;color:var(--teal)}
-details.faq{background-color:var(--paper);background-image:var(--tex-cream);background-size:340px;
-  border:1px solid #E2D0A0;border-radius:14px;
-  box-shadow:var(--bevel),0 8px 20px -6px rgba(1,49,62,.22),0 20px 36px -18px rgba(1,49,62,.2);
-  margin-bottom:12px;padding:4px 20px}
-details.faq summary{cursor:pointer;font-weight:700;padding:14px 0;min-height:44px}
-details.faq p{margin:0 0 16px;color:var(--ink-soft)}
-
-/* ---------- footer / mobile bar ---------- */
-footer{position:relative;color:#CFE6E1;padding:40px 0 90px;
-  background:linear-gradient(180deg,rgba(1,42,48,.72),rgba(1,36,41,.88)),var(--plate-enamel) center 70%/cover,#07333A;
-  box-shadow:inset 0 14px 30px -14px rgba(0,0,0,.7)}
-footer a{color:#fff}
-.mobile-cta{display:none}
-@media (max-width:820px){
-  .hero-grid,.aud-grid{grid-template-columns:1fr}
-  .grid.c3,.grid.c4{grid-template-columns:1fr 1fr}
-  section{padding:46px 0}
-  .card-frame{transform:rotateY(-5deg) rotateX(2deg) rotate(1deg)}
-  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
-    background-color:var(--cream);background-image:var(--tex-cream);background-size:340px;
-    box-shadow:0 -12px 26px -10px rgba(1,49,62,.4)}
-  .mobile-cta::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
-    background:var(--plate-chrome) center/cover;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
-  .mobile-cta .btn{flex:1}
-  header .btn{display:none}
-}
-@media (max-width:520px){ .grid.c3,.grid.c4{grid-template-columns:1fr} }
-@media (max-width:820px){
-  table.prices{display:block;overflow-x:auto}
-  table.prices .buy{white-space:normal}
-  details.pricing-gate{padding:14px 16px 20px}
-  .trust span{white-space:normal}
-}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  .btn::after{animation:none}
-  .hero::before{animation:none;display:none}
-}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body id="top">
-
 <header class="site">
   <div class="wrap bar">
-    <a class="brand" href="#top"><img src="assets/prism-mark.png" alt="Prism 5 Labs card mark"><b>Prism 5 Labs</b></a>
+    <a class="brand" href="index.html"><img src="assets/prism-mark-160.png" alt="Prism 5 Labs card mark"><b>Prism 5 Labs</b></a>
     <nav class="main" aria-label="Pages">
-      <a href="#does">What it does</a>
-      <a href="#how">How it works</a>
-      <a href="#meet">Meet the assistants</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">Questions</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html" aria-current="page">Home</a><a href="nova.html">Nova</a><a href="supernova.html">Supernova</a><a href="how.html">How it works</a><a href="pricing.html">Pricing</a><a href="faq.html">Questions</a><a href="contact.html">Contact</a>
     </nav>
-    <a class="btn small" href="#trial">Start free trial</a>
+    <a class="btn small" href="contact.html">Start free trial</a>
   </div>
 </header>
 
@@ -309,7 +43,7 @@ footer a{color:#fff}
       <h1>Your own AI assistant, handling the busywork.</h1>
       <p class="sub">Prism 5 Labs builds you a personal AI assistant — for your own life, or for your business. It sorts your messages, keeps your calendar, drafts your replies and chases the paperwork, quietly in the background. <strong>Nothing ever goes out without your OK.</strong></p>
       <div class="cta-row">
-        <a class="btn" href="#trial">Start your 14-day free trial</a>
+        <a class="btn" href="contact.html">Start your 14-day free trial</a>
         <a class="btn ghost" href="#meet">Meet the assistants</a>
       </div>
       <p class="trust"><span>✓ No card to start</span><span>✓ Working in 5–10 minutes</span><span>✓ It stops on day 14 unless you say go</span></p>
@@ -320,6 +54,23 @@ footer a{color:#fff}
         <img src="assets/business-card-front.webp" alt="The Prism 5 Labs printed card — cream stock, teal disc, prism mark">
       </div>
       <p class="card-cap">Our printed card. The site wears the same colours — if it doesn't look like this, it isn't us.</p>
+    </div>
+  </div>
+</section>
+
+<section id="welcome" style="padding-bottom:0">
+  <div class="wrap">
+    <!-- WELCOME FILM SLOT — the "Welcome to Prism 5 Labs" newsreel is in production
+         (~/workspace/business/prism-welcome-film/). When the film file lands, replace
+         the .film-poster block below with a click-to-play <video> using the same
+         title-card art as its poster. Do not remove the frame. See MULTIPAGE-NOTES.md. -->
+    <div class="film-frame reveal">
+      <div class="film-poster">
+        <img class="mark" src="assets/prism-mark-160.png" alt="Prism 5 Labs card mark">
+        <h3>WELCOME TO PRISM 5 LABS</h3>
+        <p>Our welcome film is being finished — this is where it will play.</p>
+        <div class="play-disc" aria-hidden="true"><span>▶</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -342,11 +93,37 @@ footer a{color:#fff}
   </div>
 </section>
 
-<section id="how" class="band">
+<section id="meet" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Meet the assistants</p>
+      <h2>First: which one is yours?</h2>
+      <p>Two families. <strong>Novas</strong> look after one person's life. <strong>Supernovas</strong> run a business's whole front office. Pick by the job — every one of them can be renamed and re-voiced once they're yours.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud personal reveal"><h3>For me, personally</h3><p>The Novas: inbox, calendar, check-ins and getting-started help for one person's day.</p><a href="nova.html">Meet the twelve Novas →</a></div>
+      <div class="aud business reveal"><h3>For my business</h3><p>The Supernovas: orders, bookings, customers and follow-ups, handled end to end.</p><a href="supernova.html">Meet the twelve Supernovas →</a></div>
+    </div>
+    <div class="grid c4">
+      <a class="face reveal" href="nova.html"><img loading="lazy" src="assets/img/nova-mabel.webp" alt="Nova Mabel"><div class="f-body"><h3>Nova Mabel</h3><p class="desk">The Original</p><p>Inbox, calendar, messages and follow-ups, handled end to end.</p></div></a>
+      <a class="face reveal" href="nova.html"><img loading="lazy" src="assets/img/nova-hazel.webp" alt="Nova Hazel"><div class="f-body"><h3>Nova Hazel</h3><p class="desk">Orders, Customers & Calendar</p><p>Orders, customers, appointments and the everyday calendar, kept in one tidy place.</p></div></a>
+      <a class="face reveal" href="nova.html"><img loading="lazy" src="assets/img/nova-ruby.webp" alt="Nova Ruby"><div class="f-body"><h3>Nova Ruby</h3><p class="desk">The Inbox-Zero Desk</p><p>Follow-ups, prep notes and scheduling, handled — for a solo practice or a whole team.</p></div></a>
+      <a class="face reveal" href="nova.html"><img loading="lazy" src="assets/img/nova-jude.webp" alt="Nova Jude"><div class="f-body"><h3>Nova Jude</h3><p class="desk">The Steady Checker</p><p>Double-checks details, flags defects and keeps the record straight.</p></div></a>
+      <a class="face reveal" href="supernova.html"><img loading="lazy" src="assets/img/supernova-prism.webp" alt="Supernova Prism"><div class="f-body"><h3>Supernova Prism</h3><p class="desk">The Original</p><p>Inbox, calendar, messages and follow-ups, handled end to end.</p></div></a>
+      <a class="face reveal" href="supernova.html"><img loading="lazy" src="assets/img/supernova-juniper.webp" alt="Supernova Juniper"><div class="f-body"><h3>Supernova Juniper</h3><p class="desk">Orders, Customers & Calendar</p><p>Orders, customers, appointments and the everyday calendar, kept in one tidy place.</p></div></a>
+      <a class="face reveal" href="supernova.html"><img loading="lazy" src="assets/img/supernova-encore.webp" alt="Supernova Encore"><div class="f-body"><h3>Supernova Encore</h3><p class="desk">The Booking Desk</p><p>Inquiries answered the same day; dates held and agreements chased until they're signed.</p></div></a>
+      <a class="face reveal" href="supernova.html"><img loading="lazy" src="assets/img/supernova-proof.webp" alt="Supernova Proof"><div class="f-body"><h3>Supernova Proof</h3><p class="desk">The Steady Checker</p><p>Double-checks details, flags defects and keeps the record straight.</p></div></a>
+    </div>
+    <p class="note" style="margin-top:18px">Like one? <a href="contact.html">Start the free trial</a> and name them in the form — nothing is charged on this page.</p>
+  </div>
+</section>
+
+<section class="band">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow" style="color:var(--gold)">How it works</p>
       <h2>Three steps. That's the whole thing.</h2>
+      <p>The short version is on the <a href="how.html" style="color:var(--gold-hi)">How it works page</a> — same three steps, with the trial explained.</p>
     </div>
     <div class="grid c3">
       <div class="card reveal"><div class="step-num">1</div><h3>Pick your assistant</h3><p>Choose by the job, not the picture — one for your own life, or one that runs a whole front office.</p></div>
@@ -356,287 +133,58 @@ footer a{color:#fff}
   </div>
 </section>
 
-<section id="meet">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Meet the assistants</p>
-      <h2>First: which one is yours?</h2>
-      <p>Two families. <strong>Novas</strong> look after one person's life. <strong>Supernovas</strong> run a business's whole front office. Pick by the job — every one of them can be renamed and re-voiced once they're yours.</p>
-    </div>
-    <div class="aud-grid">
-      <div class="aud personal reveal"><h3>For me, personally</h3><p>The Novas: inbox, calendar, check-ins and getting-started help for one person's day.</p><a href="#novas">Meet the twelve Novas ↓</a></div>
-      <div class="aud business reveal"><h3>For my business</h3><p>The Supernovas: orders, bookings, customers and follow-ups, handled end to end.</p><a href="#supernovas">Meet the twelve Supernovas ↓</a></div>
-    </div>
-
-    <h3 id="novas" style="margin:34px 0 14px">The Novas — personal assistants</h3>
-    <div class="grid c4" id="novaGrid"></div>
-
-    <h3 id="supernovas" style="margin:40px 0 14px">The Supernovas — business assistants</h3>
-    <div class="grid c4" id="supernovaGrid"></div>
-    <p class="note" style="margin-top:18px">Like one? <a href="#trial">Start the free trial</a> and name them in the form — nothing is charged on this page.</p>
-  </div>
-</section>
-
-<section id="trial" class="band">
+<section class="band">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow" style="color:var(--gold)">Start here</p>
       <h2>Start your 14-day free trial</h2>
       <p>No card. No charge. No auto-renew. One real job, on your real work — installed and working in 5–10 minutes. Drafts first: nothing sends without your OK.</p>
     </div>
-    <form class="panel" id="trialForm" style="color:var(--ink)">
-      <label for="tName">Your name</label>
-      <input type="text" id="tName" autocomplete="name" placeholder="e.g. Sam Miller">
-      <label for="tEmail">Email</label>
-      <input type="email" id="tEmail" autocomplete="email" placeholder="you@example.com">
-      <label for="tJob">The one job to try it on</label>
-      <input type="text" id="tJob" placeholder="e.g. Sort my inbox and draft the replies">
-      <label for="tWho">Which assistant? <span style="font-weight:400">(optional — we'll help you choose)</span></label>
-      <input type="text" id="tWho" placeholder="e.g. Nova Mabel, Supernova Encore…">
-      <div style="margin-top:20px"><button class="btn" type="submit">Send my trial request</button></div>
-      <p class="note" style="margin-top:12px">Opens your email app with the request written out — nothing is charged here; already bought yours? <a href="https://app.prism5labs.com">Open the app →</a></p>
-      <p class="confirm" id="trialConfirm">Your trial request is ready in your email app, addressed to us.</p>
-    </form>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Pricing</p>
-      <h2>What it costs — explained before numbers</h2>
-      <p>You are not buying software off a shelf. You are buying an assistant that has already been built around a real working day, tested until it works, and kept working after it arrives. That is what the price pays for: the building, the testing, and someone standing behind it afterwards.</p>
-    </div>
-    <details class="pricing-gate reveal" id="pricingGate">
-      <summary><span class="btn">Understand our pricing</span>
-      <p class="note" style="margin-top:12px">Tap to open the full price list, in plain words. Questions as you read? Call <a href="tel:+19203937294">(920) 393-7294</a> — a real person answers.</p></summary>
-
-      <h3 style="margin-top:18px">The pieces, in plain words</h3>
-      <p><strong>A Spark</strong> is one button for one job — push it and the job gets done, today and every day. <strong>A Plug</strong> is a Spark with no button to push — it watches for the moment and does the job by itself. <strong>A Satellite</strong> is a whole assistant built around one single job, done every day. <strong>A Supernova</strong> is a whole assistant for an entire front office. <strong>Upkeep</strong> is a small monthly amount for outright buyers — fixes, upgrades, new jobs, priority help — never required, and already included in every monthly plan.</p>
-      <p><strong>Four ways to pay:</strong> once, and it's yours for good · monthly, with Upkeep included · monthly for 2 years at a lower price · or a year up front, 12 months for the price of 11. The card company adds a 3% processing fee at checkout — so a Supernova bought outright comes to $514 in total.</p>
-
-      <table class="prices">
-        <tr><th>What</th><th>Ways to pay</th><th></th></tr>
-        <tr><td><strong>Nova</strong> — a personal assistant (any of the twelve)</td>
-            <td>$79 one-time · $10/month</td>
-            <td class="buy"><a class="buy-link" href="https://buy.stripe.com/6oUeVc7gQ2M8b38dYyfQI1g?client_reference_id=nova-personal" target="_blank" rel="noopener">Buy $79</a> · <a class="buy-link" href="https://buy.stripe.com/aFa28qbx686s3AG6w6fQI1h?client_reference_id=nova-monthly" target="_blank" rel="noopener">$10/mo</a></td></tr>
-        <tr><td><strong>Personal Upkeep</strong> — for Nova owners, optional</td>
-            <td>$9/month</td>
-            <td class="buy"><a class="buy-link" href="https://buy.stripe.com/bJeaEW8kU9aw8V04nYfQI1f?client_reference_id=personal-upkeep" target="_blank" rel="noopener">Buy $9/mo</a></td></tr>
-        <tr><td><strong>Supernova</strong> — a whole front office (any of the twelve)</td>
-            <td>$499 one-time · $49/month · $39/month on a 2-year plan · $539/year</td>
-            <td class="buy"><a class="buy-link" href="https://buy.stripe.com/8x2fZg1Ww86s0ou07IfQI00?client_reference_id=supernova" target="_blank" rel="noopener">Buy $499</a> · <a class="buy-link" href="https://buy.stripe.com/aFaeVc1WwaeA7QW9IifQI07?client_reference_id=supernova-monthly" target="_blank" rel="noopener">$49/mo</a> · <a class="buy-link" href="https://buy.stripe.com/4gMdR844EaeA5IO6w6fQI08?client_reference_id=supernova-monthly-2yr" target="_blank" rel="noopener">$39/mo</a> · <a class="buy-link" href="https://buy.stripe.com/4gM00i8kU0E04EKaMmfQI09?client_reference_id=supernova-annual" target="_blank" rel="noopener">$539/yr</a></td></tr>
-        <tr><td><strong>Satellite</strong> — one job, done every day</td>
-            <td>$99 one-time · $33/month · $26/month on a 2-year plan · $363/year</td>
-            <td class="buy"><a class="buy-link" href="https://buy.stripe.com/6oUaEW30A9aw2wC5s2fQI02?client_reference_id=satellite" target="_blank" rel="noopener">Buy $99</a> · <a class="buy-link" href="https://buy.stripe.com/bJeeVc0Ss2M82wC8EefQI0a?client_reference_id=satellite-monthly" target="_blank" rel="noopener">$33/mo</a> · <a class="buy-link" href="https://buy.stripe.com/3cI4gygRq0E0c7cdYyfQI0b?client_reference_id=satellite-monthly-2yr" target="_blank" rel="noopener">$26/mo</a> · <a class="buy-link" href="https://buy.stripe.com/fZucN48kUbiE0ou2fQfQI0c?client_reference_id=satellite-annual" target="_blank" rel="noopener">$363/yr</a></td></tr>
-        <tr><td><strong>Upkeep</strong> — for Supernova &amp; Satellite owners, optional</td>
-            <td>$29/month</td>
-            <td class="buy"><a class="buy-link" href="https://buy.stripe.com/6oU3cueJieuQ6MS7AafQI0d?client_reference_id=upkeep" target="_blank" rel="noopener">Buy $29/mo</a></td></tr>
-        <tr><td><strong>Sparks &amp; Plugs</strong> — single jobs, à la carte</td>
-            <td>Spark $19 personal / $25 business · Plug $39 personal / $59 business — one-time</td>
-            <td class="buy"><a class="buy-link" href="#catalog">See the job list ↓</a></td></tr>
-      </table>
-      <p class="note">Every purchase includes 300 chat messages a month, free forever. Every assistant starts with the same 14-day free trial. And the promise stands behind all of it: <strong>14-day money-back</strong> — if it isn't for you, say so within 14 days of buying and we refund you.</p>
-    </details>
-  </div>
-</section>
-
-<section id="catalog" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">À la carte</p>
-      <h2>Single jobs, one at a time</h2>
-      <p>Don't need a whole assistant? Buy one job. A <strong>Spark</strong> runs when you push it; a <strong>Plug</strong> runs by itself. Prices are in the pricing list above — pick whose list to shop from:</p>
-    </div>
-    <div class="toggle" role="group" aria-label="Whose prices">
-      <button id="audPersonal" aria-pressed="true">For me</button>
-      <button id="audBusiness" aria-pressed="false">For my business</button>
-    </div>
-    <div class="grid c4" id="svcGrid" style="margin-top:22px"></div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Questions</p>
-      <h2>Questions, answered plainly</h2>
-    </div>
-    <details class="faq reveal"><summary>What exactly am I getting?</summary><p>An AI assistant of your own — a named person on your phone or computer who does real jobs: sorting messages, keeping your calendar, drafting replies, chasing paperwork. You talk to it like a person; it works like staff.</p></details>
-    <details class="faq reveal"><summary>Will it send things without asking me?</summary><p>No — everything it writes is a draft until you say go, with no exceptions and no way to switch that off.</p></details>
-    <details class="faq reveal"><summary>How does the free trial work?</summary><p>Fourteen days, one real job, on your real work — no card, no charge, no auto-renew, and a reminder on day 11.</p></details>
-    <details class="faq reveal"><summary>What if I stop paying a monthly plan?</summary><p>The living service pauses until you start again — nothing is deleted, nobody chases you, and outright buyers are never paused.</p></details>
-    <details class="faq reveal"><summary>Can I change its name or how it talks?</summary><p>Any time — name, voice, rules, duties: tell it or tell us, and the change stays changed.</p></details>
-    <details class="faq reveal"><summary>Who do I talk to if I'm stuck?</summary><p>A person. Email <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> or call <a href="tel:+19203937294">(920) 393-7294</a> — no question is a silly question, and we'd rather explain than have you guess.</p></details>
-  </div>
-</section>
-
-<section id="contact" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Contact</p>
-      <h2>Talk to a person</h2>
-      <p>Email <a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a> · Call or text <a href="tel:+19203937294">(920) 393-7294</a> · Prism 5 Labs, Green Bay, Wisconsin.</p>
-    </div>
-    <form class="panel" id="newsForm">
-      <h3 style="margin-top:0">The mailing list</h3>
-      <p class="note">One short email when something new is ready — no noise, no selling your address, unsubscribe any time.</p>
-      <label for="newsEmail">Email</label>
-      <input type="email" id="newsEmail" autocomplete="email" placeholder="you@example.com" required>
-      <input type="text" id="newsWebsite" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
-      <div style="margin-top:18px"><button class="btn small" type="submit">Subscribe</button></div>
-      <p class="confirm" id="newsConfirm">You're on the list. Welcome aboard.</p>
-    </form>
+    <p class="reveal"><a class="btn" href="contact.html">Start your 14-day free trial</a></p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <p><strong style="color:#fff;font-family:'Patua One',serif;font-weight:400">Prism 5 Labs</strong> — Truly Atomic AI Assistants · Green Bay, WI</p>
-    <p><a href="/privacy">Privacy</a> · <a href="/demo.html">Try the demo</a> · <a href="https://app.prism5labs.com">Open the app</a> · <a href="#top">Back to top</a></p>
+    <div class="sitemap">
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="how.html">How it works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="faq.html">Questions</a></li>
+          <li><a href="contact.html">Contact / start a trial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The assistants</h4>
+        <ul>
+          <li><a href="nova.html">The Novas — for you personally</a></li>
+          <li><a href="supernova.html">The Supernovas — for your business</a></li>
+          <li><a href="nova.html#jobs">Single jobs for your own life</a></li>
+          <li><a href="supernova.html#jobs">Single jobs for your business</a></li>
+          <li><a href="/demo.html">Try the demo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The company</h4>
+        <ul>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="https://app.prism5labs.com">Open the app</a></li>
+          <li><a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a></li>
+          <li><a href="tel:+19203937294">(920) 393-7294</a></li>
+          <li><a href="#top">Back to top</a></li>
+        </ul>
+      </div>
+    </div>
     <p style="font-size:.88rem">© 2026 Prism 5 Labs. Nothing on this page charges you; buying happens on the payment page, after the pricing explanation, when you say so.</p>
   </div>
 </footer>
 
-<div class="mobile-cta"><a class="btn" href="#trial">Start your 14-day free trial</a></div>
+<div class="mobile-cta"><a class="btn" href="contact.html">Start your 14-day free trial</a></div>
+<script src="assets/site.js"></script>
 
-<script>
-/* ---------- Faces ---------- */
-var DESKS = [
- ["The Original","For anyone who wants the whole front office handled.","Inbox, calendar, messages and follow-ups, handled end to end."],
- ["Orders, Customers & Calendar","For anyone juggling orders, customers, and a busy life.","Orders, customers, appointments and the everyday calendar, kept in one tidy place."],
- ["The Booking Desk","For anyone whose work runs on bookings and dates.","Inquiries answered the same day; dates held and agreements chased until they're signed."],
- ["The Inbox-Zero Desk","For anyone who wants a clear desk and an empty inbox.","Follow-ups, prep notes and scheduling, handled — for a solo practice or a whole team."],
- ["The Steady Checker","For anyone who needs the details right, every time.","Double-checks details, flags defects and keeps the record straight."],
- ["The Operations Launch","For anyone running a busy, hands-on operation.","Bookings, schedules and daily messages, answered before the day gets going."],
- ["The Quotes & Jobs Desk","For anyone who quotes work and chases invoices.","Quotes out the same day, invoices chased, customers kept posted."],
- ["The Appointments Desk","For anyone whose day runs on appointments.","Bookings, reminders and reschedules — and how each client likes things done."],
- ["The Customers Desk","For anyone whose customers expect a fast, warm answer.","Customer messages answered warmly and quickly, every one logged and followed up."],
- ["The Reminders Desk","For anyone who cannot afford a dropped ball.","Reminders sent, deadlines watched, loose ends tied before they unravel."],
- ["The Care Desk","For anyone whose work is looking after people.","Check-ins and follow-ups with a gentle touch — people feel looked after."],
- ["The Learning Desk","For anyone who needs answers gathered and explained.","Research gathered, compared and summarised in plain words."]
-];
-var NOVAS = ["Mabel","Hazel","Willa","Ruby","Jude","Sadie","Bea","Flora","Pierce","Iris","Clive","Nora"];
-var SUPERNOVAS = ["Prism","Juniper","Encore","Zero","Proof","Barnstormer","Blueprint","Calendra","Shopbell","Keystone","Vesper","Goldstar"];
-function faceCard(kind, name, i){
-  var d = DESKS[i];
-  return '<div class="face reveal"><img loading="lazy" src="assets/img/' + kind + '-' + name.toLowerCase() + '.webp" alt="' +
-    (kind === 'nova' ? 'Nova ' : 'Supernova ') + name + '"><div class="f-body"><h3>' +
-    (kind === 'nova' ? 'Nova ' : 'Supernova ') + name + '</h3><p class="desk">' + d[0] + '</p><p>' + d[2] + '</p></div></div>';
-}
-document.getElementById('novaGrid').innerHTML = NOVAS.map(function(n,i){ return faceCard('nova', n, i); }).join('');
-document.getElementById('supernovaGrid').innerHTML = SUPERNOVAS.map(function(n,i){ return faceCard('supernova', n, i); }).join('');
-
-/* ---------- À la carte ---------- */
-var SERVICES = [
- ["morning-briefing","Morning Briefing","Spark","Calendar and messages, one short morning summary."],
- ["start-my-day","Start My Day","Plug","A morning briefing that walks your day top to bottom, one item at a time."],
- ["bill-reminder-list","Bill Reminder List","Plug","Your bills and due dates, shown weekly."],
- ["weekly-planner-check","Weekly Planner Check","Spark","A task list, turned into a weekly plan."],
- ["find-a-time","Find a Time","Spark","3 times proposed, invite drafted."],
- ["end-of-day-wrap","End of Day Wrap","Spark","Today in short lines, plus tomorrow's top 3."],
- ["inbox-sorting","Inbox Sorting Drafts","Plug","Messages sorted, replies drafted for your OK."],
- ["checkin-drafts","Check-in Drafts","Spark","A check-in message, drafted in your words."],
- ["meeting-notes-summary","Meeting Notes Summary","Spark","Notes in — summary, decisions, actions out."],
- ["inbox-zero-sprint","Inbox Zero Sprint","Spark","Up to 10 emails triaged, 3 replies drafted."],
- ["morning-comms-check","Morning Comms Check","Spark","Messages and calendar checked, one line each."],
- ["stay-in-touch-writer","Stay in Touch Writer","Spark","One warm check-in, plus an alternate tone."],
- ["whos-this","Who's This?","Spark","Unknown caller? It finds out who and why."],
- ["missed-call-catcher","Missed-Call Catcher","Plug","Missed calls logged, replies drafted."],
- ["on-watch","On Watch","Plug","Unknown callers and marketing texts, handled daily."],
- ["lead-followup-drafts","Lead Follow-up Drafts","Plug","First replies to new inquiries, drafted."],
- ["invoice-reminder-drafts","Invoice Reminder Drafts","Plug","Polite unpaid-invoice reminders, drafted."],
- ["review-request-drafts","Review Request Drafts","Spark","Review and referral requests, drafted."],
- ["invoice-helper","Invoice Helper","Spark","Invoices from job notes — paid / unpaid at a glance."],
- ["quote-writer","Quote Writer","Spark","Job notes in — a clean quote out."],
- ["job-done-post","Job Done Post","Spark","One Facebook post about a finished job."],
- ["spreadsheet-report","Spreadsheet Report","Plug","A recurring report from your spreadsheet."],
- ["file-sorting-plan","File Sorting Plan","Spark","A folder plan for a set of files."],
- ["form-copy-helper","Form Copy Helper","Plug","Copies data across, flags mismatches."]
-];
-var CATALOG_BUY = {
- "morning-briefing":{p:["https://buy.stripe.com/9B68wO0SsfyU7QWdYyfQI0e","morning-briefing-personal"],b:["https://buy.stripe.com/14A9AS1WwaeA5IOaMmfQI0f","morning-briefing-business"]},
- "start-my-day":{p:["https://buy.stripe.com/7sYaEW9oYaeA1sy3jUfQI1a","start-my-day-personal"],b:["https://buy.stripe.com/fZu3cu0Ss5Yk4EKcUufQI1b","start-my-day-business"]},
- "bill-reminder-list":{p:["https://buy.stripe.com/14A5kCdFedqM8V08EefQI0g","bill-reminder-list-personal"],b:["https://buy.stripe.com/fZudR88kU72o3AG3jUfQI0h","bill-reminder-list-business"]},
- "weekly-planner-check":{p:["https://buy.stripe.com/7sY8wO30A4Ugfjo6w6fQI0i","weekly-planner-check-personal"],b:["https://buy.stripe.com/14A14mbx6euQ2wC6w6fQI0j","weekly-planner-check-business"]},
- "find-a-time":{p:["https://buy.stripe.com/4gM28qcBa3Qc3AGf2CfQI0k","find-a-time-personal"],b:["https://buy.stripe.com/7sY5kC6cM9aw7QW2fQfQI0l","find-a-time-business"]},
- "end-of-day-wrap":{p:["https://buy.stripe.com/bJeeVc8kU72ob38aMmfQI0m","end-of-day-wrap-personal"],b:["https://buy.stripe.com/7sY8wObx64Ug7QW8EefQI0n","end-of-day-wrap-business"]},
- "inbox-sorting":{p:["https://buy.stripe.com/00w5kC58I0E08V0g6GfQI0o","inbox-sorting-drafts-personal"],b:["https://buy.stripe.com/9B69AS8kU4Ug2wC9IifQI0p","inbox-sorting-drafts-business"]},
- "checkin-drafts":{p:["https://buy.stripe.com/aFa3cu44EfyUb38cUufQI0q","check-in-drafts-personal"],b:["https://buy.stripe.com/cNieVcgRqcmIefk6w6fQI0r","check-in-drafts-business"]},
- "meeting-notes-summary":{p:["https://buy.stripe.com/9B6eVcdFebiE4EKg6GfQI0s","meeting-notes-summary-personal"],b:["https://buy.stripe.com/fZucN4dFe1I49Z43jUfQI0t","meeting-notes-summary-business"]},
- "inbox-zero-sprint":{p:["https://buy.stripe.com/00w3cucBa0E09Z4cUufQI0u","inbox-zero-sprint-personal"],b:["https://buy.stripe.com/5kQ00i8kU4Ug2wCg6GfQI0v","inbox-zero-sprint-business"]},
- "morning-comms-check":{p:["https://buy.stripe.com/cNifZg8kUaeAb387AafQI0w","morning-comms-check-personal"],b:["https://buy.stripe.com/7sY00i6cM86s3AGcUufQI0x","morning-comms-check-business"]},
- "stay-in-touch-writer":{p:["https://buy.stripe.com/eVq6oG6cM86s0oubQqfQI0y","stay-in-touch-writer-personal"],b:["https://buy.stripe.com/7sYaEWdFe9aw6MS6w6fQI0z","stay-in-touch-writer-business"]},
- "whos-this":{p:["https://buy.stripe.com/aFa7sKeJi1I47QWg6GfQI0W","whos-this-personal"],b:["https://buy.stripe.com/bJe8wOeJieuQ6MS6w6fQI0A","whos-this-business"]},
- "missed-call-catcher":{p:["https://buy.stripe.com/cNi5kC58I86sb38dYyfQI0U","missed-call-catcher-personal"],b:["https://buy.stripe.com/28E4gybx62M85IOdYyfQI0B","missed-call-catcher-business"]},
- "on-watch":{p:["https://buy.stripe.com/3cI00i30AfyUfjog6GfQI0V","on-watch-personal"],b:["https://buy.stripe.com/7sY3cu8kU86s8V02fQfQI0C","on-watch-business"]},
- "lead-followup-drafts":{p:["https://buy.stripe.com/00w7sK7gQ9aw3AGdYyfQI0D","lead-follow-up-drafts-personal"],b:["https://buy.stripe.com/14AdR8eJi0E07QW3jUfQI0E","lead-follow-up-drafts-business"]},
- "invoice-reminder-drafts":{p:["https://buy.stripe.com/28EbJ06cM5Yk5IOg6GfQI0F","invoice-reminder-drafts-personal"],b:["https://buy.stripe.com/8x23cufNm5Ykb381bMfQI0G","invoice-reminder-drafts-business"]},
- "review-request-drafts":{p:["https://buy.stripe.com/dRmeVc9oY4Ug4EKf2CfQI0H","review-request-drafts-personal"],b:["https://buy.stripe.com/eVq14mgRqbiEfjoaMmfQI0I","review-request-drafts-business"]},
- "invoice-helper":{p:["https://buy.stripe.com/cNi28qdFe0E0b381bMfQI0J","invoice-helper-personal"],b:["https://buy.stripe.com/aFaaEWgRq9aw9Z4bQqfQI0K","invoice-helper-business"]},
- "quote-writer":{p:["https://buy.stripe.com/fZu6oG44EeuQfjobQqfQI0T","quote-writer-personal"],b:["https://buy.stripe.com/7sYaEW6cM1I46MS3jUfQI0L","quote-writer-business"]},
- "job-done-post":{p:["https://buy.stripe.com/00waEWeJi72o1sy1bMfQI0M","job-done-post-personal"],b:["https://buy.stripe.com/fZufZgfNm2M87QW6w6fQI0X","job-done-post-business"]},
- "spreadsheet-report":{p:["https://buy.stripe.com/4gM3cu30A2M87QW8EefQI0N","spreadsheet-report-personal"],b:["https://buy.stripe.com/8x25kC0Ss0E01sybQqfQI0O","spreadsheet-report-business"]},
- "file-sorting-plan":{p:["https://buy.stripe.com/3cIdR87gQ3Qc1sy6w6fQI0P","file-sorting-plan-personal"],b:["https://buy.stripe.com/28E7sKat2gCY2wCbQqfQI0Q","file-sorting-plan-business"]},
- "form-copy-helper":{p:["https://buy.stripe.com/6oU4gydFecmIgnsf2CfQI0R","form-copy-helper-personal"],b:["https://buy.stripe.com/14A14m58IeuQ8V07AafQI0S","form-copy-helper-business"]}
-};
-var audience = "p";
-function renderServices(){
-  document.getElementById('svcGrid').innerHTML = SERVICES.map(function(s){
-    var e = CATALOG_BUY[s[0]], pair = e[audience];
-    return '<div class="face svc reveal in"><img loading="lazy" src="assets/img/cat-' + s[0] + '.webp" alt=""><div class="f-body">' +
-      '<span class="chip">' + (s[2] === 'Spark' ? 'Spark — runs when you push it' : 'Plug — runs by itself') + '</span>' +
-      '<h3>' + s[1] + '</h3><p>' + s[3] + '</p>' +
-      '<p style="margin-top:10px"><a class="buy-link" href="' + pair[0] + '?client_reference_id=' + pair[1] + '" target="_blank" rel="noopener">Buy ' + s[1] + ' →</a></p></div></div>';
-  }).join('');
-}
-var bP = document.getElementById('audPersonal'), bB = document.getElementById('audBusiness');
-function setAudience(a){ audience = a;
-  bP.setAttribute('aria-pressed', a === 'p'); bB.setAttribute('aria-pressed', a === 'b'); renderServices(); }
-bP.addEventListener('click', function(){ setAudience('p'); });
-bB.addEventListener('click', function(){ setAudience('b'); });
-renderServices();
-
-/* ---------- Trial form: one button, one action ---------- */
-document.getElementById('trialForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var name = document.getElementById('tName').value.trim(),
-      email = document.getElementById('tEmail').value.trim(),
-      job = document.getElementById('tJob').value.trim(),
-      who = document.getElementById('tWho').value.trim();
-  var body = "Please start my 14-day free trial.\n\nName: " + (name || "(not given)") +
-    "\nEmail: " + (email || "(not given)") + "\nThe one job to try it on: " + (job || "(not given)") +
-    (who ? "\nAssistant I'd like: " + who : "") + "\n\nNo card given, nothing charged — as promised on the site.";
-  window.location.href = "mailto:prism5labscontact@gmail.com?subject=" +
-    encodeURIComponent("Free trial request — Prism 5 Labs") + "&body=" + encodeURIComponent(body);
-  document.getElementById('trialConfirm').style.display = 'block';
-});
-
-/* ---------- Newsletter: the real endpoint ---------- */
-document.getElementById('newsForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var em = document.getElementById('newsEmail').value.trim();
-  var done = function(){ document.getElementById('newsConfirm').style.display = 'block'; };
-  fetch("https://app.prism5labs.com/api/newsletter/subscribe", {
-    method: "POST", headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({email: em, website: document.getElementById("newsWebsite").value})
-  }).then(function(r){ if (r.ok) { done(); } else { throw new Error("bad"); } })
-    .catch(function(){
-      document.getElementById('newsConfirm').textContent =
-        "That didn't go through — email us at prism5labscontact@gmail.com and we'll add you by hand.";
-      document.getElementById('newsConfirm').style.display = 'block';
-    });
-});
-
-/* ---------- Slow fades ---------- */
-if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, {threshold: 0.1});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-} else {
-  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-}
-</script>
 </body>
 </html>
