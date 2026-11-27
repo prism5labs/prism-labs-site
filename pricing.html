@@ -32,8 +32,51 @@
     <nav class="main" aria-label="Pages"><a href="index.html">Home</a><a href="nova.html">Nova</a><a href="supernova.html">Supernova</a><a href="how.html">How it works</a><a href="pricing.html" aria-current="page">Pricing</a><a href="faq.html">Questions</a><a href="contact.html">Contact</a></nav>
     <a class="btn small app-open" href="https://app.prism5labs.com">Open the app</a>
     <a class="btn small trial-open" href="contact.html">Start free trial</a>
+    <button class="burger drawer-open" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="siteDrawer"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="scrim" id="siteScrim"></div>
+<aside class="drawer" id="siteDrawer" aria-label="Site menu" aria-hidden="true">
+  <div class="d-head">
+    <img src="assets/prism-mark-160.png" alt="">
+    <b>Menu</b>
+    <button class="drawer-close" type="button" aria-label="Close the menu">&times;</button>
+  </div>
+  <nav class="d-nav" aria-label="Pages">
+    <p class="d-group">Pages</p>
+    <a href="index.html">Home</a>
+    <a href="nova.html">Nova</a>
+    <a href="supernova.html">Supernova</a>
+    <a href="how.html">How it works</a>
+    <a href="pricing.html" aria-current="page">Pricing</a>
+    <a href="faq.html">Questions</a>
+    <a href="contact.html">Contact</a>
+    <a href="apps.html">Get the apps</a>
+    <a href="demo.html">Demo</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+  <nav class="d-nav" aria-label="Apps">
+    <p class="d-group">The apps — in your browser</p>
+    <a href="https://app.prism5labs.com">Open the Prism app<span class="ext">web</span></a>
+    <a href="https://nova.prism5labs.com">Nova<span class="ext">web app</span></a>
+    <a href="https://supernova.prism5labs.com">Supernova<span class="ext">web app</span></a>
+    <p class="d-group">Android — direct install</p>
+    <a href="apks/nova.apk" download>Nova<span class="ext">.apk</span></a>
+    <a href="apks/supernova.apk" download>Supernova<span class="ext">.apk</span></a>
+    <a href="apks/prism.apk" download>Prism<span class="ext">.apk</span></a>
+    <a href="apps.html">Get the apps — every way in →</a>
+  </nav>
+  <nav class="d-nav d-side" aria-label="Loremaster">
+    <p class="d-group">Off to the side</p>
+    <a href="https://loremaster-app-live.onrender.com">Loremaster — tales<span class="ext">web</span></a>
+    <a href="apks/loremaster.apk" download>Loremaster for Android<span class="ext">.apk</span></a>
+  </nav>
+  <div class="d-foot">
+    <a class="btn" href="contact.html">Start your 14-day free trial</a>
+    <p class="note">No card. No charge. No auto-renew.</p>
+  </div>
+</aside>
+
 
 <section class="chapter tight on-cream">
   <div class="wrap manifesto">
@@ -73,7 +116,54 @@
             <td>Spark $19 personal / $25 business · Plug $39 personal / $59 business — one-time</td>
             <td class="buy"><a class="buy-link" href="nova.html#jobs">For me ↓</a> · <a class="buy-link" href="supernova.html#jobs">For my business ↓</a></td></tr>
       </table>
-      <p class="note">Every purchase includes 300 chat messages a month, free forever. Every assistant starts with the same 14-day free trial. And the promise stands behind all of it: <strong>14-day money-back</strong> — if it isn't for you, say so within 14 days of buying and we refund you.</p></div>
+      <p class="note">Every purchase includes 300 chat messages a month, free forever. Every assistant starts with the same 14-day free trial. And the promise stands behind all of it: <strong>14-day money-back</strong> — if it isn't for you, say so within 14 days of buying and we refund you.</p>
+
+      <h3 style="margin-top:2.4rem">Build your own</h3>
+      <p>Say the word. Thirty seconds. Pick a tier, pick what it does, pick its style — the total is honest and in the open, and nothing is charged here.</p>
+      <div class="build-panel" id="buildPanel">
+        <div class="build-step" style="margin-top:0">
+          <label for="buildTier">1 · Pick your tier</label>
+          <select id="buildTier">
+            <option value="supernova">Supernova — the whole front office</option>
+            <option value="satellite">Satellite — one job, done well</option>
+            <option value="boosters">Boosters only — Sparks &amp; Plugs, no assistant</option>
+          </select>
+        </div>
+        <div class="build-step">
+          <span class="build-label" id="jobsLabel">2 · Pick what it does</span>
+          <div class="toggle" role="group" aria-label="Whose prices">
+            <button type="button" id="audPersonal" aria-pressed="true">For me</button>
+            <button type="button" id="audBusiness" aria-pressed="false">For my business</button>
+          </div>
+          <div><button class="jobs-toggle" id="jobsToggle" type="button" aria-expanded="false" aria-controls="jobsPanel">Choose the jobs <span id="jobsCount"></span><span aria-hidden="true"> ▾</span></button></div>
+          <div class="jobs-panel" id="jobsPanel" role="group" aria-labelledby="jobsLabel" hidden></div>
+          <p class="note" id="jobsNote" style="margin-top:.6rem">Checked jobs are included in its price.</p>
+        </div>
+        <div class="build-step">
+          <label for="buildStyle">3 · Pick its style</label>
+          <select id="buildStyle">
+            <option>Warm and friendly</option>
+            <option>Crisp and professional</option>
+            <option>Calm and steady</option>
+            <option>Dry and witty</option>
+          </select>
+        </div>
+        <p class="build-total" id="buildTotal" role="status"></p>
+        <div class="build-actions">
+          <button class="btn" id="buildIt" type="button">Build it — send us the request</button>
+          <a class="textlink" href="contact.html">Or start with the free trial</a>
+        </div>
+        <p class="confirm" id="buildConfirm">Your build is written out in your email app, addressed to us — send it and we will write back with the next step. Nothing is charged here.</p>
+      </div>
+
+      <h3 style="margin-top:2.4rem">Referrals — Prism Pass</h3>
+      <p><strong>Pass it on!</strong> Every assistant includes a pass to share.</p>
+      <div class="referral-rows">
+        <div class="referral-row"><span>First Light — a friend’s first order with your pass</span><strong>25% off</strong></div>
+        <div class="referral-row"><span>For each friend who becomes a paying customer</span><strong>$10 credit</strong></div>
+        <div class="referral-row"><span>After three paying referrals</span><strong>6 months’ upkeep free</strong></div>
+        <div class="referral-row"><span>When a share you made brings in a customer</span><strong>$5 credit</strong></div>
+      </div></div>
     </details>
     <p class="note reveal" style="margin-top:20px">Every assistant starts with the same 14-day free trial — <a href="contact.html">start yours here</a>.</p>
   </div>
@@ -118,6 +208,8 @@
         <h4>The company</h4>
         <ul>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="apps.html">Get the apps</a></li>
+          <li><a href="https://loremaster-app-live.onrender.com">Loremaster — tales</a></li>
           <li><a href="https://app.prism5labs.com">Open the app</a></li>
           <li><a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a></li>
           <li><a href="tel:+19203937294">(920) 393-7294</a></li>
@@ -129,8 +221,101 @@
   </div>
 </footer>
 
-<div class="mobile-cta"><a class="btn" href="contact.html">Start your 14-day free trial</a></div>
+<div class="mobile-cta"><a class="btn" href="https://app.prism5labs.com">Open the app</a><button class="btn drawer-open" type="button" aria-expanded="false" aria-controls="siteDrawer">Menu</button></div>
 <script src="assets/site.js"></script>
+<script>
+/* ---------- Build your own (restored, inside the pricing gate) ---------- */
+(function(){
+  var panel = document.getElementById('buildPanel');
+  if (!panel) return;
+  var JOBS = [
+    {id:'morning-briefing', name:'Morning Briefing', type:'Spark'},
+    {id:'inbox-sorting', name:'Inbox Sorting Drafts', type:'Plug'},
+    {id:'find-a-time', name:'Find a Time', type:'Spark'},
+    {id:'whos-this', name:"Who's This?", type:'Spark'},
+    {id:'meeting-notes-summary', name:'Meeting Notes Summary', type:'Spark'},
+    {id:'invoice-helper', name:'Invoice Helper', type:'Spark'},
+    {id:'end-of-day-wrap', name:'End of Day Wrap', type:'Spark'},
+    {id:'spreadsheet-report', name:'Spreadsheet Report', type:'Plug'}
+  ];
+  var PRICE = { Spark:{personal:19, business:25}, Plug:{personal:39, business:59} };
+  var audience = 'personal';
+  var jobsPanel = document.getElementById('jobsPanel'),
+      jobsToggle = document.getElementById('jobsToggle'),
+      tierSel = document.getElementById('buildTier'),
+      styleSel = document.getElementById('buildStyle'),
+      totalEl = document.getElementById('buildTotal'),
+      noteEl = document.getElementById('jobsNote'),
+      countEl = document.getElementById('jobsCount');
+  function jobById(id){ for (var i=0;i<JOBS.length;i++) if (JOBS[i].id===id) return JOBS[i]; return null; }
+  function renderJobs(){
+    var checked = {};
+    jobsPanel.querySelectorAll('input[type=checkbox]').forEach(function(cb){ if (cb.checked) checked[cb.value]=true; });
+    jobsPanel.innerHTML = '';
+    JOBS.forEach(function(j){
+      var row = document.createElement('label'); row.className = 'job-check';
+      var cb = document.createElement('input'); cb.type='checkbox'; cb.value=j.id;
+      if (checked[j.id]) cb.checked = true;
+      cb.addEventListener('change', update);
+      var nm = document.createElement('span'); nm.className='job-name'; nm.textContent = j.name;
+      var pr = document.createElement('span'); pr.className='job-price';
+      pr.textContent = j.type + ' · $' + PRICE[j.type][audience];
+      row.appendChild(cb); row.appendChild(nm); row.appendChild(pr);
+      jobsPanel.appendChild(row);
+    });
+  }
+  function selections(){
+    var jobs = [];
+    jobsPanel.querySelectorAll('input[type=checkbox]').forEach(function(cb){ if (cb.checked) jobs.push(cb.value); });
+    return { tier: tierSel.value, jobs: jobs, style: styleSel.value };
+  }
+  function totalFor(sel){
+    if (sel.tier === 'supernova') return {label:'Supernova', total:499};
+    if (sel.tier === 'satellite') return {label:'Satellite', total:99};
+    var t = 0;
+    sel.jobs.forEach(function(id){ var j = jobById(id); if (j) t += PRICE[j.type][audience]; });
+    return {label:'Boosters only', total:t};
+  }
+  function update(){
+    var sel = selections(), t = totalFor(sel);
+    countEl.textContent = sel.jobs.length ? '(' + sel.jobs.length + ' picked)' : '';
+    noteEl.textContent = sel.tier === 'boosters'
+      ? 'Boosters only: each job priced on its own.'
+      : 'Checked jobs are included in its price.';
+    totalEl.textContent = 'Your build: ' + t.label +
+      (sel.jobs.length ? ' · ' + sel.jobs.length + ' job' + (sel.jobs.length>1?'s':'') + ' picked' : ' · no jobs picked yet') +
+      ' — $' + t.total + ' one-time';
+  }
+  jobsToggle.addEventListener('click', function(){
+    var opening = jobsPanel.hasAttribute('hidden');
+    if (opening) jobsPanel.removeAttribute('hidden'); else jobsPanel.setAttribute('hidden','');
+    jobsToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
+  });
+  tierSel.addEventListener('change', update);
+  function setAudience(a){
+    audience = a;
+    document.getElementById('audPersonal').setAttribute('aria-pressed', a==='personal' ? 'true' : 'false');
+    document.getElementById('audBusiness').setAttribute('aria-pressed', a==='business' ? 'true' : 'false');
+    renderJobs(); update();
+  }
+  document.getElementById('audPersonal').addEventListener('click', function(){ setAudience('personal'); });
+  document.getElementById('audBusiness').addEventListener('click', function(){ setAudience('business'); });
+  document.getElementById('buildIt').addEventListener('click', function(){
+    var sel = selections(), t = totalFor(sel);
+    var names = sel.jobs.map(function(id){ var j = jobById(id); return j ? j.name : id; });
+    var body = 'Please build this for me.\n\nTier: ' + t.label +
+      '\nFor: ' + (audience === 'personal' ? 'me, personally' : 'my business') +
+      '\nJobs: ' + (names.length ? names.join(', ') : '(none picked)') +
+      '\nStyle: ' + sel.style +
+      '\nTotal shown on the site: $' + t.total + ' one-time' +
+      '\n\nNothing charged — send me the next step first.';
+    window.location.href = 'mailto:prism5labscontact@gmail.com?subject=' +
+      encodeURIComponent('Build your own — Prism 5 Labs') + '&body=' + encodeURIComponent(body);
+    document.getElementById('buildConfirm').style.display = 'block';
+  });
+  renderJobs(); update();
+})();
+</script>
 
 </body>
 </html>

@@ -32,8 +32,58 @@
     <nav class="main" aria-label="Pages"><a href="index.html">Home</a><a href="nova.html">Nova</a><a href="supernova.html" aria-current="page">Supernova</a><a href="how.html">How it works</a><a href="pricing.html">Pricing</a><a href="faq.html">Questions</a><a href="contact.html">Contact</a></nav>
     <a class="btn small app-open" href="https://app.prism5labs.com">Open the app</a>
     <a class="btn small trial-open" href="contact.html">Start free trial</a>
+    <button class="burger drawer-open" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="siteDrawer"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="scrim" id="siteScrim"></div>
+<aside class="drawer" id="siteDrawer" aria-label="Site menu" aria-hidden="true">
+  <div class="d-head">
+    <img src="assets/prism-mark-160.png" alt="">
+    <b>Menu</b>
+    <button class="drawer-close" type="button" aria-label="Close the menu">&times;</button>
+  </div>
+  <nav class="d-nav" aria-label="Pages">
+    <p class="d-group">Pages</p>
+    <a href="index.html">Home</a>
+    <a href="nova.html">Nova</a>
+    <a href="supernova.html" aria-current="page">Supernova</a>
+    <a href="how.html">How it works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">Questions</a>
+    <a href="contact.html">Contact</a>
+    <a href="apps.html">Get the apps</a>
+    <a href="demo.html">Demo</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+  <nav class="d-nav" aria-label="On this page">
+    <p class="d-group">On this page</p>
+    <a href="#faces">The twelve Supernovas</a>
+    <a href="#does">What she does</a>
+    <a href="#jobs">Single jobs</a>
+    <a href="#trial">Free trial</a>
+  </nav>
+  <nav class="d-nav" aria-label="Apps">
+    <p class="d-group">The apps — in your browser</p>
+    <a href="https://app.prism5labs.com">Open the Prism app<span class="ext">web</span></a>
+    <a href="https://nova.prism5labs.com">Nova<span class="ext">web app</span></a>
+    <a href="https://supernova.prism5labs.com">Supernova<span class="ext">web app</span></a>
+    <p class="d-group">Android — direct install</p>
+    <a href="apks/nova.apk" download>Nova<span class="ext">.apk</span></a>
+    <a href="apks/supernova.apk" download>Supernova<span class="ext">.apk</span></a>
+    <a href="apks/prism.apk" download>Prism<span class="ext">.apk</span></a>
+    <a href="apps.html">Get the apps — every way in →</a>
+  </nav>
+  <nav class="d-nav d-side" aria-label="Loremaster">
+    <p class="d-group">Off to the side</p>
+    <a href="https://loremaster-app-live.onrender.com">Loremaster — tales<span class="ext">web</span></a>
+    <a href="apks/loremaster.apk" download>Loremaster for Android<span class="ext">.apk</span></a>
+  </nav>
+  <div class="d-foot">
+    <a class="btn" href="contact.html">Start your 14-day free trial</a>
+    <p class="note">No card. No charge. No auto-renew.</p>
+  </div>
+</aside>
+
 
 <section class="dossier on-lacquer on-dark">
   <span class="ghost word" aria-hidden="true">SUPERNOVA</span>
@@ -45,7 +95,7 @@
   </div>
 </section>
 
-<section class="chapter tight on-cream">
+<section class="chapter tight on-cream" id="faces">
   <div class="wrap">
     <div class="exhibit-head reveal">
       <p class="kicker">Meet the assistants</p>
@@ -103,7 +153,7 @@
   </div>
 </section>
 
-<section class="chapter on-cream" style="padding-top:0">
+<section class="chapter on-cream" id="does" style="padding-top:0">
   <div class="wrap">
     <div class="exhibit-head reveal">
       <p class="kicker">What it does</p>
@@ -248,7 +298,7 @@
   </div>
 </section>
 
-<section class="chapter on-teal on-dark">
+<section class="chapter on-teal on-dark" id="trial">
   <div class="wrap">
     <div class="contract reveal">
       <p class="kicker center">Start here</p>
@@ -294,6 +344,8 @@
         <h4>The company</h4>
         <ul>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="apps.html">Get the apps</a></li>
+          <li><a href="https://loremaster-app-live.onrender.com">Loremaster — tales</a></li>
           <li><a href="https://app.prism5labs.com">Open the app</a></li>
           <li><a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a></li>
           <li><a href="tel:+19203937294">(920) 393-7294</a></li>
@@ -305,7 +357,7 @@
   </div>
 </footer>
 
-<div class="mobile-cta"><a class="btn" href="contact.html">Start your 14-day free trial</a></div>
+<div class="mobile-cta"><a class="btn" href="https://app.prism5labs.com">Open the app</a><button class="btn drawer-open" type="button" aria-expanded="false" aria-controls="siteDrawer">Menu</button></div>
 <script src="assets/site.js"></script>
 
 </body>

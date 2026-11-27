@@ -8,6 +8,44 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
 }
 
+/* ---------- Slide-out menu: the constant navigation ----------
+   A hamburger in the header (and a Menu button in the phone thumb
+   bar) slides a cream drawer in from the right over a fading scrim.
+   Esc, the scrim, the close button, or any link tap closes it. */
+(function(){
+  var drawer = document.getElementById('siteDrawer');
+  var scrim = document.getElementById('siteScrim');
+  if (!drawer || !scrim) return;
+  var openers = document.querySelectorAll('.drawer-open');
+  var closer = drawer.querySelector('.drawer-close');
+  var lastFocus = null;
+  function setExpanded(v){
+    openers.forEach(function(b){ b.setAttribute('aria-expanded', v ? 'true' : 'false'); });
+  }
+  function open(){
+    lastFocus = document.activeElement;
+    drawer.classList.add('open'); scrim.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-locked');
+    setExpanded(true);
+    if (closer) closer.focus();
+  }
+  function close(){
+    drawer.classList.remove('open'); scrim.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-locked');
+    setExpanded(false);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  openers.forEach(function(b){ b.addEventListener('click', open); });
+  if (closer) closer.addEventListener('click', close);
+  scrim.addEventListener('click', close);
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){
+    if ((e.key === 'Escape' || e.key === 'Esc') && drawer.classList.contains('open')) close();
+  });
+})();
+
 /* ---------- Welcome film: click-to-play, right file for the screen ----------
    Nothing is fetched until the visitor presses play. Phones get the light
    phone cut; larger screens get the WebM, with the MP4 master as fallback. */

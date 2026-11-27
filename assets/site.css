@@ -332,7 +332,7 @@ header .btn{margin-left:8px}
 .toggle{display:inline-flex;gap:6px;padding:6px;border-radius:999px;margin-bottom:8px;
   background:rgba(1,49,62,.08);box-shadow:inset 0 2px 6px rgba(1,49,62,.25), inset 0 -1px 0 rgba(255,255,255,.7)}
 .toggle button,.toggle a button{min-height:48px;padding:.55rem 1.4rem;border-radius:999px;border:2px solid transparent;
-  font-family:"Libre Franklin",sans-serif;font-weight:700;font-size:.98rem;cursor:pointer;
+  font-family:"Libre Franklin",sans-serif;font-weight:700;font-size:.98rem;cursor:pointer;white-space:nowrap;
   color:var(--ink);background:transparent}
 .toggle [aria-pressed="true"]{color:#fff;background-color:var(--teal-deep);
   background:
@@ -432,6 +432,11 @@ form.panel input:focus{outline:3px solid rgba(42,127,134,.5);outline-offset:1px}
 form.panel h3{font-size:1.6rem}
 .confirm{display:none;margin-top:14px;padding:.8rem 1rem;border-radius:8px;
   background:rgba(15,82,87,.1);font-weight:700;color:var(--teal-deep)}
+.panel-card{background-color:var(--paper);background-image:var(--tex-cream);background-size:380px;
+  border-radius:12px;box-shadow:var(--bevel), var(--lift-hi);
+  padding:clamp(1.8rem,4.5vw,3rem);max-width:720px;margin:0 auto;position:relative;color:var(--ink)}
+.panel-card h3{font-size:1.6rem;margin:0 0 .5rem}
+.panel-card p{color:var(--ink-soft)}
 
 /* ---------- footer ---------- */
 footer{background:var(--plate-enamel-dark) center/cover, var(--teal-deep);color:var(--cream);
@@ -452,12 +457,149 @@ footer .legal{margin-top:2.8rem;font-size:.88rem;color:rgba(255,246,224,.65);max
 /* ---------- sticky thumb bar (phone) ---------- */
 .mobile-cta{display:none}
 @media (max-width:760px){
-  .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:55;
+  .mobile-cta{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;
     padding:10px 14px calc(10px + env(safe-area-inset-bottom));
     background-color:var(--cream);background-image:var(--tex-cream);background-size:380px;
     box-shadow:0 -8px 22px -10px rgba(1,49,62,.45)}
   .mobile-cta::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
     background:var(--chrome-rim)}
-  .mobile-cta .btn{width:100%}
+  .mobile-cta .btn{flex:1}
   body{padding-bottom:76px}
 }
+
+/* ============================================================
+   The slide-out menu — the constant navigation (Nov 27 pass)
+   A hamburger in every header; a cream drawer slides in from
+   the right over a fading scrim. Slow fades, per canon.
+   ============================================================ */
+.burger{flex:none;width:46px;height:44px;margin-left:8px;border-radius:12px;cursor:pointer;
+  border:2px solid transparent;background-color:var(--teal-deep);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0) 46%, rgba(0,0,0,.18)) padding-box,
+    linear-gradient(180deg, rgba(15,82,87,.93), rgba(1,49,62,.96)) padding-box,
+    var(--plate-enamel) center 42%/cover padding-box,
+    var(--chrome-rim) border-box;
+  box-shadow:var(--lift), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -3px 8px rgba(0,0,0,.35);
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{display:block;width:20px;height:2px;border-radius:1px;background:var(--cream)}
+.burger:active{transform:translateY(1px)}
+@media (max-width:640px){ .burger{margin-left:0} }
+/* Phones: brand + app button + burger cannot share a 360px bar without
+   spilling — the app button steps out of the header on phones only. It is
+   still constant on phones: it sits in the thumb bar beside Menu, and in
+   the drawer itself. The header keeps the brand and the menu button. */
+@media (max-width:640px){ header .app-open{display:none} }
+body.menu-locked{overflow:hidden}
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(1,49,62,.52);
+  opacity:0;visibility:hidden;transition:opacity .5s ease, visibility 0s linear .5s}
+.scrim.open{opacity:1;visibility:visible;transition:opacity .5s ease}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(352px,88vw);
+  background-color:var(--cream);background-image:var(--tex-cream);background-size:380px;
+  box-shadow:-18px 0 44px -18px rgba(1,49,62,.55);
+  transform:translateX(104%);visibility:hidden;
+  transition:transform .55s ease, visibility 0s linear .55s;
+  overflow-y:auto;overscroll-behavior:contain}
+.drawer.open{transform:none;visibility:visible;transition:transform .55s ease}
+.drawer::before{content:"";position:absolute;top:0;bottom:0;left:0;width:4px;background:var(--chrome-rim)}
+.drawer .d-head{display:flex;align-items:center;gap:10px;padding:16px 20px 14px;border-bottom:var(--hair)}
+.drawer .d-head img{width:34px;height:34px}
+.drawer .d-head b{font-family:"Patua One",serif;font-weight:400;font-size:1.25rem;color:var(--teal-deep)}
+.drawer-close{margin-left:auto;width:44px;height:44px;border-radius:50%;cursor:pointer;flex:none;
+  border:var(--hair);background:rgba(255,255,255,.55);color:var(--teal-deep);
+  font-size:1.45rem;line-height:1;display:flex;align-items:center;justify-content:center}
+.drawer-close:hover{border-color:var(--red);color:var(--red)}
+.d-nav{padding:14px 12px 4px}
+.d-group{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red);margin:10px 10px 6px}
+.d-nav a{display:flex;align-items:center;min-height:48px;padding:.45rem 10px;border-radius:8px;
+  color:var(--ink);text-decoration:none;font-weight:700;font-size:1.02rem}
+.d-nav a:hover{background:rgba(15,82,87,.08);color:var(--teal-deep)}
+.d-nav a[aria-current="page"]{color:var(--teal-deep);box-shadow:inset 3px 0 0 var(--red)}
+.d-nav a .ext{margin-left:auto;font-size:.8rem;color:var(--ink-soft);font-weight:600}
+.d-nav.d-side{border-top:var(--hair);margin-top:14px;padding-top:16px}
+.drawer .d-foot{padding:18px 20px 30px;border-top:var(--hair);margin-top:14px}
+.drawer .d-foot .btn{width:100%}
+.drawer .d-foot .note{margin-top:10px;text-align:center}
+@media (prefers-reduced-motion: reduce){
+  .drawer,.scrim{transition:none}
+}
+
+/* ---------- ghost button (cream face, chrome rim) ---------- */
+.btn.ghost{color:var(--teal-deep);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,239,204,.92)) padding-box,
+    var(--chrome-rim) border-box;
+  box-shadow:var(--lift), inset 0 1px 0 rgba(255,255,255,.95), inset 0 -3px 8px rgba(146,116,44,.18)}
+.btn.ghost:hover{box-shadow:var(--lift-hi), inset 0 1px 0 rgba(255,255,255,.95)}
+
+/* ============================================================
+   Our story — the founder's words + the numbers (restored)
+   ============================================================ */
+.story-col{max-width:44rem;position:relative;z-index:1}
+.story-col p{color:var(--ink-soft);font-size:clamp(1.02rem,2vw,1.14rem);line-height:1.7}
+.story-col p.lede{color:var(--ink)}
+.story-col blockquote{margin:2rem 0;padding:.4rem 0 .4rem 1.4rem;border-left:3px solid var(--red);
+  font-family:"Patua One",serif;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.35;color:var(--teal-deep)}
+.story-col blockquote cite{display:block;margin-top:.7rem;font-family:"Libre Franklin",sans-serif;
+  font-style:normal;font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,3.5vw,2.6rem);
+  border-top:var(--hair);margin-top:clamp(2.4rem,5vw,3.6rem);padding-top:clamp(1.6rem,4vw,2.4rem);
+  position:relative;z-index:1}
+.proof .p-num{font-family:"Patua One",serif;font-size:clamp(2.3rem,5.5vw,3.8rem);line-height:1;color:var(--teal-deep)}
+.proof .p-num em{font-style:normal;font-size:.42em;color:var(--red)}
+.proof .p-label{display:block;margin-top:.45rem;font-size:.72rem;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.proof p{margin:.35rem 0 0;color:var(--ink-soft);font-size:.95rem}
+@media (max-width:760px){ .proof{grid-template-columns:1fr 1fr} }
+
+/* ============================================================
+   Build your own + Prism Pass (inside the pricing gate)
+   ============================================================ */
+.build-panel{border:var(--hair);border-radius:12px;background:rgba(255,255,255,.55);
+  padding:clamp(1.2rem,3.5vw,2rem);margin-top:1.2rem}
+.build-panel h4{font-family:"Patua One",serif;font-weight:400;font-size:1.35rem;color:var(--teal-deep);margin:0 0 .4rem}
+.build-step{margin-top:1.3rem}
+.build-step>label,.build-step .build-label{display:block;font-size:.76rem;font-weight:800;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.45rem}
+.build-panel select{width:100%;max-width:30rem;min-height:52px;padding:.7rem .9rem;font:inherit;
+  font-size:1.02rem;color:var(--ink);background:rgba(255,255,255,.75);
+  border:1px solid rgba(1,49,62,.25);border-radius:8px;
+  box-shadow:inset 0 2px 6px rgba(1,49,62,.16), inset 0 -1px 0 rgba(255,255,255,.8)}
+.jobs-toggle{min-height:52px;padding:.7rem 1.1rem;font:inherit;font-weight:700;font-size:1rem;
+  color:var(--teal-deep);background:rgba(255,255,255,.75);border:1px solid rgba(1,49,62,.3);
+  border-radius:8px;cursor:pointer}
+.jobs-panel{margin-top:.6rem;border:var(--hair);border-radius:8px;padding:.4rem 1rem;background:rgba(255,255,255,.45)}
+.job-check{display:flex;align-items:baseline;gap:.7rem;padding:.6rem 0;border-bottom:var(--hair);cursor:pointer}
+.job-check:last-child{border-bottom:none}
+.job-check input{width:19px;height:19px;flex:none;position:relative;top:3px;accent-color:var(--teal)}
+.job-check .job-name{font-weight:700}
+.job-check .job-price{margin-left:auto;font-size:.9rem;color:var(--ink-soft);white-space:nowrap}
+.build-total{font-family:"Patua One",serif;font-size:clamp(1.15rem,2.6vw,1.45rem);color:var(--teal-deep);margin:1.2rem 0 .8rem}
+.build-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.referral-rows{border-top:var(--hair);margin-top:1rem}
+.referral-row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;
+  padding:.85rem 0;border-bottom:var(--hair)}
+.referral-row strong{font-family:"Patua One",serif;font-weight:400;color:var(--teal-deep);
+  font-size:1.12rem;white-space:nowrap}
+
+/* ---------- forms: textarea + select join the panel inputs ---------- */
+form.panel select,form.panel textarea{width:100%;min-height:52px;
+  padding:.7rem .9rem;font:inherit;font-size:1.02rem;color:var(--ink);
+  background:rgba(255,255,255,.65);border:1px solid rgba(1,49,62,.25);border-radius:8px;
+  box-shadow:inset 0 2px 6px rgba(1,49,62,.16), inset 0 -1px 0 rgba(255,255,255,.8)}
+form.panel textarea{min-height:110px;resize:vertical}
+form.panel select:focus,form.panel textarea:focus{outline:3px solid rgba(42,127,134,.5);outline-offset:1px}
+form.panel .radio-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:.2rem}
+form.panel .radio-row label{display:inline-flex;align-items:center;gap:.45rem;margin:0;
+  font-size:.92rem;letter-spacing:.02em;text-transform:none;font-weight:600;
+  border:1px solid rgba(1,49,62,.25);border-radius:999px;padding:.5rem .95rem;cursor:pointer;
+  background:rgba(255,255,255,.55)}
+form.panel .radio-row input{accent-color:var(--teal)}
+
+/* ---------- Get the apps ---------- */
+.app-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:1.1rem}
+.spread .portrait.mark-art{display:flex;align-items:center;justify-content:center;
+  background-color:var(--cream-2);aspect-ratio:1}
+.spread .portrait.mark-art img{width:62%;aspect-ratio:1;object-fit:contain}
+.spread .portrait.mark-art::after{display:none}
+

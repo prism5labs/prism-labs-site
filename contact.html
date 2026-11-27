@@ -32,8 +32,51 @@
     <nav class="main" aria-label="Pages"><a href="index.html">Home</a><a href="nova.html">Nova</a><a href="supernova.html">Supernova</a><a href="how.html">How it works</a><a href="pricing.html">Pricing</a><a href="faq.html">Questions</a><a href="contact.html" aria-current="page">Contact</a></nav>
     <a class="btn small app-open" href="https://app.prism5labs.com">Open the app</a>
     <a class="btn small trial-open" href="contact.html">Start free trial</a>
+    <button class="burger drawer-open" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="siteDrawer"><span></span><span></span><span></span></button>
   </div>
 </header>
+<div class="scrim" id="siteScrim"></div>
+<aside class="drawer" id="siteDrawer" aria-label="Site menu" aria-hidden="true">
+  <div class="d-head">
+    <img src="assets/prism-mark-160.png" alt="">
+    <b>Menu</b>
+    <button class="drawer-close" type="button" aria-label="Close the menu">&times;</button>
+  </div>
+  <nav class="d-nav" aria-label="Pages">
+    <p class="d-group">Pages</p>
+    <a href="index.html">Home</a>
+    <a href="nova.html">Nova</a>
+    <a href="supernova.html">Supernova</a>
+    <a href="how.html">How it works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">Questions</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a href="apps.html">Get the apps</a>
+    <a href="demo.html">Demo</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+  <nav class="d-nav" aria-label="Apps">
+    <p class="d-group">The apps — in your browser</p>
+    <a href="https://app.prism5labs.com">Open the Prism app<span class="ext">web</span></a>
+    <a href="https://nova.prism5labs.com">Nova<span class="ext">web app</span></a>
+    <a href="https://supernova.prism5labs.com">Supernova<span class="ext">web app</span></a>
+    <p class="d-group">Android — direct install</p>
+    <a href="apks/nova.apk" download>Nova<span class="ext">.apk</span></a>
+    <a href="apks/supernova.apk" download>Supernova<span class="ext">.apk</span></a>
+    <a href="apks/prism.apk" download>Prism<span class="ext">.apk</span></a>
+    <a href="apps.html">Get the apps — every way in →</a>
+  </nav>
+  <nav class="d-nav d-side" aria-label="Loremaster">
+    <p class="d-group">Off to the side</p>
+    <a href="https://loremaster-app-live.onrender.com">Loremaster — tales<span class="ext">web</span></a>
+    <a href="apks/loremaster.apk" download>Loremaster for Android<span class="ext">.apk</span></a>
+  </nav>
+  <div class="d-foot">
+    <a class="btn" href="contact.html">Start your 14-day free trial</a>
+    <p class="note">No card. No charge. No auto-renew.</p>
+  </div>
+</aside>
+
 
 <section class="chapter tight on-cream">
   <div class="wrap">
@@ -67,6 +110,44 @@
       <p class="note" style="margin-top:12px">Opens your email app with the request written out — nothing is charged here; already bought yours? <a href="https://app.prism5labs.com">Open the app →</a></p>
       <p class="confirm" id="trialConfirm">Your trial request is ready in your email app, addressed to us.</p>
     </form>
+  </div>
+</section>
+
+<section class="chapter tight on-cream">
+  <div class="wrap">
+    <div class="exhibit-head reveal">
+      <p class="kicker">Custom build</p>
+      <h2 class="d2">Something else entirely?</h2>
+      <p>Tell us what you need handled, in the form below. The price lands in writing before anything starts — we read it, ask only what’s missing, and send a written quote. Nothing starts until you approve it.</p>
+    </div>
+    <form class="panel reveal" id="customForm" style="color:var(--ink)">
+      <label for="cuName">Your name</label>
+      <input type="text" id="cuName" autocomplete="name">
+      <label for="cuEmail">Email</label>
+      <input type="email" id="cuEmail" autocomplete="email">
+      <label for="cuWhat">What should it do?</label>
+      <textarea id="cuWhat" placeholder="Start with the job you wish somebody would just handle"></textarea>
+      <label>Who is it for?</label>
+      <div class="radio-row" role="radiogroup" aria-label="Who is it for">
+        <label><input type="radio" name="cuWho" value="Just me" checked> Just me</label>
+        <label><input type="radio" name="cuWho" value="My household"> My household</label>
+        <label><input type="radio" name="cuWho" value="My small team"> My small team</label>
+        <label><input type="radio" name="cuWho" value="My whole company"> My whole company</label>
+      </div>
+      <label for="cuTools">Tools it must work with</label>
+      <input type="text" id="cuTools">
+      <label for="cuMore">Anything else? <span style="font-weight:400">(optional — if you’re not sure, say so; that’s a fine answer)</span></label>
+      <input type="text" id="cuMore">
+      <div style="margin-top:20px"><button class="btn" type="submit">Send request by email</button></div>
+      <p class="note" style="margin-top:12px">Opens your email app. Nothing is charged here.</p>
+      <p class="confirm" id="customConfirm">Your custom-build request is ready in your email app, addressed to us.</p>
+    </form>
+    <div class="panel-card reveal" style="margin-top:26px">
+      <h3>White Glove — we set it all up for you</h3>
+      <p>Rather we set it all up? Skip the setup entirely. We install it, connect it, and personalize it — every detail, done, and tested before you ever touch it. You just start working.</p>
+      <p>Priced by quote only, because it’s designed for you — the price is in writing before anything starts.</p>
+      <p style="margin-top:16px"><a class="btn small" href="mailto:prism5labscontact@gmail.com?subject=White%20Glove%20—%20set%20it%20up%20for%20me">Request White Glove — email us</a></p>
+    </div>
   </div>
 </section>
 
@@ -112,6 +193,8 @@
         <h4>The company</h4>
         <ul>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="apps.html">Get the apps</a></li>
+          <li><a href="https://loremaster-app-live.onrender.com">Loremaster — tales</a></li>
           <li><a href="https://app.prism5labs.com">Open the app</a></li>
           <li><a href="mailto:prism5labscontact@gmail.com">prism5labscontact@gmail.com</a></li>
           <li><a href="tel:+19203937294">(920) 393-7294</a></li>
@@ -123,7 +206,7 @@
   </div>
 </footer>
 
-<div class="mobile-cta"><a class="btn" href="contact.html">Start your 14-day free trial</a></div>
+<div class="mobile-cta"><a class="btn" href="https://app.prism5labs.com">Open the app</a><button class="btn drawer-open" type="button" aria-expanded="false" aria-controls="siteDrawer">Menu</button></div>
 <script src="assets/site.js"></script>
 <script>
 /* ---------- Trial form: one button, one action ---------- */
@@ -139,6 +222,23 @@ document.getElementById('trialForm').addEventListener('submit', function(e){
   window.location.href = "mailto:prism5labscontact@gmail.com?subject=" +
     encodeURIComponent("Free trial request — Prism 5 Labs") + "&body=" + encodeURIComponent(body);
   document.getElementById('trialConfirm').style.display = 'block';
+});
+
+/* ---------- Custom build: one button, one action ---------- */
+document.getElementById('customForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var who = 'Just me';
+  document.querySelectorAll('input[name="cuWho"]').forEach(function(r){ if (r.checked) who = r.value; });
+  var body = "Please quote a custom build.\n\nName: " + (document.getElementById('cuName').value.trim() || "(not given)") +
+    "\nEmail: " + (document.getElementById('cuEmail').value.trim() || "(not given)") +
+    "\nWhat it should do: " + (document.getElementById('cuWhat').value.trim() || "(not given)") +
+    "\nWho it is for: " + who +
+    "\nTools it must work with: " + (document.getElementById('cuTools').value.trim() || "(not given)") +
+    "\nAnything else: " + (document.getElementById('cuMore').value.trim() || "(nothing)") +
+    "\n\nThe price lands in writing before anything starts — as promised on the site.";
+  window.location.href = "mailto:prism5labscontact@gmail.com?subject=" +
+    encodeURIComponent("Custom build request — Prism 5 Labs") + "&body=" + encodeURIComponent(body);
+  document.getElementById('customConfirm').style.display = 'block';
 });
 
 /* ---------- Newsletter: the real endpoint ---------- */

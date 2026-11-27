@@ -82,6 +82,44 @@
     .site nav a:not(:last-child){display:none}
     .policy{padding:22px 20px}
   }
+
+  /* ---------- slide-out menu (standalone copy) ---------- */
+  .mnav-open{flex:none;margin-left:10px;width:46px;height:40px;border-radius:10px;cursor:pointer;
+    background:transparent;border:2px solid rgba(255,243,220,.65);
+    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+  .mnav-open span{display:block;width:20px;height:2px;border-radius:1px;background:#FFF3DC}
+  body.menu-locked{overflow:hidden}
+  .scrim{position:fixed;inset:0;z-index:80;background:rgba(1,49,62,.52);
+    opacity:0;visibility:hidden;transition:opacity .5s ease, visibility 0s linear .5s}
+  .scrim.open{opacity:1;visibility:visible;transition:opacity .5s ease}
+  .drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(352px,88vw);
+    background:#FFF6E0;box-shadow:-18px 0 44px -18px rgba(1,49,62,.55);
+    transform:translateX(104%);visibility:hidden;
+    transition:transform .55s ease, visibility 0s linear .55s;
+    overflow-y:auto;overscroll-behavior:contain;
+    font-family:"Libre Franklin",system-ui,sans-serif;color:#173A3C}
+  .drawer.open{transform:none;visibility:visible;transition:transform .55s ease}
+  .drawer::before{content:"";position:absolute;top:0;bottom:0;left:0;width:4px;
+    background:linear-gradient(160deg,#fdfdfd,#8f979c 40%,#eef1f2 58%,#a7b0b5)}
+  .drawer .d-head{display:flex;align-items:center;gap:10px;padding:16px 20px 14px;border-bottom:1px solid rgba(1,49,62,.22)}
+  .drawer .d-head img{width:34px;height:34px}
+  .drawer .d-head b{font-family:"Patua One",serif;font-weight:400;font-size:1.25rem;color:#01313E}
+  .drawer-close{margin-left:auto;width:44px;height:44px;border-radius:50%;cursor:pointer;flex:none;
+    border:1px solid rgba(1,49,62,.22);background:rgba(255,255,255,.55);color:#01313E;
+    font-size:1.45rem;line-height:1;display:flex;align-items:center;justify-content:center}
+  .d-nav{padding:14px 12px 4px}
+  .d-group{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#BE1E2D;margin:10px 10px 6px}
+  .d-nav a{display:flex;align-items:center;min-height:48px;padding:.45rem 10px;border-radius:8px;
+    color:#173A3C;text-decoration:none;font-weight:700;font-size:1.02rem}
+  .d-nav a:hover{background:rgba(15,82,87,.08);color:#01313E}
+  .d-nav a[aria-current="page"]{color:#01313E;box-shadow:inset 3px 0 0 #BE1E2D}
+  .d-nav a .ext{margin-left:auto;font-size:.8rem;color:#3D5A5C;font-weight:600}
+  .d-nav.d-side{border-top:1px solid rgba(1,49,62,.22);margin-top:14px;padding-top:16px}
+  .drawer .d-foot{padding:18px 20px 30px;border-top:1px solid rgba(1,49,62,.22);margin-top:14px}
+  .drawer .d-foot a{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:12px;
+    background:#01313E;color:#FFF6E0;text-decoration:none;font-weight:700;padding:.8rem 1.2rem;text-align:center}
+  .drawer .d-foot .note{margin-top:10px;text-align:center;font-size:.95rem;color:#3D5A5C}
+  @media (prefers-reduced-motion: reduce){ .drawer,.scrim{transition:none} }
 </style>
 </head>
 <body>
@@ -94,10 +132,11 @@
     </a>
     <nav aria-label="Pages">
       <a href="/">Home</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#trial">Free trial</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Free trial</a>
       <a href="https://app.prism5labs.com">Open the app</a>
     </nav>
+    <button class="mnav-open drawer-open" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="siteDrawer"><span></span><span></span><span></span></button>
   </div>
   <div class="contact-strip"><div class="wrap">
     <span>Prism 5 Labs · Green Bay, Wisconsin</span>
@@ -105,6 +144,48 @@
     <a href="tel:+19203937294">(920) 393-7294</a>
   </div></div>
 </header>
+<div class="scrim" id="siteScrim"></div>
+<aside class="drawer" id="siteDrawer" aria-label="Site menu" aria-hidden="true">
+  <div class="d-head">
+    <img src="assets/prism-mark-160.png" alt="">
+    <b>Menu</b>
+    <button class="drawer-close" type="button" aria-label="Close the menu">&times;</button>
+  </div>
+  <nav class="d-nav" aria-label="Pages">
+    <p class="d-group">Pages</p>
+    <a href="index.html">Home</a>
+    <a href="nova.html">Nova</a>
+    <a href="supernova.html">Supernova</a>
+    <a href="how.html">How it works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">Questions</a>
+    <a href="contact.html">Contact</a>
+    <a href="apps.html">Get the apps</a>
+    <a href="demo.html">Demo</a>
+    <a href="privacy.html" aria-current="page">Privacy</a>
+  </nav>
+  <nav class="d-nav" aria-label="Apps">
+    <p class="d-group">The apps — in your browser</p>
+    <a href="https://app.prism5labs.com">Open the Prism app<span class="ext">web</span></a>
+    <a href="https://nova.prism5labs.com">Nova<span class="ext">web app</span></a>
+    <a href="https://supernova.prism5labs.com">Supernova<span class="ext">web app</span></a>
+    <p class="d-group">Android — direct install</p>
+    <a href="apks/nova.apk" download>Nova<span class="ext">.apk</span></a>
+    <a href="apks/supernova.apk" download>Supernova<span class="ext">.apk</span></a>
+    <a href="apks/prism.apk" download>Prism<span class="ext">.apk</span></a>
+    <a href="apps.html">Get the apps — every way in →</a>
+  </nav>
+  <nav class="d-nav d-side" aria-label="Loremaster">
+    <p class="d-group">Off to the side</p>
+    <a href="https://loremaster-app-live.onrender.com">Loremaster — tales<span class="ext">web</span></a>
+    <a href="apks/loremaster.apk" download>Loremaster for Android<span class="ext">.apk</span></a>
+  </nav>
+  <div class="d-foot">
+    <a href="contact.html">Start your 14-day free trial</a>
+    <p class="note">No card. No charge. No auto-renew.</p>
+  </div>
+</aside>
+
 
 <main>
   <div class="wrap">
@@ -181,5 +262,38 @@
   </div>
 </footer>
 
+
+<script>
+/* ---------- Slide-out menu (standalone copy) ---------- */
+(function(){
+  var drawer = document.getElementById('siteDrawer');
+  var scrim = document.getElementById('siteScrim');
+  if (!drawer || !scrim) return;
+  var openers = document.querySelectorAll('.drawer-open');
+  var closer = drawer.querySelector('.drawer-close');
+  var lastFocus = null;
+  function setExpanded(v){ openers.forEach(function(b){ b.setAttribute('aria-expanded', v ? 'true' : 'false'); }); }
+  function open(){
+    lastFocus = document.activeElement;
+    drawer.classList.add('open'); scrim.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-locked'); setExpanded(true);
+    if (closer) closer.focus();
+  }
+  function close(){
+    drawer.classList.remove('open'); scrim.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-locked'); setExpanded(false);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  openers.forEach(function(b){ b.addEventListener('click', open); });
+  if (closer) closer.addEventListener('click', close);
+  scrim.addEventListener('click', close);
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){
+    if ((e.key === 'Escape' || e.key === 'Esc') && drawer.classList.contains('open')) close();
+  });
+})();
+</script>
 </body>
 </html>
